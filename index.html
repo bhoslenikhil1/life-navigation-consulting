@@ -2,18 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Life Navigation Consulting by Nikhil — Career Clarity, Relationship Guidance, Productivity Coaching, and Life Direction Support. Book Your Session Today.">
     <meta name="keywords" content="Life Coach, Consulting, Career Coach, Relationship Coach, Breakup Healing, Productivity Coaching, Business Consulting">
     <meta name="author" content="Nikhil - Life Navigation Consulting">
-
-    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Life Navigation Consulting | Clarity • Growth • Confidence</title>
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -64,7 +58,6 @@
 
         .hero h1 {
             font-size: 42px;
-            margin-bottom: 10px;
         }
 
         .hero p {
@@ -79,6 +72,8 @@
             border-radius: 6px;
             font-weight: 600;
             text-decoration: none;
+            cursor: pointer;
+            border: none;
         }
 
         .section {
@@ -88,7 +83,7 @@
             margin: auto;
         }
 
-        /* Time Slot Style */
+        /* Slot styling */
         .time-slot {
             padding: 12px 22px;
             margin: 6px;
@@ -96,8 +91,8 @@
             background: #ffd700;
             font-weight: 600;
             cursor: pointer;
-            display: inline-block;
             border: none;
+            display: inline-block;
         }
 
         .time-slot.selected {
@@ -116,9 +111,8 @@
             height: 55px;
             border-radius: 50%;
             display: flex;
-            align-items: center;
             justify-content: center;
-            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            align-items: center;
         }
 
         .whatsapp img {
@@ -129,14 +123,12 @@
 
 <body>
 
-<!-- Header -->
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="Logo Placeholder">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg">
     <h2>Life Navigation Consulting</h2>
     <p>Direction • Clarity • Confidence</p>
 </header>
 
-<!-- Navigation -->
 <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
@@ -145,65 +137,27 @@
     <a href="#contact">Book</a>
 </nav>
 
-<!-- Hero -->
 <section class="hero" id="home">
     <h1>Move Forward With Clarity</h1>
-    <p>Helping professionals gain clarity in career, relationships, business, and life direction through structured guidance and actionable strategies.</p>
+    <p>Helping professionals gain clarity in career, relationships, business, and life direction.</p>
     <a class="btn-primary" href="#contact">Book a Clarity Call</a>
 </section>
 
-<!-- About -->
 <section class="section" id="about">
     <h2>About Me</h2>
     <p>I’m Nikhil — a Life Navigation Consultant helping individuals get clarity in Career, Relationships, Productivity, and Personal Direction.</p>
 </section>
 
-<!-- Services -->
 <section class="section" id="services">
     <h2>Services</h2>
-
-    <div class="services-grid">
-
-        <div class="card">
-            <h3>Career Navigation</h3>
-            <p>Job switch roadmap, resume optimization, interview prep, 90-day performance plan.</p>
-        </div>
-
-        <div class="card">
-            <h3>Relationship Clarity</h3>
-            <p>Breakup healing, emotional detachment, confidence rebuilding, clarity sessions.</p>
-        </div>
-
-        <div class="card">
-            <h3>Business & Productivity</h3>
-            <p>Side business setup, idea validation, productivity systems for busy professionals.</p>
-        </div>
-
-    </div>
+    <p>Career Navigation • Relationship Clarity • Business Coaching • Productivity Systems</p>
 </section>
 
-<!-- Testimonials -->
 <section class="section" id="testimonials">
     <h2>Testimonials</h2>
-
-    <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-            “The clarity call changed my entire mindset. I finally know exactly what to do next in my job search.”
-            <span class="testimonial-name">— Raj P.</span>
-        </div>
-
-        <div class="testimonial-card">
-            “I came out of a breakup mentally shattered. Nikhil helped me rebuild my confidence week by week.”
-            <span class="testimonial-name">— Ankit S.</span>
-        </div>
-
-        <div class="testimonial-card">
-            “His guidance on my side business helped me start earning within 45 days. Highly recommended!”
-            <span class="testimonial-name">— Shruti K.</span>
-        </div>
-
-    </div>
+    <p>“Life-changing clarity!” — Raj</p>
+    <p>“Helped me rebuild confidence.” — Ankit</p>
+    <p>“Business earnings started within 45 days!” — Shruti</p>
 </section>
 
 <!-- Booking Section -->
@@ -212,17 +166,17 @@
     <p>Select a date and time slot to schedule your consultation.</p>
 
     <!-- Date Picker -->
-    <label style="font-weight:600; font-size:18px;">Select Date:</label><br>
-    <input type="date" id="booking-date" 
+    <label><b>Select Date:</b></label><br>
+    <input type="date" id="booking-date"
            style="padding:10px; margin-top:10px; margin-bottom:25px; font-size:16px; border-radius:6px; border:1px solid #ccc;">
 
     <!-- Time Slots -->
     <div id="time-slots" style="margin-bottom:25px; display:none;">
-        <label style="font-weight:600; font-size:18px;">Select Time Slot:</label>
+        <label><b>Select Time Slot:</b></label>
         <div id="slot-buttons" style="margin-top:15px;"></div>
     </div>
 
-    <!-- Booking Form (Web3Forms) -->
+    <!-- Form (Web3Forms) -->
     <form id="booking-form" style="display:none; margin-top:20px;"
           action="https://api.web3forms.com/submit" method="POST">
 
@@ -230,32 +184,25 @@
         <input type="hidden" name="Date" id="form-date">
         <input type="hidden" name="Time Slot" id="form-slot">
 
-        <input type="text" name="Name" placeholder="Your Name" required 
-               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+        <input type="text" name="Name" placeholder="Your Name" required style="padding:12px; width:100%; margin-bottom:12px;">
+        <input type="email" name="Email" placeholder="Your Email" required style="padding:12px; width:100%; margin-bottom:12px;">
+        <input type="text" name="Phone" placeholder="Your Phone Number" required style="padding:12px; width:100%; margin-bottom:20px;">
 
-        <input type="email" name="Email" placeholder="Your Email" required 
-               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+        <button class="btn-primary" type="submit">Confirm Booking</button>
 
-        <input type="text" name="Phone" placeholder="Your Phone Number" required 
-               style="padding:12px; width:100%; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
-
-        <button class="btn-primary" type="submit" style="padding:14px 28px; border:none;">Confirm Booking</button>
-
-        <input type="hidden" name="redirect" value="https://bhoslenikhil1.github.io/life-navigation-consulting/#thankyou">
+        <input type="hidden" name="redirect" value="https://bhoslenikhil1.github.io/life-navigation-consulting/?success#thankyou">
     </form>
 </section>
 
-<!-- Success Message -->
+<!-- Thank You -->
 <section id="thankyou" class="section" style="display:none;">
     <h2>Thank You!</h2>
     <p>Your booking request has been submitted successfully!</p>
 </section>
 
 <script>
-// Available time slots
 const availableSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 
-// Handle Date Selection
 document.getElementById("booking-date").addEventListener("change", function() {
     const slotDiv = document.getElementById("time-slots");
     const slotButtons = document.getElementById("slot-buttons");
@@ -268,7 +215,7 @@ document.getElementById("booking-date").addEventListener("change", function() {
         btn.className = "time-slot";
         btn.textContent = time;
 
-        btn.onclick = function (e) {
+        btn.onclick = function(e) {
             e.preventDefault();
 
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
@@ -284,15 +231,17 @@ document.getElementById("booking-date").addEventListener("change", function() {
         slotButtons.appendChild(btn);
     });
 });
+
+// Show Thank-You if redirected
+if (window.location.href.includes("success")) {
+    document.getElementById("thankyou").style.display = "block";
+}
 </script>
 
-
-<!-- Footer -->
 <footer>
     © 2026 Life Navigation Consulting · All Rights Reserved
 </footer>
 
-<!-- WhatsApp Floating -->
 <a class="whatsapp" href="https://wa.me/918108201967" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
