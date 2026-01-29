@@ -222,37 +222,40 @@
         <div id="slot-buttons" style="margin-top:15px;"></div>
     </div>
 
-    <!-- Booking Form -->
-    <form id="booking-form" action="https://formsubmit.co/bhoslenikhil1@gmail.com" method="POST" style="display:none; margin-top:20px;">
+    <!-- Booking Form (Web3Forms) -->
+    <form id="booking-form" style="display:none; margin-top:20px;"
+          action="https://api.web3forms.com/submit" method="POST">
 
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
         <input type="hidden" name="Date" id="form-date">
         <input type="hidden" name="Time Slot" id="form-slot">
 
         <input type="text" name="Name" placeholder="Your Name" required 
                style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+
         <input type="email" name="Email" placeholder="Your Email" required 
                style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+
         <input type="text" name="Phone" placeholder="Your Phone Number" required 
                style="padding:12px; width:100%; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
 
         <button class="btn-primary" type="submit" style="padding:14px 28px; border:none;">Confirm Booking</button>
 
-        <input type="hidden" name="_next" value="https://bhoslenikhil1.github.io/life-navigation-consulting/#thankyou">
-        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="redirect" value="https://bhoslenikhil1.github.io/life-navigation-consulting/#thankyou">
     </form>
 </section>
 
-<!-- Thank You -->
+<!-- Success Message -->
 <section id="thankyou" class="section" style="display:none;">
     <h2>Thank You!</h2>
-    <p>Your booking request has been received. I will contact you shortly.</p>
+    <p>Your booking request has been submitted successfully!</p>
 </section>
 
 <script>
 // Available time slots
 const availableSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 
-// On date selection → show slots
+// Handle Date Selection
 document.getElementById("booking-date").addEventListener("change", function() {
     const slotDiv = document.getElementById("time-slots");
     const slotButtons = document.getElementById("slot-buttons");
@@ -264,9 +267,10 @@ document.getElementById("booking-date").addEventListener("change", function() {
         const btn = document.createElement("button");
         btn.className = "time-slot";
         btn.textContent = time;
-        btn.dataset.time = time;
 
-        btn.onclick = function () {
+        btn.onclick = function (e) {
+            e.preventDefault();
+
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
             btn.classList.add("selected");
 
@@ -281,6 +285,7 @@ document.getElementById("booking-date").addEventListener("change", function() {
     });
 });
 </script>
+
 
 <!-- Footer -->
 <footer>
