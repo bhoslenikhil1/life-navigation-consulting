@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="description" content="Life Navigation Consulting by Nikhil — Career Clarity, Relationship Guidance, Productivity Coaching, and Life Direction Support. Book Your Session Today.">
     <meta name="keywords" content="Life Coach, Consulting, Career Coach, Relationship Coach, Breakup Healing, Productivity Coaching, Business Consulting">
     <meta name="author" content="Nikhil - Life Navigation Consulting">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Life Navigation Consulting | Clarity • Growth • Confidence</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -16,55 +18,34 @@
             font-family: 'Poppins', sans-serif;
             background: #f8f9fa;
         }
-
-        /* Header */
         header {
             background: #0d1b2a;
             padding: 25px 20px;
             color: #fff;
             text-align: center;
         }
-
-        header img {
-            width: 90px;
-            margin-bottom: 10px;
-        }
-
+        header img { width: 90px; margin-bottom: 10px; }
         nav {
             background: #1b263b;
             display: flex;
             justify-content: center;
             padding: 12px;
         }
-
         nav a {
             color: #fff;
             text-decoration: none;
             margin: 0 20px;
             font-weight: 500;
         }
-
-        nav a:hover {
-            color: #ffd700;
-        }
-
-        /* Hero */
+        nav a:hover { color: #ffd700; }
         .hero {
             text-align: center;
             padding: 80px 20px;
             background: linear-gradient(135deg, #22324f, #0d1b2a);
             color: white;
         }
-
-        .hero h1 {
-            font-size: 42px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-
+        .hero h1 { font-size: 42px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; margin-bottom: 30px; }
         .btn-primary {
             background: #ffd700;
             padding: 14px 25px;
@@ -72,10 +53,7 @@
             border-radius: 6px;
             font-weight: 600;
             text-decoration: none;
-            cursor: pointer;
-            border: none;
         }
-
         .section {
             padding: 60px 20px;
             text-align: center;
@@ -83,7 +61,7 @@
             margin: auto;
         }
 
-        /* Slot styling */
+        /* Time slot buttons */
         .time-slot {
             padding: 12px 22px;
             margin: 6px;
@@ -92,16 +70,14 @@
             font-weight: 600;
             cursor: pointer;
             border: none;
-            display: inline-block;
         }
-
         .time-slot.selected {
-            background: black;
-            color: white;
+            background: black !important;
+            color: white !important;
             border: 2px solid black;
         }
 
-        /* Floating WhatsApp */
+        /* WhatsApp Floating Button */
         .whatsapp {
             position: fixed;
             bottom: 18px;
@@ -111,13 +87,11 @@
             height: 55px;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
         }
-
-        .whatsapp img {
-            width: 32px;
-        }
+        .whatsapp img { width: 32px; }
     </style>
 </head>
 
@@ -139,7 +113,7 @@
 
 <section class="hero" id="home">
     <h1>Move Forward With Clarity</h1>
-    <p>Helping professionals gain clarity in career, relationships, business, and life direction.</p>
+    <p>Helping professionals gain clarity in career, relationships, business, and life direction through structured guidance and actionable strategies.</p>
     <a class="btn-primary" href="#contact">Book a Clarity Call</a>
 </section>
 
@@ -150,63 +124,46 @@
 
 <section class="section" id="services">
     <h2>Services</h2>
-    <p>Career Navigation • Relationship Clarity • Business Coaching • Productivity Systems</p>
 </section>
 
 <section class="section" id="testimonials">
     <h2>Testimonials</h2>
-    <p>“Life-changing clarity!” — Raj</p>
-    <p>“Helped me rebuild confidence.” — Ankit</p>
-    <p>“Business earnings started within 45 days!” — Shruti</p>
 </section>
 
-<!-- Booking Section -->
+<!-- BOOKING SECTION -->
 <section class="section" id="contact">
     <h2>Book a Session</h2>
     <p>Select a date and time slot to schedule your consultation.</p>
 
-    <!-- Date Picker -->
-    <label><b>Select Date:</b></label><br>
-    <input type="date" id="booking-date"
-           style="padding:10px; margin-top:10px; margin-bottom:25px; font-size:16px; border-radius:6px; border:1px solid #ccc;">
+    <label>Select Date:</label><br>
+    <input type="date" id="booking-date" style="padding:10px; margin-top:10px; margin-bottom:25px; font-size:16px; border-radius:6px; border:1px solid #ccc;">
 
-    <!-- Time Slots -->
-    <div id="time-slots" style="margin-bottom:25px; display:none;">
-        <label><b>Select Time Slot:</b></label>
-        <div id="slot-buttons" style="margin-top:15px;"></div>
+    <div id="time-slots" style="display:none;">
+        <label style="font-weight:600; font-size:18px;">Select Time Slot:</label>
+        <div id="slot-buttons"></div>
     </div>
 
-    <!-- Form (Web3Forms) -->
-    <form id="booking-form" style="display:none; margin-top:20px;"
-          action="https://api.web3forms.com/submit" method="POST">
+    <form id="booking-form" style="display:none; margin-top:20px;">
+        <input type="hidden" id="form-date">
+        <input type="hidden" id="form-slot">
 
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-        <input type="hidden" name="Date" id="form-date">
-        <input type="hidden" name="Time Slot" id="form-slot">
+        <input type="text" id="name" placeholder="Your Name" required style="padding:12px; width:100%; margin-bottom:12px;">
+        <input type="email" id="email" placeholder="Your Email" required style="padding:12px; width:100%; margin-bottom:12px;">
+        <input type="text" id="phone" placeholder="Your Phone Number" required style="padding:12px; width:100%; margin-bottom:20px;">
 
-        <input type="text" name="Name" placeholder="Your Name" required style="padding:12px; width:100%; margin-bottom:12px;">
-        <input type="email" name="Email" placeholder="Your Email" required style="padding:12px; width:100%; margin-bottom:12px;">
-        <input type="text" name="Phone" placeholder="Your Phone Number" required style="padding:12px; width:100%; margin-bottom:20px;">
-
-        <button class="btn-primary" type="submit">Confirm Booking</button>
-
-        <input type="hidden" name="redirect" value="https://bhoslenikhil1.github.io/life-navigation-consulting/?success#thankyou">
+        <button class="btn-primary" type="submit" style="padding:14px 28px;">Confirm Booking</button>
     </form>
 </section>
 
-<!-- Thank You -->
-<section id="thankyou" class="section" style="display:none;">
-    <h2>Thank You!</h2>
-    <p>Your booking request has been submitted successfully!</p>
-</section>
-
+<!-- GOOGLE SHEETS SUBMISSION SCRIPT -->
 <script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwkvPSnPClvQRVo9KAc6mdmfdVTH4xoGeq5eaq-dbrZ8Q7IWV4TKkW3ywta6bSp4WXQ/exec";
+
 const availableSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 
 document.getElementById("booking-date").addEventListener("change", function() {
     const slotDiv = document.getElementById("time-slots");
     const slotButtons = document.getElementById("slot-buttons");
-
     slotButtons.innerHTML = "";
     slotDiv.style.display = "block";
 
@@ -215,7 +172,7 @@ document.getElementById("booking-date").addEventListener("change", function() {
         btn.className = "time-slot";
         btn.textContent = time;
 
-        btn.onclick = function(e) {
+        btn.onclick = function (e) {
             e.preventDefault();
 
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
@@ -225,18 +182,40 @@ document.getElementById("booking-date").addEventListener("change", function() {
             document.getElementById("form-slot").value = time;
 
             document.getElementById("booking-form").style.display = "block";
-            window.location.href = "#contact";
         };
 
         slotButtons.appendChild(btn);
     });
 });
 
-// Show Thank-You if redirected
-if (window.location.href.includes("success")) {
-    document.getElementById("thankyou").style.display = "block";
-}
+// FORM SUBMISSION TO GOOGLE SHEET
+document.getElementById("booking-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        date: document.getElementById("form-date").value,
+        time: document.getElementById("form-slot").value
+    };
+
+    await fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    window.location.href = "#thankyou";
+    alert("Your booking has been submitted!");
+});
 </script>
+
+<section id="thankyou" class="section" style="display:none;">
+    <h2>Thank You!</h2>
+    <p>Your booking request has been submitted successfully!</p>
+</section>
 
 <footer>
     © 2026 Life Navigation Consulting · All Rights Reserved
