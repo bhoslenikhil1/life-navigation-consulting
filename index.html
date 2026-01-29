@@ -248,27 +248,83 @@
 </section>
 
 <!-- Contact -->
+
+    <!-- Custom Calendar + Slot Booking Form -->
 <section class="section" id="contact">
     <h2>Book a Session</h2>
-    <p>Choose your preferred booking method below:</p>
+    <p>Select a date and time slot to schedule your consultation.</p>
 
-   <div style="margin-top: 20px;">
-    <div class="calendly-inline-widget" 
-         data-url="https://calendly.com/YOUR-USERNAME/YOUR-EVENT" 
-         style="min-width: 100%; height: 700px;">
+    <!-- Date Picker -->
+    <label style="font-weight:600; font-size:18px;">Select Date:</label><br>
+    <input type="date" id="booking-date" 
+           style="padding:10px; margin-top:10px; margin-bottom:25px; font-size:16px; border-radius:6px; border:1px solid #ccc;">
+
+    <!-- Time Slot Selection -->
+    <div id="time-slots" style="margin-bottom:25px; display:none;">
+        <label style="font-weight:600; font-size:18px;">Select Time Slot:</label>
+        <div id="slot-buttons" style="margin-top:15px;"></div>
     </div>
-    <script type="text/javascript" 
-            src="https://assets.calendly.com/assets/external/widget.js" async>
-    </script>
-</div>
 
-    <h3 style="margin-top:30px;">📨 Google Form Booking</h3>
-    <p>Use this form to submit your details.</p>
-    <a class="btn-primary" href="https://forms.google.com" target="_blank">Open Google Form</a>
+    <!-- Booking Form -->
+    <form id="booking-form" action="https://formsubmit.co/bhoslenikhil1@gmail.com" method="POST" style="display:none; margin-top:20px;">
 
-    <p style="margin-top:25px;">Email: <strong>your-email@example.com</strong></p>
-    <p>Instagram: <strong>@yourhandle</strong></p>
+        <input type="hidden" name="Date" id="form-date">
+        <input type="hidden" name="Time Slot" id="form-slot">
+
+        <input type="text" name="Name" placeholder="Your Name" required 
+               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+        <input type="email" name="Email" placeholder="Your Email" required 
+               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+        <input type="text" name="Phone" placeholder="Your Phone Number" required 
+               style="padding:12px; width:100%; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
+
+        <button class="btn-primary" type="submit" style="padding:14px 28px; border:none;">Confirm Booking</button>
+
+        <!-- After submit redirect -->
+        <input type="hidden" name="_next" value="https://bhoslenikhil1.github.io/life-navigation-consulting/#thankyou">
+        <input type="hidden" name="_captcha" value="false">
+    </form>
 </section>
+
+<!-- Thank You Message -->
+<section id="thankyou" class="section" style="display:none;">
+    <h2>Thank You!</h2>
+    <p>Your booking request has been received. I will contact you shortly.</p>
+</section>
+
+<script>
+// Available time slots
+const availableSlots = [
+    "10:00 AM", "11:00 AM", "12:00 PM",
+    "3:00 PM", "4:00 PM", "5:00 PM"
+];
+
+// When user selects a date
+document.getElementById("booking-date").addEventListener("change", function() {
+    const slotDiv = document.getElementById("time-slots");
+    const slotButtons = document.getElementById("slot-buttons");
+    slotButtons.innerHTML = "";
+
+    availableSlots.forEach(time => {
+        const btn = document.createElement("button");
+        btn.textContent = time;
+        btn.type = "button";
+        btn.style = "padding:10px 20px; margin:5px; border-radius:6px; background:#ffd700; border:none; cursor:pointer; font-weight:600;";
+        
+        btn.onclick = () => {
+            document.getElementById("booking-form").style.display = "block";
+            document.getElementById("form-date").value = document.getElementById("booking-date").value;
+            document.getElementById("form-slot").value = time;
+            window.location.href = "#contact"; 
+        };
+
+        slotButtons.appendChild(btn);
+    });
+
+    slotDiv.style.display = "block";
+});
+</script>
+
 
 <!-- Footer -->
 <footer>
@@ -276,7 +332,7 @@
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">
+<a class="whatsapp" href="https://wa.me/918108201967" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
