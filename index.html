@@ -2,134 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Heal & Connect — A safe space for healing, emotional expression, and forming genuine connections. Join our guided healing circles.">
-    <meta name="keywords" content="Healing Circle, Loneliness Support, Emotional Wellness, Anxiety Support, Breakup Healing, Group Healing Sessions">
-    <meta name="author" content="Heal & Connect">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heal & Connect | Where healing meets connection.</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Heal & Connect | Where Healing Meets Connection</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --beige: #F9EEE7;
-            --coffee: #4D3B36;
-            --clay: #B77F67;
-            --peach: #F4CBB7;
-        }
-
         body {
             margin: 0;
-            background: var(--beige);
-            font-family: 'Poppins', sans-serif;
-            color: var(--coffee);
+            background: #F9EEE7;
+            font-family: 'Inter', sans-serif;
+            color: #5D4A42;
         }
 
         /* Header */
         header {
             text-align: center;
-            padding: 25px 20px;
-            background: var(--beige);
+            padding: 40px 20px 20px;
         }
 
-        header img {
-            width: 170px;
-            margin-bottom: 5px;
+        header img.logo {
+            width: 280px;
+            max-width: 90%;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background: var(--coffee);
-            padding: 12px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 20px;
-            font-weight: 400;
-        }
-
-        nav a:hover {
-            color: var(--peach);
-        }
-
-        .hero {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 2px;
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .hero p {
+        .tagline {
+            margin-top: 10px;
             font-size: 18px;
-            margin-bottom: 25px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
+            font-family: 'Playfair Display', serif;
+            color: #6D5A52;
         }
 
-        .btn-primary {
-            background: var(--clay);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
+        /* Sections */
         .section {
             max-width: 900px;
             margin: auto;
-            padding: 60px 20px;
+            padding: 60px 25px;
             text-align: center;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Button */
+        .btn {
+            background: #C27A61;
+            color: white;
+            padding: 14px 26px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 18px;
+        }
+
+        .btn:hover {
+            background: #aa6c56;
+        }
+
+        /* Calendar + Slots */
+        input[type="date"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #bbaaa3;
+            margin-bottom: 25px;
+            background: #fff;
+            width: 220px;
         }
 
         .time-slot {
             padding: 12px 22px;
-            margin: 6px;
-            background: var(--peach);
-            border: none;
+            background: #E5D3C8;
+            color: #5D4A42;
             border-radius: 6px;
-            font-weight: 600;
+            margin: 6px;
+            display: inline-block;
             cursor: pointer;
-            color: var(--coffee);
+            font-weight: 600;
+            border: none;
         }
 
         .time-slot.selected {
-            background: var(--coffee);
-            color: white;
+            background: #5D4A42;
+            color: #fff;
         }
 
+        /* Booking Form */
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #bbaaa3;
+        }
+
+        #booking-form {
+            margin-top: 25px;
+            display: none;
+        }
+
+        /* Footer */
         footer {
+            background: #EADBD3;
+            padding: 25px;
             text-align: center;
-            padding: 30px;
-            background: var(--coffee);
-            color: white;
-            margin-top: 50px;
+            margin-top: 40px;
+            font-size: 15px;
         }
 
+        /* WhatsApp Floating */
         .whatsapp {
             position: fixed;
             bottom: 18px;
             right: 18px;
+            background: #25d366;
             width: 55px;
             height: 55px;
             border-radius: 50%;
-            background: #25d366;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
         }
 
         .whatsapp img {
@@ -142,129 +146,47 @@
 
 <!-- Header -->
 <header>
-    <img src="https://raw.githubusercontent.com/bhoslenikhil1/life-navigation-consulting/main/Heal%20%26%20Connect%20Logo.png" alt="Heal & Connect Logo">
-    <p style="font-size:16px; margin-top:5px;">Where healing meets connection.</p>
+    <img src="heal-connect-logo.png" alt="Heal & Connect Logo" class="logo">
+    <div class="tagline">Where healing meets connection.</div>
 </header>
 
-<!-- Navigation -->
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#sessions">Sessions</a>
-    <a href="#contact">Book</a>
-</nav>
+<!-- Intro Section -->
+<section class="section">
+    <h2>Welcome to Heal & Connect</h2>
+    <p>A safe & warm space to express, heal, and build genuine friendships.  
+    Join our guided group Zoom sessions designed to help you feel lighter, connected, and emotionally supported.</p>
 
-<!-- Hero -->
-<section class="hero" id="home">
-    <h1>Heal Together. Connect Deeply.</h1>
-    <p>Join our guided healing circles where people come together to speak openly, feel lighter, and form meaningful connections.</p>
-    <a class="btn-primary" href="#contact">Join a Session</a>
+    <a href="#book" class="btn">Book a Healing Session</a>
 </section>
 
-<!-- About -->
-<section class="section" id="about">
-    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">About Heal & Connect</h2>
-    <p>
-        Heal & Connect is a safe emotional space designed for people dealing with loneliness, anxiety, heartbreak, or emotional heaviness.  
-        Our guided group sessions help you open up, feel heard, and connect with real people who understand you.
-    </p>
-</section>
-
-<!-- Sessions -->
-<section class="section" id="sessions">
-    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">Session Timings</h2>
-    <p>Choose a time that fits you. Each session lasts 30 minutes.</p>
-    <p>Price: <strong>₹399</strong> / session</p>
-</section>
-
-<!-- Booking -->
-<section class="section" id="contact">
-    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">Book Your Healing Session</h2>
-    <p>Select a date and time slot.</p>
+<!-- Booking Section -->
+<section class="section" id="book">
+    <h2>Book a Session</h2>
+    <p>Select a date & time slot. After that, you’ll be redirected to payment.<br>
+    Session Fee: <b>₹399</b></p>
 
     <!-- Date Picker -->
-    <label>Select Date:</label><br>
-    <input type="date" id="booking-date" 
-           style="padding:10px; margin-top:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
+    <label><b>Select Date:</b></label><br>
+    <input type="date" id="booking-date">
 
     <!-- Time Slots -->
-    <div id="time-slots" style="display:none; margin-bottom:20px;">
-        <label>Select Time Slot:</label>
-        <div id="slot-buttons" style="margin-top:10px;"></div>
+    <div id="time-slots" style="display:none; margin-top:15px;">
+        <label><b>Select Time Slot:</b></label><br>
+        <div id="slot-buttons"></div>
     </div>
 
     <!-- Booking Form -->
-    <form id="booking-form" style="display:none; margin-top:20px;"
-          action="https://script.google.com/macros/s/AKfycbwkvPSnPClvQRVo9KAc6mdmfdVTH4xoGeq5eaq-dbrZ8Q7IWV4TKkW3ywta6bSp4WXQ/exec"
-          method="POST">
-
-        <!-- Hidden Fields -->
+    <form id="booking-form" method="POST" action="" style="display:none;">
         <input type="hidden" name="Date" id="form-date">
         <input type="hidden" name="TimeSlot" id="form-slot">
-        <input type="hidden" name="ZoomLink" value="https://zoom.us/j/9876543210">
-        <input type="hidden" name="Passcode" id="zoom-passcode">
 
-        <!-- User Fields -->
-        <input type="text" name="Name" placeholder="Your Name" required
-               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
+        <input type="text" name="Name" placeholder="Your Name" required>
+        <input type="email" name="Email" placeholder="Your Email" required>
+        <input type="text" name="Phone" placeholder="Your Phone Number" required>
 
-        <input type="email" name="Email" placeholder="Your Email" required
-               style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
-
-        <input type="text" name="Phone" placeholder="Your Phone Number" required
-               style="padding:12px; width:100%; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
-
-        <!-- Payment Button -->
-        <a id="payment-button" class="btn-primary" style="cursor:pointer;">
-            Proceed to Payment
-        </a>
+        <button type="submit" class="btn">Proceed to Payment</button>
     </form>
 </section>
-
-<script>
-// Time slots
-const slots = {
-    "10:00 AM": "PASS-10",
-    "11:00 AM": "PASS-11",
-    "12:00 PM": "PASS-12",
-    "3:00 PM": "PASS-3",
-    "4:00 PM": "PASS-4",
-    "5:00 PM": "PASS-5"
-};
-
-// Show time slots after selecting date
-document.getElementById("booking-date").addEventListener("change", function () {
-    const slotButtons = document.getElementById("slot-buttons");
-    slotButtons.innerHTML = "";
-    document.getElementById("time-slots").style.display = "block";
-
-    Object.keys(slots).forEach(time => {
-        const btn = document.createElement("button");
-        btn.className = "time-slot";
-        btn.textContent = time;
-
-        btn.onclick = (e) => {
-            e.preventDefault();
-
-            document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
-            btn.classList.add("selected");
-
-            document.getElementById("form-date").value = document.getElementById("booking-date").value;
-            document.getElementById("form-slot").value = time;
-            document.getElementById("zoom-passcode").value = slots[time];
-
-            document.getElementById("booking-form").style.display = "block";
-        };
-
-        slotButtons.appendChild(btn);
-    });
-});
-
-// Payment Button
-document.getElementById("payment-button").onclick = function () {
-    window.location.href = ""; // ← Leave blank as requested
-};
-</script>
 
 <!-- Footer -->
 <footer>
@@ -275,6 +197,44 @@ document.getElementById("payment-button").onclick = function () {
 <a class="whatsapp" href="https://wa.me/918108201967" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
+
+<script>
+const availableSlots = [
+    "10:00 AM", "11:00 AM", "12:00 PM",
+    "3:00 PM", "4:00 PM", "5:00 PM"
+];
+
+// When a date is selected
+document.getElementById("booking-date").addEventListener("change", function () {
+    const slotDiv = document.getElementById("time-slots");
+    const slotButtons = document.getElementById("slot-buttons");
+
+    slotButtons.innerHTML = "";
+    slotDiv.style.display = "block";
+
+    availableSlots.forEach(time => {
+        const btn = document.createElement("button");
+        btn.className = "time-slot";
+        btn.textContent = time;
+
+        btn.onclick = function (e) {
+            e.preventDefault();
+
+            document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+
+            document.getElementById("form-date").value =
+                document.getElementById("booking-date").value;
+
+            document.getElementById("form-slot").value = time;
+
+            document.getElementById("booking-form").style.display = "block";
+        };
+
+        slotButtons.appendChild(btn);
+    });
+});
+</script>
 
 </body>
 </html>
