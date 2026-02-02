@@ -29,16 +29,21 @@
         letter-spacing: 0.2px;
     }
 
-    /* HEADER */
-    header {
+    /* LOGO BANNER */
+    .logo-banner {
+        width: 100%;
+        background: #F7EFE9;
+        padding: 60px 0 50px;
         text-align: center;
-        padding: 80px 20px 40px;
+        box-shadow: 0 8px 28px rgba(0,0,0,0.08);
     }
-    header img {
+
+    .logo-banner img {
         width: 360px;
         max-width: 95%;
-        filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.08));
+        filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.12));
     }
+
     .tagline {
         font-family: "Cormorant Garamond", serif;
         font-size: 22px;
@@ -199,6 +204,20 @@
         font-family: 'Inter', sans-serif;
     }
 
+    /* Testimonial Italic + Name Normal */
+    .testimonial-text {
+        font-style: italic;
+        font-size: 19px;
+        margin-bottom: 10px;
+    }
+    .testimonial-name {
+        text-align: right;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        margin-top: 5px;
+    }
+
     /* FOOTER */
     footer {
         background: var(--white);
@@ -238,11 +257,11 @@
 
 <body>
 
-<!-- HEADER -->
-<header>
+<!-- WIDE LOGO BANNER -->
+<div class="logo-banner">
     <img src="heal-connect-logo.png" alt="Heal & Connect Logo">
     <div class="tagline">Where healing meets connection.</div>
-</header>
+</div>
 
 <!-- HERO -->
 <section class="section">
@@ -336,14 +355,25 @@
     </div>
 </section>
 
-<!-- TESTIMONIAL -->
+<!-- TESTIMONIALS -->
 <section class="section">
     <h2>What People Say</h2>
     <div class="line"></div>
 
-    <div class="card">“I opened up after months… felt like breathing again.” — Aditi</div>
-    <div class="card">“I didn’t know strangers could feel like support.” — Rohan</div>
-    <div class="card">“I felt understood for the first time in a long while.” — Sana</div>
+    <div class="card">
+        <div class="testimonial-text">“I opened up after months… it felt like breathing again.”</div>
+        <div class="testimonial-name">— Aditi</div>
+    </div>
+
+    <div class="card">
+        <div class="testimonial-text">“I didn’t know strangers could feel like support.”</div>
+        <div class="testimonial-name">— Rohan</div>
+    </div>
+
+    <div class="card">
+        <div class="testimonial-text">“I finally felt understood after a very long time.”</div>
+        <div class="testimonial-name">— Sana</div>
+    </div>
 </section>
 
 <!-- BOOKING -->
@@ -358,6 +388,11 @@
         <label><b>Select Time Slot:</b></label><br>
         <div id="slot-buttons"></div>
     </div>
+
+    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;">
+        No more sessions available today.  
+        Please choose a future date.
+    </p>
 
     <form id="booking-form" style="display:none;">
         <input type="hidden" id="form-date">
@@ -378,22 +413,51 @@
 
     <details>
         <summary>Is this therapy?</summary>
-        <p>No — this is a guided emotional wellness session.</p>
-    </details>
-
-    <details>
-        <summary>Are my details safe?</summary>
-        <p>100% confidential.</p>
+        <p>No. This is not clinical therapy.  
+        Heal & Connect offers guided emotional wellness circles —  
+        a safe, supportive space to talk, express, and feel heard.  
+        Many people find these sessions easier and more comfortable  
+        than traditional therapy, but it does not replace professional treatment.</p>
     </details>
 
     <details>
         <summary>Do I have to speak?</summary>
-        <p>No — you can simply listen.</p>
+        <p>Yes — this is a two-way communication space.  
+        You don’t have to share everything, but speaking even a little helps you feel lighter,  
+        supported, and emotionally connected.  
+        You will never be forced, but gentle participation is encouraged.</p>
     </details>
 
     <details>
-        <summary>How long is each session?</summary>
-        <p>30 minutes.</p>
+        <summary>Is everything confidential?</summary>
+        <p>Absolutely.  
+        What you share stays strictly within the session.  
+        Heal & Connect follows a zero-judgment, zero-disclosure policy  
+        to ensure emotional safety for every participant.</p>
+    </details>
+
+    <details>
+        <summary>What happens in a session?</summary>
+        <p>The facilitator creates a calm space, introduces the topic,  
+        and guides the group through gentle sharing.  
+        You can express what you’re feeling, listen to others,  
+        and receive emotional grounding.  
+        The entire session is soft, calm, and structured.</p>
+    </details>
+
+    <details>
+        <summary>Can I join without previous experience?</summary>
+        <p>Yes.  
+        Most people join their first session feeling unsure —  
+        but within minutes, they feel comfortable.  
+        No preparation or prior experience is needed.</p>
+    </details>
+
+    <details>
+        <summary>Can I reschedule?</summary>
+        <p>Yes. You can reschedule your session once.  
+        Just contact us with your preferred new date and time.  
+        However, refunds are not available for missed sessions.</p>
     </details>
 </section>
 
@@ -405,8 +469,8 @@
     <p>
         I’m Nikhil — the creator of Heal & Connect.<br><br>
         After navigating my own emotional lows, loneliness, and internal heaviness,  
-        I realized something profound: people don’t always need therapy — they need  
-        a safe human space where they can breathe emotionally.<br><br>
+        I realized something profound: people don’t always need therapy —  
+        they need a safe human space where they can breathe emotionally.<br><br>
         Over the years, I’ve helped individuals gain clarity, grounding, and emotional stability.  
         Heal & Connect is built from that belief — a calm, warm, structured space  
         where vulnerability feels normal and connection becomes healing.  
@@ -424,33 +488,87 @@
 </a>
 
 <script>
+/* ================================
+   TIME SLOT LOGIC WITH VALIDATION
+================================= */
+
 const slots = ["10:00 AM","11:00 AM","12:00 PM","3:00 PM","4:00 PM","5:00 PM"];
 
+function convertTo24(timeStr) {
+    const [time, modifier] = timeStr.split(" ");
+    let [hours, minutes] = time.split(":");
+    if (modifier === "PM" && hours !== "12") hours = String(parseInt(hours) + 12);
+    if (modifier === "AM" && hours === "12") hours = "00";
+    return parseInt(hours);
+}
+
 document.getElementById("booking-date").addEventListener("change", () => {
+
+    const selectedDate = new Date(document.getElementById("booking-date").value);
+    const today = new Date();
     const slotButtons = document.getElementById("slot-buttons");
+    const noSlotsMsg = document.getElementById("no-slots-message");
+
     slotButtons.innerHTML = "";
+    noSlotsMsg.style.display = "none";
+    document.getElementById("booking-form").style.display = "none";
+
+    // If past date
+    if (selectedDate < new Date(today.getFullYear(), today.getMonth(), today.getDate())) {
+        noSlotsMsg.innerHTML = "Cannot select a past date. Please choose a future date.";
+        noSlotsMsg.style.display = "block";
+        return;
+    }
+
     document.getElementById("time-slots").style.display = "block";
 
+    let available = 0;
+
     slots.forEach(time => {
-        let btn = document.createElement("button");
-        btn.className = "time-slot";
-        btn.textContent = time;
+        let showSlot = true;
 
-        btn.onclick = e => {
-            e.preventDefault();
-            document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
-            btn.classList.add("selected");
-            document.getElementById("form-date").value = document.getElementById("booking-date").value;
-            document.getElementById("form-slot").value = time;
-            document.getElementById("booking-form").style.display = "block";
-        };
+        // If same day → filter slots
+        if (
+            selectedDate.getFullYear() === today.getFullYear() &&
+            selectedDate.getMonth() === today.getMonth() &&
+            selectedDate.getDate() === today.getDate()
+        ) {
+            const currentHour = today.getHours();
+            const slotHour = convertTo24(time);
 
-        slotButtons.appendChild(btn);
+            if (slotHour <= currentHour) {
+                showSlot = false;
+            }
+        }
+
+        if (showSlot) {
+            available++;
+
+            let btn = document.createElement("button");
+            btn.className = "time-slot";
+            btn.textContent = time;
+
+            btn.onclick = e => {
+                e.preventDefault();
+                document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
+                btn.classList.add("selected");
+                document.getElementById("form-date").value = document.getElementById("booking-date").value;
+                document.getElementById("form-slot").value = time;
+                document.getElementById("booking-form").style.display = "block";
+            };
+
+            slotButtons.appendChild(btn);
+        }
     });
+
+    if (available === 0) {
+        noSlotsMsg.style.display = "block";
+    }
 });
 
+/* PAYMENT PLACEHOLDER */
 document.getElementById("payment-button").onclick = () => {
-    window.location.href = ""; // Add payment link here later
+    window.location.href = ""; // Add Cashfree/PayU link here later
 };
 </script>
 
