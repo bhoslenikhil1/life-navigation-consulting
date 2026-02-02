@@ -2,34 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heal & Connect | Emotional Wellness Sessions</title>
 
-    <title>Heal & Connect | Where Healing Meets Connection</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --beige: #F9EEE7;
+            --coffee: #4D3B36;
+            --clay: #B77F67;
+            --soft: #EADBD3;
+        }
+
         body {
             margin: 0;
-            background: #F9EEE7;
+            background: var(--beige);
             font-family: 'Inter', sans-serif;
-            color: #5D4A42;
+            color: var(--coffee);
+            line-height: 1.6;
         }
 
         /* Header */
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 45px 20px 20px;
         }
 
         header img.logo {
-            width: 280px;
+            width: 260px;
             max-width: 90%;
         }
 
         .tagline {
-            margin-top: 10px;
+            margin-top: 6px;
             font-size: 18px;
             font-family: 'Playfair Display', serif;
             color: #6D5A52;
@@ -40,23 +48,23 @@
             max-width: 900px;
             margin: auto;
             padding: 60px 25px;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            font-size: 18px;
             text-align: center;
         }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        /* Button */
+        /* Buttons */
         .btn {
-            background: #C27A61;
+            background: var(--clay);
             color: white;
             padding: 14px 26px;
             border-radius: 6px;
@@ -66,59 +74,87 @@
             margin-top: 18px;
         }
 
-        .btn:hover {
-            background: #aa6c56;
+        /* Why Healing Matters */
+        .benefit-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 25px;
+            font-size: 17px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
         }
 
-        /* Calendar + Slots */
-        input[type="date"] {
+        /* Steps */
+        .step-box {
+            background: white;
+            padding: 22px;
+            margin: 12px 0;
+            border-radius: 10px;
+            text-align: left;
+            font-size: 17px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Testimonials */
+        .testimonial {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 12px 0;
+            font-style: italic;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        /* FAQ */
+        details {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        summary {
+            font-weight: 600;
+            font-size: 17px;
+        }
+
+        /* Calendar + slots */
+        input[type="date"], input[type="text"], input[type="email"] {
+            width: 100%;
             padding: 12px;
-            font-size: 16px;
+            margin-top: 8px;
+            margin-bottom: 20px;
             border-radius: 6px;
             border: 1px solid #bbaaa3;
-            margin-bottom: 25px;
             background: #fff;
-            width: 220px;
+            font-size: 16px;
         }
 
         .time-slot {
             padding: 12px 22px;
+            margin: 6px;
             background: #E5D3C8;
             color: #5D4A42;
             border-radius: 6px;
-            margin: 6px;
-            display: inline-block;
             cursor: pointer;
-            font-weight: 600;
             border: none;
+            font-weight: 600;
+            display: inline-block;
         }
 
         .time-slot.selected {
-            background: #5D4A42;
+            background: var(--coffee);
             color: #fff;
-        }
-
-        /* Booking Form */
-        input, button {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
-            border-radius: 6px;
-            border: 1px solid #bbaaa3;
-        }
-
-        #booking-form {
-            margin-top: 25px;
-            display: none;
         }
 
         /* Footer */
         footer {
-            background: #EADBD3;
-            padding: 25px;
+            background: var(--soft);
             text-align: center;
+            padding: 25px;
             margin-top: 40px;
-            font-size: 15px;
         }
 
         /* WhatsApp Floating */
@@ -146,46 +182,143 @@
 
 <!-- Header -->
 <header>
-    <img src="heal-connect-logo.png" alt="Heal & Connect Logo" class="logo">
+    <img src="heal-connect-logo.png" class="logo">
     <div class="tagline">Where healing meets connection.</div>
 </header>
 
-<!-- Intro Section -->
-<section class="section">
-    <h2>Welcome to Heal & Connect</h2>
-    <p>A safe & warm space to express, heal, and build genuine friendships.  
-    Join our guided group Zoom sessions designed to help you feel lighter, connected, and emotionally supported.</p>
+<!-- Hero -->
+<section class="section" id="hero">
+    <h2>Your Safe Space for Emotional Wellness</h2>
+    <p>Heal & Connect offers guided healing circles designed to help you express, release, and reconnect with people who truly understand your journey.</p>
+    <div style="text-align:center;">
+        <a href="#book" class="btn">Join a Session</a>
+    </div>
+</section>
 
-    <a href="#book" class="btn">Book a Healing Session</a>
+<!-- Why Healing Matters -->
+<section class="section">
+    <h2>Why Healing Matters</h2>
+    <p>Emotional weight doesn’t disappear on its own. It grows, affects your confidence, your relationships, and even your daily energy.  
+       Healing becomes easier when you are not alone — when you feel heard, understood, and supported.</p>
+
+    <div class="benefit-box">
+        ✔ Reduces emotional heaviness<br>
+        ✔ Builds clarity and self-awareness<br>
+        ✔ Helps you feel connected instead of isolated<br>
+        ✔ Restores confidence and inner stability<br>
+        ✔ Encourages healthy emotional expression
+    </div>
+</section>
+
+<!-- What You Will Gain -->
+<section class="section">
+    <h2>What You Will Experience</h2>
+
+    <div class="benefit-box">
+        • A calm, guided, supportive healing space<br><br>
+        • A chance to speak openly without judgment<br><br>
+        • Meet people who understand your emotional reality<br><br>
+        • Feel lighter, more grounded, more connected<br><br>
+        • Practical emotional clarity + a sense of belonging
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="section">
+    <h2>How a Session Works</h2>
+
+    <div class="step-box"><b>1. Select a date & time slot</b><br>You choose a slot that fits your routine.</div>
+    <div class="step-box"><b>2. Fill your details</b><br>Basic information to send your Zoom passcode.</div>
+    <div class="step-box"><b>3. Complete payment (₹399)</b><br>Universal secure link through Cashfree.</div>
+    <div class="step-box"><b>4. Receive Zoom link + passcode</b><br>Instantly via email after payment.</div>
+    <div class="step-box"><b>5. Join the healing circle</b><br>Connect, express, heal — professionally guided.</div>
+</section>
+
+<!-- Who It Is For -->
+<section class="section">
+    <h2>Who This Is For</h2>
+
+    <div class="benefit-box">
+        • People feeling lonely or emotionally disconnected<br><br>
+        • Anyone going through anxiety, uncertainty, or heartache<br><br>
+        • Professionals needing mental clarity and balance<br><br>
+        • Individuals seeking genuine human connection<br><br>
+        • Anyone who wants a safe space to speak and feel lighter
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+    <h2>What People Are Saying</h2>
+
+    <div class="testimonial">“I walked in with heaviness and walked out with clarity. This session felt like a warm hug.” — Aditi</div>
+    <div class="testimonial">“I made 3 new friends after the circle. Never thought I’d open up like this.” — Rohan</div>
+    <div class="testimonial">“This is the safest emotional space I’ve experienced in a long time.” — Sana</div>
 </section>
 
 <!-- Booking Section -->
 <section class="section" id="book">
-    <h2>Book a Session</h2>
-    <p>Select a date & time slot. After that, you’ll be redirected to payment.<br>
-    Session Fee: <b>₹399</b></p>
+    <h2>Book Your Healing Session</h2>
+    <p>Select a date and time slot below.</p>
 
     <!-- Date Picker -->
-    <label><b>Select Date:</b></label><br>
+    <label><b>Select Date:</b></label>
     <input type="date" id="booking-date">
 
     <!-- Time Slots -->
-    <div id="time-slots" style="display:none; margin-top:15px;">
+    <div id="time-slots" style="display:none;">
         <label><b>Select Time Slot:</b></label><br>
         <div id="slot-buttons"></div>
     </div>
 
-    <!-- Booking Form -->
-    <form id="booking-form" method="POST" action="" style="display:none;">
-        <input type="hidden" name="Date" id="form-date">
-        <input type="hidden" name="TimeSlot" id="form-slot">
+    <!-- Form -->
+    <form id="booking-form" style="display:none;">
+        <input type="hidden" id="form-date">
+        <input type="hidden" id="form-slot">
 
-        <input type="text" name="Name" placeholder="Your Name" required>
-        <input type="email" name="Email" placeholder="Your Email" required>
-        <input type="text" name="Phone" placeholder="Your Phone Number" required>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Your Phone Number" required>
 
-        <button type="submit" class="btn">Proceed to Payment</button>
+        <button class="btn" id="payment-button" type="button">Proceed to Payment</button>
     </form>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <h2>FAQ</h2>
+
+    <details>
+        <summary>Is this therapy?</summary>
+        <p>No. These are guided emotional wellness circles — a safe space to express, connect, and heal.</p>
+    </details>
+
+    <details>
+        <summary>Are cameras on?</summary>
+        <p>It is optional, but encouraged for deeper connection.</p>
+    </details>
+
+    <details>
+        <summary>Is everything confidential?</summary>
+        <p>Yes, 100% confidential and safe.</p>
+    </details>
+
+    <details>
+        <summary>How long is each session?</summary>
+        <p>30 minutes.</p>
+    </details>
+</section>
+
+<!-- About Me -->
+<section class="section">
+    <h2>About Me</h2>
+    <p>
+        I’m Nikhil — the creator of Heal & Connect.  
+        After going through my own phases of emotional heaviness, loneliness, and burnout, I realized that most people don't need dramatic therapy — they simply need a safe space to talk and feel understood.  
+        Over years of guiding people through emotional clarity and life decisions, I discovered a powerful truth: healing becomes easier when you're not alone.  
+        Heal & Connect was built on that belief — a calm, structured environment where vulnerability feels normal, and connection becomes healing.  
+        I’m here to help you reconnect with your inner stability, confidence, and sense of self.
+    </p>
 </section>
 
 <!-- Footer -->
@@ -193,33 +326,29 @@
     © 2026 Heal & Connect · All Rights Reserved
 </footer>
 
-<!-- WhatsApp Floating -->
+<!-- WhatsApp Button -->
 <a class="whatsapp" href="https://wa.me/918108201967" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
 <script>
-const availableSlots = [
+const slots = [
     "10:00 AM", "11:00 AM", "12:00 PM",
     "3:00 PM", "4:00 PM", "5:00 PM"
 ];
 
-// When a date is selected
-document.getElementById("booking-date").addEventListener("change", function () {
-    const slotDiv = document.getElementById("time-slots");
+document.getElementById("booking-date").addEventListener("change", () => {
     const slotButtons = document.getElementById("slot-buttons");
-
     slotButtons.innerHTML = "";
-    slotDiv.style.display = "block";
+    document.getElementById("time-slots").style.display = "block";
 
-    availableSlots.forEach(time => {
-        const btn = document.createElement("button");
+    slots.forEach(time => {
+        let btn = document.createElement("button");
         btn.className = "time-slot";
         btn.textContent = time;
 
-        btn.onclick = function (e) {
+        btn.onclick = e => {
             e.preventDefault();
-
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
             btn.classList.add("selected");
 
@@ -234,6 +363,10 @@ document.getElementById("booking-date").addEventListener("change", function () {
         slotButtons.appendChild(btn);
     });
 });
+
+document.getElementById("payment-button").onclick = () => {
+    window.location.href = ""; // Payment link placeholder
+};
 </script>
 
 </body>
