@@ -77,6 +77,7 @@
         line-height: 1.75;
     }
 
+    /* DIVIDER */
     .line {
         width: 70px;
         height: 2px;
@@ -149,7 +150,7 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
 
-    /* FORM & SLOTS */
+    /* FORM */
     input[type="date"],
     input[type="text"],
     input[type="email"] {
@@ -176,6 +177,10 @@
         box-shadow: var(--shadow);
     }
 
+    .time-slot:hover {
+        transform: translateY(-3px);
+    }
+
     .time-slot.selected {
         background: var(--text-dark);
         color: var(--white);
@@ -188,14 +193,19 @@
         font-size: 19px;
         margin-bottom: 10px;
     }
-
     .testimonial-name {
         text-align: right;
         font-size: 17px;
+        font-style: normal;
         font-weight: 500;
+        margin-top: 5px;
     }
 
-    /* FAQ */
+    summary {
+        font-weight: 600;
+        font-size: 19px;
+    }
+
     details {
         border: 1px solid var(--line);
         background: var(--white);
@@ -203,11 +213,6 @@
         border-radius: 3px;
         box-shadow: var(--shadow);
         margin-top: 16px;
-    }
-
-    summary {
-        font-weight: 600;
-        font-size: 19px;
     }
 
     /* FOOTER */
@@ -234,6 +239,10 @@
         justify-content: center;
         box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
     }
+
+    .whatsapp img {
+        width: 32px;
+    }
 </style>
 </head>
 
@@ -245,24 +254,29 @@
     <div class="tagline">Where healing meets connection.</div>
 </div>
 
-<!-- CHOOSE YOUR HEALING SPACE -->
+<!-- PACKAGES -->
 <section class="section">
     <h2>Choose Your Healing Space</h2>
     <div class="line"></div>
 
     <div class="h-cards">
+
         <div class="h-card" onclick="selectPackage('group')" style="cursor:pointer;">
-            <h3 style="font-family:'Cormorant Garamond'; font-size:26px;">Group Healing Session</h3>
-            <p>A warm healing circle to share, listen & feel supported.</p>
+            <h3 style="font-family:'Cormorant Garamond'; font-size:26px; margin-top:0;">Group Healing Session</h3>
+            <p style="color:var(--subtext); margin:10px 0 18px;">
+                Join a warm group circle where you listen, share, and feel supported.
+            </p>
             <b>₹399 / 30 minutes</b>
-            <p style="font-size:15px; color:#A87A6B;">Every Saturday • 4 PM – 5 PM</p>
         </div>
 
         <div class="h-card" onclick="selectPackage('one')" style="cursor:pointer;">
-            <h3 style="font-family:'Cormorant Garamond'; font-size:26px;">1-to-1 Healing Session</h3>
-            <p>A private emotional clarity session tailored just for you.</p>
+            <h3 style="font-family:'Cormorant Garamond'; font-size:26px; margin-top:0;">1-to-1 Healing Session</h3>
+            <p style="color:var(--subtext); margin:10px 0 18px;">
+                A private personal session tailored just for you — deeper and more focused.
+            </p>
             <b>₹499 / 30 minutes</b>
         </div>
+
     </div>
 </section>
 
@@ -329,21 +343,27 @@
 
     <div class="card">
         <div class="testimonial-text">
-            “I didn’t expect this level of emotional relief. Speaking in the session made me realize how deeply I was suppressing everything. I felt lighter for the first time in months.”
+            “I didn’t expect this level of emotional relief.  
+            Speaking in the session made me realize how deeply I was suppressing everything.  
+            I felt lighter for the first time in months.”
         </div>
         <div class="testimonial-name">— Aditi</div>
     </div>
 
     <div class="card">
         <div class="testimonial-text">
-            “The group felt warm, kind, and safe. Hearing others speak helped me understand my own emotions better. I didn’t feel alone anymore.”
+            “The group felt warm, kind, and safe.  
+            Hearing others speak helped me understand my own emotions better.  
+            I didn’t feel alone anymore.”
         </div>
         <div class="testimonial-name">— Rohan</div>
     </div>
 
     <div class="card">
         <div class="testimonial-text">
-            “I usually don’t talk about my feelings, but this session was different — calm, accepting and human. I walked away feeling understood.”
+            “I usually don’t talk about my feelings,  
+            but this session was different — calm, accepting and human.  
+            I walked away feeling understood.”
         </div>
         <div class="testimonial-name">— Sana</div>
     </div>
@@ -364,7 +384,8 @@
         <div id="slot-buttons"></div>
     </div>
 
-    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;"></p>
+    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;">
+    </p>
 
     <form id="booking-form" style="display:none;">
         <input type="hidden" id="form-date">
@@ -386,29 +407,39 @@
 
     <details>
         <summary>Is this therapy?</summary>
-        <p>No. Heal & Connect is not therapy. These are emotional wellness circles to feel safe, heard and supported.</p>
+        <p>No. Heal & Connect is not therapy.  
+        These are emotional wellness circles where you feel safe, heard and supported.  
+        It complements therapy, but doesn't replace it.</p>
     </details>
 
     <details>
         <summary>Do I have to speak?</summary>
-        <p>Yes — it is a two-way space. You don’t need to share everything, but your voice matters in healing.</p>
+        <p>Yes — this is a two-way communication space.  
+        You don’t need to share everything, but even a little expression helps you feel lighter, grounded and connected.</p>
     </details>
 
     <details>
         <summary>Is it confidential?</summary>
-        <p>Absolutely. Everything stays within the safe space — zero judgment, zero disclosure.</p>
+        <p>Absolutely. Everything shared stays within the space —  
+        with a zero-judgment, zero-disclosure policy.</p>
     </details>
 
     <details>
         <summary>Can I reschedule?</summary>
-        <p>Yes, once. Refunds are not available.</p>
+        <p>Yes, you may reschedule once.  
+        Refunds are not available.</p>
     </details>
 </section>
 
+<!-- ABOUT -->
 <section class="section">
     <h2>About Me</h2>
     <div class="line"></div>
-    <p>I’m Nikhil, the creator of Heal & Connect. After experiencing emotional heaviness myself, I built a safe human space where vulnerability feels normal and connection brings clarity.</p>
+    <p>I’m Nikhil, the creator of Heal & Connect.  
+    After experiencing emotional heaviness myself,  
+    I built a safe human space where vulnerability feels normal,  
+    conversations feel healing,  
+    and connection brings clarity.</p>
 </section>
 
 <footer>© 2026 Heal & Connect</footer>
@@ -420,24 +451,18 @@
 <script>
 let selectedPackage = "";
 
-// SELECT PACKAGE
 function selectPackage(type) {
     selectedPackage = type;
     document.getElementById("selected-package").innerHTML =
         type === "group" ? "Selected: Group Session (₹399)" : "Selected: 1-to-1 Session (₹499)";
+
     document.getElementById("form-package").value = selectedPackage;
 }
 
-// SLOT LOGIC
+/* SLOT LOGIC */
 document.getElementById("booking-date").addEventListener("change", () => {
-    const dateInput = document.getElementById("booking-date").value;
-    const selectedDate = new Date(dateInput);
-    const today = new Date();
-    const isToday = selectedDate.toDateString() === today.toDateString();
-    const currentHour = today.getHours();
-    const currentMinutes = today.getMinutes();
-
-    const day = selectedDate.getDay(); // 0 Sun, 6 Sat
+    const selectedDate = new Date(document.getElementById("booking-date").value);
+    const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
     const slotButtons = document.getElementById("slot-buttons");
     const noSlotsMsg = document.getElementById("no-slots-message");
 
@@ -445,59 +470,32 @@ document.getElementById("booking-date").addEventListener("change", () => {
     noSlotsMsg.style.display = "none";
     document.getElementById("booking-form").style.display = "none";
 
+    // Package required
     if (!selectedPackage) {
         noSlotsMsg.innerHTML = "Please select a package above.";
         noSlotsMsg.style.display = "block";
         return;
     }
 
-    function convertTo24Hour(time) {
-        let [hour, minutePart] = time.split(":");
-        let [minute, ampm] = minutePart.split(" ");
-        hour = parseInt(hour);
-        minute = parseInt(minute);
-        if (ampm === "PM" && hour !== 12) hour += 12;
-        if (ampm === "AM" && hour === 12) hour = 0;
-        return { hour, minute };
-    }
-
     let availableSlots = [];
 
-    // GROUP SESSIONS: ONLY SATURDAY 4 PM
+    // GROUP SESSION RULES (keep original)
     if (selectedPackage === "group") {
-        if (day === 6) {
-            availableSlots = ["4:00 PM"];
-        } else {
-            noSlotsMsg.innerHTML = "Group sessions are only available on Saturdays.";
-            noSlotsMsg.style.display = "block";
-            return;
-        }
+        availableSlots = ["10:00 AM","11:00 AM","12:00 PM","3:00 PM","4:00 PM","5:00 PM"];
     }
 
-    // ONE-TO-ONE SESSIONS
+    // ONE-TO-ONE SESSION RULES
     if (selectedPackage === "one") {
         if (day >= 1 && day <= 5) {
-            availableSlots = ["9:00 PM", "10:00 PM"];
+            // WEEKDAYS → Only 9 PM and 10 PM
+            availableSlots = ["9:00 PM","10:00 PM"];
         } else {
+            // WEEKENDS → 11 AM to 7 PM
             availableSlots = [
                 "11:00 AM","12:00 PM","1:00 PM","2:00 PM",
-                "3:00 PM","5:00 PM","6:00 PM","7:00 PM"
+                "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"
             ];
         }
-    }
-
-    // REMOVE PAST TIMES IF TODAY
-    if (isToday) {
-        availableSlots = availableSlots.filter(time => {
-            const { hour, minute } = convertTo24Hour(time);
-            return hour > currentHour || (hour === currentHour && minute >= currentMinutes);
-        });
-    }
-
-    if (availableSlots.length === 0) {
-        noSlotsMsg.innerHTML = "No slots available for this date.";
-        noSlotsMsg.style.display = "block";
-        return;
     }
 
     document.getElementById("time-slots").style.display = "block";
@@ -511,8 +509,7 @@ document.getElementById("booking-date").addEventListener("change", () => {
             e.preventDefault();
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
             btn.classList.add("selected");
-
-            document.getElementById("form-date").value = dateInput;
+            document.getElementById("form-date").value = document.getElementById("booking-date").value;
             document.getElementById("form-slot").value = time;
             document.getElementById("booking-form").style.display = "block";
         };
@@ -520,6 +517,7 @@ document.getElementById("booking-date").addEventListener("change", () => {
         slotButtons.appendChild(btn);
     });
 });
+
 </script>
 
 </body>
