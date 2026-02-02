@@ -4,121 +4,132 @@
     <meta charset="UTF-8">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Life Navigation Consulting by Nikhil — Career Clarity, Relationship Guidance, Productivity Coaching, and Life Direction Support. Book Your Session Today.">
-    <meta name="keywords" content="Life Coach, Consulting, Career Coach, Relationship Coach, Breakup Healing, Productivity Coaching, Business Consulting">
-    <meta name="author" content="Nikhil - Life Navigation Consulting">
+    <meta name="description" content="Heal & Connect — A safe space for healing, emotional expression, and forming genuine connections. Join our guided healing circles.">
+    <meta name="keywords" content="Healing Circle, Loneliness Support, Emotional Wellness, Anxiety Support, Breakup Healing, Group Healing Sessions">
+    <meta name="author" content="Heal & Connect">
 
-    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heal & Connect | Where healing meets connection.</title>
 
-    <title>Life Navigation Consulting | Clarity • Growth • Confidence</title>
-
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --beige: #F9EEE7;
+            --coffee: #4D3B36;
+            --clay: #B77F67;
+            --peach: #F4CBB7;
+        }
+
         body {
             margin: 0;
+            background: var(--beige);
             font-family: 'Poppins', sans-serif;
-            background: #f8f9fa;
+            color: var(--coffee);
         }
 
         /* Header */
         header {
-            background: #0d1b2a;
-            padding: 25px 20px;
-            color: #fff;
             text-align: center;
+            padding: 25px 20px;
+            background: var(--beige);
         }
 
         header img {
-            width: 90px;
-            margin-bottom: 10px;
+            width: 170px;
+            margin-bottom: 5px;
         }
 
         nav {
-            background: #1b263b;
             display: flex;
             justify-content: center;
+            background: var(--coffee);
             padding: 12px;
         }
 
         nav a {
-            color: #fff;
+            color: white;
             text-decoration: none;
             margin: 0 20px;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         nav a:hover {
-            color: #ffd700;
+            color: var(--peach);
         }
 
-        /* Hero */
         .hero {
-            text-align: center;
             padding: 80px 20px;
-            background: linear-gradient(135deg, #22324f, #0d1b2a);
-            color: white;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+            font-size: 48px;
+            margin-bottom: 10px;
         }
 
         .hero p {
             font-size: 18px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn-primary {
-            background: #ffd700;
-            padding: 14px 25px;
-            color: black;
+            background: var(--clay);
+            color: white;
+            padding: 14px 28px;
             border-radius: 6px;
-            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
+            font-weight: 500;
         }
 
         .section {
+            max-width: 900px;
+            margin: auto;
             padding: 60px 20px;
             text-align: center;
-            max-width: 950px;
-            margin: auto;
         }
 
-        /* Time Slot Style */
         .time-slot {
             padding: 12px 22px;
             margin: 6px;
+            background: var(--peach);
+            border: none;
             border-radius: 6px;
-            background: #ffd700;
             font-weight: 600;
             cursor: pointer;
-            border: none;
-            display: inline-block;
+            color: var(--coffee);
         }
 
         .time-slot.selected {
-            background: black;
+            background: var(--coffee);
             color: white;
         }
 
-        /* WhatsApp Floating */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--coffee);
+            color: white;
+            margin-top: 50px;
+        }
+
         .whatsapp {
             position: fixed;
             bottom: 18px;
             right: 18px;
-            background: #25d366;
             width: 55px;
             height: 55px;
             border-radius: 50%;
+            background: #25d366;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
         }
 
         .whatsapp img {
@@ -131,87 +142,69 @@
 
 <!-- Header -->
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg" alt="Logo Placeholder">
-    <h2>Life Navigation Consulting</h2>
-    <p>Direction • Clarity • Confidence</p>
+    <img src="https://raw.githubusercontent.com/bhoslenikhil1/life-navigation-consulting/main/Heal%20%26%20Connect%20Logo.png" alt="Heal & Connect Logo">
+    <p style="font-size:16px; margin-top:5px;">Where healing meets connection.</p>
 </header>
 
 <!-- Navigation -->
 <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#testimonials">Testimonials</a>
+    <a href="#sessions">Sessions</a>
     <a href="#contact">Book</a>
 </nav>
 
 <!-- Hero -->
 <section class="hero" id="home">
-    <h1>Move Forward With Clarity</h1>
-    <p>Helping professionals gain clarity in career, relationships, business, and life direction through structured guidance and actionable strategies.</p>
-    <a class="btn-primary" href="#contact">Book a Clarity Call</a>
+    <h1>Heal Together. Connect Deeply.</h1>
+    <p>Join our guided healing circles where people come together to speak openly, feel lighter, and form meaningful connections.</p>
+    <a class="btn-primary" href="#contact">Join a Session</a>
 </section>
 
 <!-- About -->
 <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>I’m Nikhil — a Life Navigation Consultant helping individuals get clarity in Career, Relationships, Productivity, and Personal Direction.</p>
+    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">About Heal & Connect</h2>
+    <p>
+        Heal & Connect is a safe emotional space designed for people dealing with loneliness, anxiety, heartbreak, or emotional heaviness.  
+        Our guided group sessions help you open up, feel heard, and connect with real people who understand you.
+    </p>
 </section>
 
-<!-- Services -->
-<section class="section" id="services">
-    <h2>Services</h2>
-    <div class="services-grid">
-        <div class="card">
-            <h3>Career Navigation</h3>
-            <p>Job switch roadmap, resume optimization, interview prep, 90-day performance plan.</p>
-        </div>
-
-        <div class="card">
-            <h3>Relationship Clarity</h3>
-            <p>Breakup healing, emotional detachment, confidence rebuilding, clarity sessions.</p>
-        </div>
-
-        <div class="card">
-            <h3>Business & Productivity</h3>
-            <p>Side business setup, idea validation, productivity systems for busy professionals.</p>
-        </div>
-    </div>
+<!-- Sessions -->
+<section class="section" id="sessions">
+    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">Session Timings</h2>
+    <p>Choose a time that fits you. Each session lasts 30 minutes.</p>
+    <p>Price: <strong>₹399</strong> / session</p>
 </section>
 
-<!-- Testimonials -->
-<section class="section" id="testimonials">
-    <h2>Testimonials</h2>
-
-    <p>“The clarity call changed my entire mindset. I finally know exactly what to do next in my job search.” — Raj P.</p>
-    <p>“I came out of a breakup mentally shattered. Nikhil helped me rebuild my confidence week by week.” — Ankit S.</p>
-    <p>“His guidance on my side business helped me start earning within 45 days. Highly recommended!” — Shruti K.</p>
-</section>
-
-<!-- Booking Section -->
+<!-- Booking -->
 <section class="section" id="contact">
-    <h2>Book a Session</h2>
-    <p>Select a date and time slot to schedule your consultation.</p>
+    <h2 style="font-family:'Cormorant Garamond'; font-size:34px;">Book Your Healing Session</h2>
+    <p>Select a date and time slot.</p>
 
     <!-- Date Picker -->
-    <label style="font-weight:600; font-size:18px;">Select Date:</label><br>
-    <input type="date" id="booking-date"
-           style="padding:10px; margin-top:10px; margin-bottom:25px; font-size:16px; border-radius:6px; border:1px solid #ccc;">
+    <label>Select Date:</label><br>
+    <input type="date" id="booking-date" 
+           style="padding:10px; margin-top:10px; margin-bottom:25px; border-radius:6px; border:1px solid #ccc;">
 
     <!-- Time Slots -->
-    <div id="time-slots" style="margin-bottom:25px; display:none;">
-        <label style="font-weight:600; font-size:18px;">Select Time Slot:</label>
-        <div id="slot-buttons" style="margin-top:15px;"></div>
+    <div id="time-slots" style="display:none; margin-bottom:20px;">
+        <label>Select Time Slot:</label>
+        <div id="slot-buttons" style="margin-top:10px;"></div>
     </div>
 
-    <!-- Booking Form (Google Sheets Save) -->
+    <!-- Booking Form -->
     <form id="booking-form" style="display:none; margin-top:20px;"
           action="https://script.google.com/macros/s/AKfycbwkvPSnPClvQRVo9KAc6mdmfdVTH4xoGeq5eaq-dbrZ8Q7IWV4TKkW3ywta6bSp4WXQ/exec"
           method="POST">
 
+        <!-- Hidden Fields -->
         <input type="hidden" name="Date" id="form-date">
         <input type="hidden" name="TimeSlot" id="form-slot">
+        <input type="hidden" name="ZoomLink" value="https://zoom.us/j/9876543210">
+        <input type="hidden" name="Passcode" id="zoom-passcode">
 
+        <!-- User Fields -->
         <input type="text" name="Name" placeholder="Your Name" required
                style="padding:12px; width:100%; margin-bottom:12px; border-radius:6px; border:1px solid #ccc;">
 
@@ -221,34 +214,36 @@
         <input type="text" name="Phone" placeholder="Your Phone Number" required
                style="padding:12px; width:100%; margin-bottom:20px; border-radius:6px; border:1px solid #ccc;">
 
-        <button class="btn-primary" type="submit" style="padding:14px 28px; border:none;">Confirm Booking</button>
-
-        <input type="hidden" name="redirect" value="https://bhoslenikhil1.github.io/life-navigation-consulting/#thankyou">
+        <!-- Payment Button -->
+        <a id="payment-button" class="btn-primary" style="cursor:pointer;">
+            Proceed to Payment
+        </a>
     </form>
 </section>
 
-<!-- Thank You -->
-<section id="thankyou" class="section" style="display:none;">
-    <h2>Thank You!</h2>
-    <p>Your booking request has been received!</p>
-</section>
-
 <script>
-const availableSlots = ["10:00 AM", "11:00 AM", "12:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
+// Time slots
+const slots = {
+    "10:00 AM": "PASS-10",
+    "11:00 AM": "PASS-11",
+    "12:00 PM": "PASS-12",
+    "3:00 PM": "PASS-3",
+    "4:00 PM": "PASS-4",
+    "5:00 PM": "PASS-5"
+};
 
+// Show time slots after selecting date
 document.getElementById("booking-date").addEventListener("change", function () {
-    const slotDiv = document.getElementById("time-slots");
     const slotButtons = document.getElementById("slot-buttons");
-
     slotButtons.innerHTML = "";
-    slotDiv.style.display = "block";
+    document.getElementById("time-slots").style.display = "block";
 
-    availableSlots.forEach(time => {
+    Object.keys(slots).forEach(time => {
         const btn = document.createElement("button");
         btn.className = "time-slot";
         btn.textContent = time;
 
-        btn.onclick = function (e) {
+        btn.onclick = (e) => {
             e.preventDefault();
 
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
@@ -256,6 +251,7 @@ document.getElementById("booking-date").addEventListener("change", function () {
 
             document.getElementById("form-date").value = document.getElementById("booking-date").value;
             document.getElementById("form-slot").value = time;
+            document.getElementById("zoom-passcode").value = slots[time];
 
             document.getElementById("booking-form").style.display = "block";
         };
@@ -263,11 +259,16 @@ document.getElementById("booking-date").addEventListener("change", function () {
         slotButtons.appendChild(btn);
     });
 });
+
+// Payment Button
+document.getElementById("payment-button").onclick = function () {
+    window.location.href = ""; // ← Leave blank as requested
+};
 </script>
 
 <!-- Footer -->
 <footer>
-    © 2026 Life Navigation Consulting · All Rights Reserved
+    © 2026 Heal & Connect · All Rights Reserved
 </footer>
 
 <!-- WhatsApp Floating -->
