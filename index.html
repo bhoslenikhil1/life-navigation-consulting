@@ -7,7 +7,7 @@
 <title>Heal & Connect — Emotional Wellness Sessions</title>
 
 <!-- Premium Editorial Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
     :root {
@@ -17,6 +17,7 @@
         --line: #E6DAD3;
         --accent: #B08876;
         --white: #FFFFFF;
+        --shadow: 0 6px 22px rgba(0,0,0,0.12);
     }
 
     body {
@@ -31,116 +32,150 @@
     /* HEADER */
     header {
         text-align: center;
-        padding: 65px 20px 40px;
+        padding: 80px 20px 40px;
     }
     header img {
-        width: 260px;
-        max-width: 90%;
+        width: 360px;
+        max-width: 95%;
+        filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.08));
     }
     .tagline {
-        font-family: "Playfair Display", serif;
-        font-size: 20px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 22px;
         color: var(--subtext);
-        margin-top: 12px;
+        margin-top: 15px;
         letter-spacing: 0.8px;
     }
 
-    /* SECTION WRAPPER */
+    /* SECTION */
     .section {
         width: 100%;
         max-width: 860px;
         margin: auto;
-        padding: 70px 25px;
-    }
-    .section h2 {
-        font-family: "Playfair Display", serif;
-        font-size: 42px;
-        font-weight: 500;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    .section p {
-        text-align: center;
-        font-size: 19px;
-        color: var(--subtext);
-        margin-top: 8px;
-        line-height: 1.7;
+        padding: 80px 30px;
     }
 
-    /* DIVIDER LINE */
+    .section h2 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 46px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .section p {
+        text-align: center;
+        font-size: 20px;
+        color: var(--subtext);
+        margin-top: 15px;
+        line-height: 1.75;
+    }
+
+    /* DIVIDER */
     .line {
-        width: 65px;
-        height: 1.5px;
+        width: 70px;
+        height: 2px;
         background: var(--line);
         margin: 35px auto 45px;
     }
 
-    /* EDITORIAL CARDS */
+    /* CARD */
     .card {
         background: var(--white);
         padding: 32px;
-        border-radius: 2px;
-        margin: 18px 0;
+        border-radius: 4px;
+        margin: 22px 0;
         border: 1px solid var(--line);
-        font-size: 18px;
+        font-size: 19px;
         color: var(--text-dark);
         line-height: 1.75;
+        box-shadow: var(--shadow);
+        transition: all 0.25s ease;
     }
 
-    /* HORIZONTAL MINI CARDS */
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 28px rgba(0,0,0,0.15);
+    }
+
+    /* HORIZONTAL CARDS */
     .h-cards {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 18px;
-        margin-top: 30px;
+        gap: 22px;
+        margin-top: 35px;
     }
+
     .h-card {
-        width: 240px;
-        padding: 22px;
+        width: 250px;
+        padding: 26px;
         background: var(--white);
         border: 1px solid var(--line);
-        border-radius: 2px;
-        font-size: 17px;
+        border-radius: 4px;
+        font-size: 18px;
         line-height: 1.6;
+        box-shadow: var(--shadow);
+        transition: 0.25s ease;
+    }
+
+    .h-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
     /* BUTTON */
     .btn {
         display: inline-block;
         background: var(--accent);
-        padding: 15px 32px;
-        border-radius: 2px;
+        padding: 16px 34px;
+        border-radius: 3px;
         text-decoration: none;
         color: var(--white);
-        font-weight: 500;
-        margin-top: 25px;
-        letter-spacing: 0.5px;
+        font-weight: 600;
+        margin-top: 30px;
+        letter-spacing: 0.7px;
+        font-size: 17px;
+        transition: 0.25s ease;
     }
 
-    /* FORM ELEMENTS */
+    .btn:hover {
+        background: #9d6f63;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* FORM */
     input[type="date"],
     input[type="text"],
     input[type="email"] {
         width: 100%;
-        padding: 14px;
-        border-radius: 2px;
+        padding: 16px;
+        border-radius: 3px;
         border: 1px solid var(--line);
         background: var(--white);
         margin-top: 10px;
-        margin-bottom: 25px;
-        font-size: 17px;
+        margin-bottom: 28px;
+        font-size: 18px;
+        box-shadow: var(--shadow);
     }
 
     .time-slot {
-        padding: 12px 24px;
+        padding: 14px 26px;
         margin: 6px;
         background: var(--white);
         border: 1px solid var(--line);
-        font-size: 16px;
+        font-size: 17px;
         cursor: pointer;
-        border-radius: 2px;
+        border-radius: 3px;
+        transition: 0.2s ease;
+        box-shadow: var(--shadow);
     }
+
+    .time-slot:hover {
+        transform: translateY(-3px);
+    }
+
     .time-slot.selected {
         background: var(--text-dark);
         color: var(--white);
@@ -151,14 +186,17 @@
     details {
         border: 1px solid var(--line);
         background: var(--white);
-        padding: 20px;
-        margin-top: 15px;
-        border-radius: 2px;
+        padding: 22px;
+        margin-top: 18px;
+        border-radius: 3px;
         cursor: pointer;
+        box-shadow: var(--shadow);
     }
+
     summary {
         font-weight: 600;
-        font-size: 18px;
+        font-size: 19px;
+        font-family: 'Inter', sans-serif;
     }
 
     /* FOOTER */
@@ -166,28 +204,34 @@
         background: var(--white);
         border-top: 1px solid var(--line);
         text-align: center;
-        padding: 35px;
-        margin-top: 50px;
+        padding: 40px;
+        margin-top: 60px;
         color: var(--subtext);
-        font-size: 16px;
+        font-size: 17px;
     }
 
-    /* WHATSAPP FLOAT BUTTON */
+    /* WHATSAPP */
     .whatsapp {
         position: fixed;
-        right: 18px;
-        bottom: 18px;
-        width: 54px;
-        height: 54px;
+        right: 20px;
+        bottom: 20px;
+        width: 56px;
+        height: 56px;
         background: #25D366;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
+        box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
+        transition: 0.2s;
     }
+
+    .whatsapp:hover {
+        transform: scale(1.07);
+    }
+
     .whatsapp img {
-        width: 30px;
+        width: 32px;
     }
 </style>
 </head>
@@ -202,12 +246,11 @@
 
 <!-- HERO -->
 <section class="section">
-    <h2>A Calm Space to Feel, Heal & Share</h2>
-    <p>You deserve a space where your emotions are safe, your voice is heard, and your heart can breathe again.  
-    Heal & Connect brings calm, structured emotional wellness sessions that help you reconnect with yourself and others.</p>
-
+    <h2>A Calm, Safe Space for Your Emotions</h2>
+    <p>You deserve a place where your feelings are understood, your voice is heard,  
+    and your heart feels lighter. Heal & Connect brings structured emotional wellness  
+    sessions to help you reconnect with yourself and others.</p>
     <div class="line"></div>
-
     <center><a href="#book" class="btn">Join a Healing Session</a></center>
 </section>
 
@@ -216,23 +259,23 @@
     <h2>We Understand These Moments</h2>
     <div class="line"></div>
 
-    <div class="card">“I feel lonely even when I’m not alone.”</div>
-    <div class="card">“I miss having someone I can talk to without being judged.”</div>
-    <div class="card">“My mind feels heavy… I just want some peace.”</div>
-    <div class="card">“Sometimes I don’t even know what’s wrong, I just feel empty.”</div>
+    <div class="card">“I feel lonely even when I'm surrounded by people.”</div>
+    <div class="card">“I miss having someone to speak to — someone who listens.”</div>
+    <div class="card">“My mind feels heavy. I just want some peace.”</div>
+    <div class="card">“I don’t know what’s wrong… I just feel empty.”</div>
 </section>
 
 <!-- WHY HEALING MATTERS -->
 <section class="section">
     <h2>Why Emotional Healing Matters</h2>
     <div class="line"></div>
-    <p>When emotions stay unexpressed for too long, the mind becomes noisy.  
+    <p>When emotions remain unexpressed, the mind becomes tense.  
     Healing gives your inner world space to breathe, soften, and stabilize.</p>
 
     <div class="h-cards">
         <div class="h-card">✓ Reduces mental load</div>
-        <div class="h-card">✓ Clears emotional fog</div>
         <div class="h-card">✓ Creates inner balance</div>
+        <div class="h-card">✓ Clears emotional fog</div>
         <div class="h-card">✓ Deepens human connection</div>
     </div>
 </section>
@@ -244,10 +287,10 @@
 
     <div class="card">
         • Sharing reduces emotional intensity by 40%  
-        • Feeling heard activates the brain’s safety centers  
-        • Human bonding releases oxytocin — the "healing hormone"  
-        • The mind reorganizes itself when it feels safe  
-        • Supportive groups accelerate recovery faster than isolation  
+        • Feeling heard activates the brain’s “safety zone”  
+        • Bonding releases oxytocin — the healing hormone  
+        • The mind resets when it feels safe  
+        • Groups heal faster than isolation  
     </div>
 </section>
 
@@ -257,29 +300,29 @@
     <div class="line"></div>
 
     <div class="card">
-        • A softly guided space  
-        • Gentle emotional grounding  
-        • Honest sharing (if you wish)  
-        • Zero judgment atmosphere  
-        • Calm conversation  
+        • Guided emotional grounding  
+        • Calm conversation space  
+        • Zero judgment  
+        • Gentle sharing (optional)  
         • Reduced loneliness  
-        • Real human connection  
+        • A sense of belonging  
+        • Emotional clarity  
     </div>
 </section>
 
-<!-- PROCESS -->
+<!-- HOW IT WORKS -->
 <section class="section">
     <h2>How It Works</h2>
     <div class="line"></div>
 
-    <div class="card"><b>1. Choose your time slot</b> — Pick a comfortable time.</div>
-    <div class="card"><b>2. Enter your details</b> — So we can reach you.</div>
-    <div class="card"><b>3. Make payment (₹399)</b> — Secure link.</div>
-    <div class="card"><b>4. Receive Zoom link</b> — Sent instantly.</div>
-    <div class="card"><b>5. Join the circle</b> — Heal with connection.</div>
+    <div class="card"><b>1.</b> Choose your time slot</div>
+    <div class="card"><b>2.</b> Enter your details</div>
+    <div class="card"><b>3.</b> Pay securely (₹399)</div>
+    <div class="card"><b>4.</b> Receive Zoom link instantly</div>
+    <div class="card"><b>5.</b> Join the circle & breathe lighter</div>
 </section>
 
-<!-- WHO IT IS FOR -->
+<!-- WHO IT'S FOR -->
 <section class="section">
     <h2>Who This Space Is For</h2>
     <div class="line"></div>
@@ -287,18 +330,18 @@
     <div class="h-cards">
         <div class="h-card">• Feeling lonely</div>
         <div class="h-card">• Emotional overwhelm</div>
-        <div class="h-card">• Anxiety or inner heaviness</div>
-        <div class="h-card">• Want someone to talk to</div>
-        <div class="h-card">• Searching for calm & clarity</div>
+        <div class="h-card">• Anxiety or heaviness</div>
+        <div class="h-card">• Want support</div>
+        <div class="h-card">• Searching for calm</div>
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIAL -->
 <section class="section">
     <h2>What People Say</h2>
     <div class="line"></div>
 
-    <div class="card">“I opened up after months. This space felt like a gentle exhale.” — Aditi</div>
+    <div class="card">“I opened up after months… felt like breathing again.” — Aditi</div>
     <div class="card">“I didn’t know strangers could feel like support.” — Rohan</div>
     <div class="card">“I felt understood for the first time in a long while.” — Sana</div>
 </section>
@@ -340,12 +383,12 @@
 
     <details>
         <summary>Are my details safe?</summary>
-        <p>100% confidential and private.</p>
+        <p>100% confidential.</p>
     </details>
 
     <details>
         <summary>Do I have to speak?</summary>
-        <p>No, you can simply listen and absorb.</p>
+        <p>No — you can simply listen.</p>
     </details>
 
     <details>
@@ -361,9 +404,12 @@
 
     <p>
         I’m Nikhil — the creator of Heal & Connect.<br><br>
-        After navigating my own phases of emotional heaviness and loneliness, I realized that people don't need dramatic therapy — they need a safe, calm space to feel seen.  
-        Through years of guiding individuals with life clarity and emotional grounding, I’ve learned that healing becomes easier when you're not alone.  
-        Heal & Connect was born from that belief — a quiet, warm space where vulnerability feels normal and connection becomes medicine.  
+        After navigating my own emotional lows, loneliness, and internal heaviness,  
+        I realized something profound: people don’t always need therapy — they need  
+        a safe human space where they can breathe emotionally.<br><br>
+        Over the years, I’ve helped individuals gain clarity, grounding, and emotional stability.  
+        Heal & Connect is built from that belief — a calm, warm, structured space  
+        where vulnerability feels normal and connection becomes healing.  
     </p>
 </section>
 
@@ -404,7 +450,7 @@ document.getElementById("booking-date").addEventListener("change", () => {
 });
 
 document.getElementById("payment-button").onclick = () => {
-    window.location.href = ""; // Payment link placeholder
+    window.location.href = ""; // Add payment link here later
 };
 </script>
 
