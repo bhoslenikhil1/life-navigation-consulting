@@ -15,6 +15,7 @@
             --coffee: #4D3B36;
             --clay: #B77F67;
             --soft: #EADBD3;
+            --white: #ffffff;
         }
 
         body {
@@ -30,12 +31,10 @@
             text-align: center;
             padding: 45px 20px 20px;
         }
-
         header img.logo {
             width: 260px;
             max-width: 90%;
         }
-
         .tagline {
             margin-top: 6px;
             font-size: 18px;
@@ -49,17 +48,43 @@
             margin: auto;
             padding: 60px 25px;
         }
-
         .section h2 {
             font-family: 'Playfair Display', serif;
             font-size: 34px;
             text-align: center;
             margin-bottom: 10px;
         }
-
         .section p {
             font-size: 18px;
             text-align: center;
+        }
+
+        /* Cards & Boxes */
+        .card {
+            background: white;
+            padding: 22px;
+            margin: 12px 0;
+            border-radius: 12px;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        .center-cards {
+            text-align: center;
+        }
+        .horizontal-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        .horizontal-card {
+            background: white;
+            padding: 20px;
+            width: 240px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            font-size: 17px;
         }
 
         /* Buttons */
@@ -72,52 +97,6 @@
             font-weight: 600;
             display: inline-block;
             margin-top: 18px;
-        }
-
-        /* Why Healing Matters */
-        .benefit-box {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 25px;
-            font-size: 17px;
-            box-shadow: 0px 2px 10px rgba(0,0,0,0.08);
-        }
-
-        /* Steps */
-        .step-box {
-            background: white;
-            padding: 22px;
-            margin: 12px 0;
-            border-radius: 10px;
-            text-align: left;
-            font-size: 17px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* Testimonials */
-        .testimonial {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 12px 0;
-            font-style: italic;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* FAQ */
-        details {
-            background: white;
-            padding: 18px;
-            border-radius: 10px;
-            margin: 10px 0;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        summary {
-            font-weight: 600;
-            font-size: 17px;
         }
 
         /* Calendar + slots */
@@ -143,10 +122,23 @@
             font-weight: 600;
             display: inline-block;
         }
-
         .time-slot.selected {
             background: var(--coffee);
             color: #fff;
+        }
+
+        /* FAQ */
+        details {
+            background: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        summary {
+            font-weight: 600;
+            font-size: 17px;
         }
 
         /* Footer */
@@ -154,10 +146,10 @@
             background: var(--soft);
             text-align: center;
             padding: 25px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        /* WhatsApp Floating */
+        /* WhatsApp */
         .whatsapp {
             position: fixed;
             bottom: 18px;
@@ -169,9 +161,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
         }
-
         .whatsapp img {
             width: 32px;
         }
@@ -186,92 +177,118 @@
     <div class="tagline">Where healing meets connection.</div>
 </header>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="section" id="hero">
     <h2>Your Safe Space for Emotional Wellness</h2>
-    <p>Heal & Connect offers guided healing circles designed to help you express, release, and reconnect with people who truly understand your journey.</p>
+    <p>Heal & Connect offers guided sessions where you can express freely, feel heard, and connect with real people who understand your emotional journey.</p>
     <div style="text-align:center;">
-        <a href="#book" class="btn">Join a Session</a>
+        <a href="#book" class="btn">Join a Healing Session</a>
     </div>
 </section>
 
-<!-- Why Healing Matters -->
+<!-- REAL-LIFE STORIES -->
+<section class="section">
+    <h2>Real Life Moments We Understand</h2>
+
+    <div class="card">
+        "I feel lonely even when surrounded by people."
+    </div>
+    <div class="card">
+        "Nights feel heavier than days."
+    </div>
+    <div class="card">
+        "I miss having someone I can talk to without fear of judgment."
+    </div>
+    <div class="card">
+        "I’m tired of pretending to be strong. I just want a space to be myself."
+    </div>
+</section>
+
+<!-- WHY HEALING MATTERS -->
 <section class="section">
     <h2>Why Healing Matters</h2>
-    <p>Emotional weight doesn’t disappear on its own. It grows, affects your confidence, your relationships, and even your daily energy.  
-       Healing becomes easier when you are not alone — when you feel heard, understood, and supported.</p>
+    <p>Emotional heaviness doesn't disappear on its own. When you feel safe, supported, and understood, your mind begins to breathe again.</p>
 
-    <div class="benefit-box">
-        ✔ Reduces emotional heaviness<br>
-        ✔ Builds clarity and self-awareness<br>
-        ✔ Helps you feel connected instead of isolated<br>
-        ✔ Restores confidence and inner stability<br>
-        ✔ Encourages healthy emotional expression
+    <div class="horizontal-cards">
+        <div class="horizontal-card">✓ Reduces emotional pressure</div>
+        <div class="horizontal-card">✓ Helps you reconnect with yourself</div>
+        <div class="horizontal-card">✓ Builds mental clarity</div>
+        <div class="horizontal-card">✓ Creates meaningful human connection</div>
+        <div class="horizontal-card">✓ Brings stability and confidence</div>
     </div>
 </section>
 
-<!-- What You Will Gain -->
+<!-- SCIENCE SECTION -->
+<section class="section">
+    <h2>The Science Behind Group Healing</h2>
+    <div class="card">
+        ● Sharing reduces emotional load by 40%  
+        ● Human connection releases oxytocin (bonding hormone)  
+        ● Feeling heard activates the brain’s “safety centers”  
+        ● Emotional suppression increases stress and anxiety  
+        ● Group environments heal faster than isolated healing  
+    </div>
+</section>
+
+<!-- WHAT YOU EXPERIENCE -->
 <section class="section">
     <h2>What You Will Experience</h2>
-
-    <div class="benefit-box">
-        • A calm, guided, supportive healing space<br><br>
-        • A chance to speak openly without judgment<br><br>
-        • Meet people who understand your emotional reality<br><br>
-        • Feel lighter, more grounded, more connected<br><br>
-        • Practical emotional clarity + a sense of belonging
+    <div class="card">
+        • Calm, guided emotional release  
+        • Space to speak safely without judgment  
+        • Real-time support from others like you  
+        • Reduced loneliness  
+        • Emotional grounding  
+        • A gentle sense of belonging  
     </div>
 </section>
 
-<!-- How It Works -->
+<!-- HOW IT WORKS -->
 <section class="section">
     <h2>How a Session Works</h2>
 
-    <div class="step-box"><b>1. Select a date & time slot</b><br>You choose a slot that fits your routine.</div>
-    <div class="step-box"><b>2. Fill your details</b><br>Basic information to send your Zoom passcode.</div>
-    <div class="step-box"><b>3. Complete payment (₹399)</b><br>Universal secure link through Cashfree.</div>
-    <div class="step-box"><b>4. Receive Zoom link + passcode</b><br>Instantly via email after payment.</div>
-    <div class="step-box"><b>5. Join the healing circle</b><br>Connect, express, heal — professionally guided.</div>
+    <div class="card"><b>1. Select a date & time slot</b> — Choose a time that feels comfortable for you.</div>
+    <div class="card"><b>2. Fill your basic details</b> — So we can send your meeting access.</div>
+    <div class="card"><b>3. Proceed to payment (₹399)</b> — Secure Cashfree link.</div>
+    <div class="card"><b>4. Receive meeting link + passcode</b> — Sent instantly after payment.</div>
+    <div class="card"><b>5. Join the circle</b> — Feel lighter, connected, understood.</div>
 </section>
 
-<!-- Who It Is For -->
+<!-- WHO IT IS FOR -->
 <section class="section">
     <h2>Who This Is For</h2>
 
-    <div class="benefit-box">
-        • People feeling lonely or emotionally disconnected<br><br>
-        • Anyone going through anxiety, uncertainty, or heartache<br><br>
-        • Professionals needing mental clarity and balance<br><br>
-        • Individuals seeking genuine human connection<br><br>
-        • Anyone who wants a safe space to speak and feel lighter
+    <div class="horizontal-cards">
+        <div class="horizontal-card">• People feeling lonely or disconnected</div>
+        <div class="horizontal-card">• Anyone experiencing anxiety or emotional heaviness</div>
+        <div class="horizontal-card">• Professionals needing mental clarity</div>
+        <div class="horizontal-card">• Anyone wanting a safe space to talk</div>
+        <div class="horizontal-card">• People looking for genuine connection</div>
     </div>
 </section>
 
-<!-- Testimonials -->
+<!-- TESTIMONIALS -->
 <section class="section">
-    <h2>What People Are Saying</h2>
+    <h2>What People Say</h2>
 
-    <div class="testimonial">“I walked in with heaviness and walked out with clarity. This session felt like a warm hug.” — Aditi</div>
-    <div class="testimonial">“I made 3 new friends after the circle. Never thought I’d open up like this.” — Rohan</div>
-    <div class="testimonial">“This is the safest emotional space I’ve experienced in a long time.” — Sana</div>
+    <div class="card">“This space felt like a breath of fresh air. I opened up after months.” — Aditi</div>
+    <div class="card">“I made new friends and felt understood for the first time.” — Rohan</div>
+    <div class="card">“I didn’t know strangers could create such a safe space together.” — Sana</div>
 </section>
 
-<!-- Booking Section -->
+<!-- BOOKING SECTION -->
 <section class="section" id="book">
-    <h2>Book Your Healing Session</h2>
-    <p>Select a date and time slot below.</p>
+    <h2>Book a Healing Session</h2>
+    <p>Select a date & time below.</p>
 
-    <!-- Date Picker -->
     <label><b>Select Date:</b></label>
     <input type="date" id="booking-date">
 
-    <!-- Time Slots -->
     <div id="time-slots" style="display:none;">
         <label><b>Select Time Slot:</b></label><br>
         <div id="slot-buttons"></div>
     </div>
 
-    <!-- Form -->
     <form id="booking-form" style="display:none;">
         <input type="hidden" id="form-date">
         <input type="hidden" id="form-slot">
@@ -290,26 +307,26 @@
 
     <details>
         <summary>Is this therapy?</summary>
-        <p>No. These are guided emotional wellness circles — a safe space to express, connect, and heal.</p>
+        <p>No, this is a guided emotional wellness session. A safe space to heal and connect.</p>
     </details>
 
     <details>
-        <summary>Are cameras on?</summary>
-        <p>It is optional, but encouraged for deeper connection.</p>
+        <summary>Are cameras required?</summary>
+        <p>Optional, but encouraged for deeper connection.</p>
     </details>
 
     <details>
         <summary>Is everything confidential?</summary>
-        <p>Yes, 100% confidential and safe.</p>
+        <p>Absolutely. 100% safe and private.</p>
     </details>
 
     <details>
         <summary>How long is each session?</summary>
-        <p>30 minutes.</p>
+        <p>Each session lasts 30 minutes.</p>
     </details>
 </section>
 
-<!-- About Me -->
+<!-- ABOUT ME -->
 <section class="section">
     <h2>About Me</h2>
     <p>
@@ -323,19 +340,16 @@
 
 <!-- Footer -->
 <footer>
-    © 2026 Heal & Connect · All Rights Reserved
+    © 2026 Heal & Connect · Your Safe Emotional Space
 </footer>
 
-<!-- WhatsApp Button -->
+<!-- WhatsApp -->
 <a class="whatsapp" href="https://wa.me/918108201967" target="_blank">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </a>
 
 <script>
-const slots = [
-    "10:00 AM", "11:00 AM", "12:00 PM",
-    "3:00 PM", "4:00 PM", "5:00 PM"
-];
+const slots = ["10:00 AM","11:00 AM","12:00 PM","3:00 PM","4:00 PM","5:00 PM"];
 
 document.getElementById("booking-date").addEventListener("change", () => {
     const slotButtons = document.getElementById("slot-buttons");
@@ -351,12 +365,8 @@ document.getElementById("booking-date").addEventListener("change", () => {
             e.preventDefault();
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
             btn.classList.add("selected");
-
-            document.getElementById("form-date").value =
-                document.getElementById("booking-date").value;
-
+            document.getElementById("form-date").value = document.getElementById("booking-date").value;
             document.getElementById("form-slot").value = time;
-
             document.getElementById("booking-form").style.display = "block";
         };
 
