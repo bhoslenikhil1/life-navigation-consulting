@@ -29,7 +29,7 @@
         letter-spacing: 0.2px;
     }
 
-    /* LOGO BANNER */
+    /* LOGO */
     .logo-banner {
         width: 100%;
         background: #F7EFE9;
@@ -77,7 +77,6 @@
         line-height: 1.75;
     }
 
-    /* DIVIDER */
     .line {
         width: 70px;
         height: 2px;
@@ -96,7 +95,7 @@
         color: var(--text-dark);
         line-height: 1.75;
         box-shadow: var(--shadow);
-        transition: all 0.25s ease;
+        transition: 0.25s ease;
     }
 
     .card:hover {
@@ -150,7 +149,7 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
 
-    /* FORM */
+    /* FORM & SLOTS */
     input[type="date"],
     input[type="text"],
     input[type="email"] {
@@ -173,18 +172,12 @@
         font-size: 17px;
         cursor: pointer;
         border-radius: 3px;
-        transition: 0.2s ease;
         box-shadow: var(--shadow);
-    }
-
-    .time-slot:hover {
-        transform: translateY(-3px);
     }
 
     .time-slot.selected {
         background: var(--text-dark);
         color: var(--white);
-        border-color: var(--text-dark);
     }
 
     /* TESTIMONIAL */
@@ -193,19 +186,14 @@
         font-size: 19px;
         margin-bottom: 10px;
     }
+
     .testimonial-name {
         text-align: right;
         font-size: 17px;
-        font-style: normal;
         font-weight: 500;
-        margin-top: 5px;
     }
 
-    summary {
-        font-weight: 600;
-        font-size: 19px;
-    }
-
+    /* FAQ */
     details {
         border: 1px solid var(--line);
         background: var(--white);
@@ -215,34 +203,11 @@
         margin-top: 16px;
     }
 
-    /* FOOTER */
-    footer {
-        background: var(--white);
-        border-top: 1px solid var(--line);
-        text-align: center;
-        padding: 40px;
-        margin-top: 60px;
-        color: var(--subtext);
-        font-size: 17px;
+    summary {
+        font-weight: 600;
+        font-size: 19px;
     }
 
-    .whatsapp {
-        position: fixed;
-        right: 20px;
-        bottom: 20px;
-        width: 56px;
-        height: 56px;
-        background: #25D366;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 6px 18px rgba(0,0,0,0.25);
-    }
-
-    .whatsapp img {
-        width: 32px;
-    }
 </style>
 </head>
 
@@ -254,40 +219,15 @@
     <div class="tagline">Where healing meets connection.</div>
 </div>
 
-<!-- PACKAGES -->
-<section class="section">
-    <h2>Choose Your Healing Space</h2>
-    <div class="line"></div>
-
-    <div class="h-cards">
-
-        <div class="h-card" onclick="selectPackage('group')" style="cursor:pointer;">
-            <h3 style="font-family:'Cormorant Garamond'; font-size:26px; margin-top:0;">Group Healing Session</h3>
-            <p style="color:var(--subtext); margin:10px 0 18px;">
-                Join a warm group circle where you listen, share, and feel supported.
-            </p>
-            <b>₹399 / 30 minutes</b>
-        </div>
-
-        <div class="h-card" onclick="selectPackage('one')" style="cursor:pointer;">
-            <h3 style="font-family:'Cormorant Garamond'; font-size:26px; margin-top:0;">1-to-1 Healing Session</h3>
-            <p style="color:var(--subtext); margin:10px 0 18px;">
-                A private personal session tailored just for you — deeper and more focused.
-            </p>
-            <b>₹499 / 30 minutes</b>
-        </div>
-
-    </div>
-</section>
-
-<!-- REAL MOMENTS -->
+<!-- SITUATIONS SECTION (UPDATED) -->
 <section class="section">
     <h2>We Understand These Moments</h2>
     <div class="line"></div>
 
-    <div class="card">“There were days when I felt so disconnected from everyone. Speaking here made me feel human again.”</div>
-    <div class="card">“I didn’t know how much I was holding inside me until I finally spoke to someone who actually listened.”</div>
-    <div class="card">“This space helped me breathe after months of emotional heaviness. It felt like someone switched on the light.”</div>
+    <div class="card">“Feeling emotionally exhausted — when even small conversations feel heavy.”</div>
+    <div class="card">“Being overwhelmed by work, relationships or life changes but having no one who truly listens.”</div>
+    <div class="card">“Feeling lonely even when surrounded by people — craving understanding, not advice.”</div>
+    <div class="card">“Carrying so much inside that expressing even a little feels like a relief.”</div>
 </section>
 
 <!-- WHY EMOTIONAL HEALING -->
@@ -295,7 +235,8 @@
     <h2>Why Emotional Healing Matters</h2>
     <div class="line"></div>
 
-    <p>Unspoken emotions build pressure. Healing gives your inner world space to breathe, soften and calm down.</p>
+    <p>Your mind carries more than it shows.  
+    Healing is the gentle process of releasing the emotional weight you never learned to express.</p>
 
     <div class="h-cards">
         <div class="h-card">✓ Reduces mental load</div>
@@ -305,22 +246,22 @@
     </div>
 </section>
 
-<!-- PSYCHOLOGY -->
+<!-- PSYCHOLOGY SECTION -->
 <section class="section">
     <h2>The Psychology Behind Connection</h2>
     <div class="line"></div>
 
     <div class="h-cards">
-        <div class="h-card">• Sharing reduces emotional intensity by 40%</div>
-        <div class="h-card">• Feeling heard activates brain’s safety circuits</div>
-        <div class="h-card">• Oxytocin release promotes emotional healing</div>
-        <div class="h-card">• The mind resets when it feels safe</div>
+        <div class="h-card">• Sharing reduces emotional intensity</div>
+        <div class="h-card">• Feeling heard activates the brain’s safety circuits</div>
+        <div class="h-card">• Oxytocin boosts emotional recovery</div>
+        <div class="h-card">• Mind resets when it feels safe</div>
         <div class="h-card">• Bonding lowers anxiety cycles</div>
         <div class="h-card">• Humans heal faster through connection</div>
     </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- EXPERIENCE SECTION -->
 <section class="section">
     <h2>What You Will Experience</h2>
     <div class="line"></div>
@@ -343,27 +284,21 @@
 
     <div class="card">
         <div class="testimonial-text">
-            “I didn’t expect this level of emotional relief.  
-            Speaking in the session made me realize how deeply I was suppressing everything.  
-            I felt lighter for the first time in months.”
+            “I didn’t expect this level of emotional relief. Speaking in the session helped me see how much I was holding inside.”
         </div>
         <div class="testimonial-name">— Aditi</div>
     </div>
 
     <div class="card">
         <div class="testimonial-text">
-            “The group felt warm, kind, and safe.  
-            Hearing others speak helped me understand my own emotions better.  
-            I didn’t feel alone anymore.”
+            “The space felt warm, kind and safe — something I didn’t know I needed until I joined.”
         </div>
         <div class="testimonial-name">— Rohan</div>
     </div>
 
     <div class="card">
         <div class="testimonial-text">
-            “I usually don’t talk about my feelings,  
-            but this session was different — calm, accepting and human.  
-            I walked away feeling understood.”
+            “I’m not someone who talks about emotions, but here… it felt natural. Healing became easier.”
         </div>
         <div class="testimonial-name">— Sana</div>
     </div>
@@ -374,7 +309,9 @@
     <h2>Book a Healing Session</h2>
     <div class="line"></div>
 
-    <p id="selected-package" style="font-size:22px; font-weight:600; text-align:center; margin-bottom:30px;"></p>
+    <p style="font-size:22px; font-weight:600; text-align:center; margin-bottom:30px;">
+        One-to-One Healing Session (₹499)
+    </p>
 
     <label><b>Select Date:</b></label>
     <input type="date" id="booking-date">
@@ -384,13 +321,11 @@
         <div id="slot-buttons"></div>
     </div>
 
-    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;">
-    </p>
+    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;"></p>
 
     <form id="booking-form" style="display:none;">
         <input type="hidden" id="form-date">
         <input type="hidden" id="form-slot">
-        <input type="hidden" id="form-package">
 
         <input type="text" placeholder="Your Name" required>
         <input type="email" placeholder="Your Email" required>
@@ -400,46 +335,79 @@
     </form>
 </section>
 
-<!-- FAQ -->
+<!-- FAQ (Expanded) -->
 <section class="section">
     <h2>FAQ</h2>
     <div class="line"></div>
 
     <details>
         <summary>Is this therapy?</summary>
-        <p>No. Heal & Connect is not therapy.  
-        These are emotional wellness circles where you feel safe, heard and supported.  
-        It complements therapy, but doesn't replace it.</p>
+        <p>No. Heal & Connect isn't therapy.  
+        It is an emotional support space where you express, release and reconnect with yourself.  
+        Therapy is clinical — this is human, conversational and grounding.</p>
+    </details>
+
+    <details>
+        <summary>What happens in a session?</summary>
+        <p>Your session begins with grounding, followed by a guided conversation that helps you express what feels heavy.  
+        You talk, reflect, pause, breathe — and walk out clearer than before.</p>
     </details>
 
     <details>
         <summary>Do I have to speak?</summary>
-        <p>Yes — this is a two-way communication space.  
-        You don’t need to share everything, but even a little expression helps you feel lighter, grounded and connected.</p>
+        <p>Yes — this is a two-way human experience.  
+        You don’t need to share deeply, but even small expression helps you feel lighter and connected.</p>
+    </details>
+
+    <details>
+        <summary>Can I join if I feel anxious or lonely?</summary>
+        <p>Absolutely.  
+        These sessions are designed especially for people dealing with emotional overload, loneliness, burnout, or unspoken feelings.</p>
     </details>
 
     <details>
         <summary>Is it confidential?</summary>
-        <p>Absolutely. Everything shared stays within the space —  
-        with a zero-judgment, zero-disclosure policy.</p>
+        <p>Yes. Everything stays between us.  
+        You speak freely — without fear of judgment or disclosure.</p>
     </details>
 
     <details>
         <summary>Can I reschedule?</summary>
-        <p>Yes, you may reschedule once.  
-        Refunds are not available.</p>
+        <p>Yes, you may reschedule once. Refunds are not available.</p>
+    </details>
+
+    <details>
+        <summary>I have never spoken about my feelings before. Can I still come?</summary>
+        <p>Yes — in fact, you are the person this space was created for.  
+        You can speak slowly, take pauses, or express only what feels comfortable.</p>
     </details>
 </section>
 
-<!-- ABOUT -->
+<!-- ABOUT ME (Expanded) -->
 <section class="section">
     <h2>About Me</h2>
     <div class="line"></div>
-    <p>I’m Nikhil, the creator of Heal & Connect.  
-    After experiencing emotional heaviness myself,  
-    I built a safe human space where vulnerability feels normal,  
-    conversations feel healing,  
-    and connection brings clarity.</p>
+    
+    <p>
+        I’m Nikhil — the creator of Heal & Connect.  
+        This space was born from my own journey through emotional heaviness, loneliness and the silent battles that many of us carry every day.
+    </p>
+
+    <p>
+        For a long time, I felt the need for a place where I could just talk — not be judged, not be advised, not be compared —  
+        simply be heard as a human being.  
+        When I couldn’t find that space, I decided to create it.
+    </p>
+
+    <p>
+        Heal & Connect is my way of giving people what I personally needed:  
+        a safe, warm, grounding conversation that helps you release what you have been carrying alone.
+    </p>
+
+    <p>
+        If you’re here, you’re already choosing healing — and I’m grateful to walk with you in that direction.  
+        One conversation can genuinely make a difference.
+    </p>
 </section>
 
 <footer>© 2026 Heal & Connect</footer>
@@ -449,20 +417,18 @@
 </a>
 
 <script>
-let selectedPackage = "";
-
-function selectPackage(type) {
-    selectedPackage = type;
-    document.getElementById("selected-package").innerHTML =
-        type === "group" ? "Selected: Group Session (₹399)" : "Selected: 1-to-1 Session (₹499)";
-
-    document.getElementById("form-package").value = selectedPackage;
-}
-
 /* SLOT LOGIC */
 document.getElementById("booking-date").addEventListener("change", () => {
-    const selectedDate = new Date(document.getElementById("booking-date").value);
-    const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
+
+    const dateInput = document.getElementById("booking-date").value;
+    const selectedDate = new Date(dateInput);
+    const today = new Date();
+
+    const isToday = selectedDate.toDateString() === today.toDateString();
+    const currentHour = today.getHours();
+    const currentMinutes = today.getMinutes();
+    const day = selectedDate.getDay();
+
     const slotButtons = document.getElementById("slot-buttons");
     const noSlotsMsg = document.getElementById("no-slots-message");
 
@@ -470,54 +436,62 @@ document.getElementById("booking-date").addEventListener("change", () => {
     noSlotsMsg.style.display = "none";
     document.getElementById("booking-form").style.display = "none";
 
-    // Package required
-    if (!selectedPackage) {
-        noSlotsMsg.innerHTML = "Please select a package above.";
+    // One-to-One Session Only
+    let availableSlots = [];
+
+    if (day >= 1 && day <= 5) {
+        availableSlots = ["9:00 PM","10:00 PM"];
+    } else {
+        availableSlots = [
+            "11:00 AM","12:00 PM","1:00 PM","2:00 PM",
+            "3:00 PM","5:00 PM","6:00 PM","7:00 PM"
+        ];
+    }
+
+    function convertTo24(time){
+        let [h, m] = time.split(":");
+        let [min, mer] = m.split(" ");
+        h = parseInt(h);
+        min = parseInt(min);
+        if(mer==="PM" && h!==12) h+=12;
+        if(mer==="AM" && h===12) h=0;
+        return {h, min};
+    }
+
+    // Remove past times for today
+    if(isToday){
+        availableSlots = availableSlots.filter(t=>{
+            const {h, min} = convertTo24(t);
+            return h > currentHour || (h === currentHour && min >= currentMinutes);
+        });
+    }
+
+    if(availableSlots.length===0){
+        noSlotsMsg.innerHTML = "No slots available for this date.";
         noSlotsMsg.style.display = "block";
         return;
     }
 
-    let availableSlots = [];
+    document.getElementById("time-slots").style.display="block";
 
-    // GROUP SESSION RULES (keep original)
-    if (selectedPackage === "group") {
-        availableSlots = ["10:00 AM","11:00 AM","12:00 PM","3:00 PM","4:00 PM","5:00 PM"];
-    }
-
-    // ONE-TO-ONE SESSION RULES
-    if (selectedPackage === "one") {
-        if (day >= 1 && day <= 5) {
-            // WEEKDAYS → Only 9 PM and 10 PM
-            availableSlots = ["9:00 PM","10:00 PM"];
-        } else {
-            // WEEKENDS → 11 AM to 7 PM
-            availableSlots = [
-                "11:00 AM","12:00 PM","1:00 PM","2:00 PM",
-                "3:00 PM","4:00 PM","5:00 PM","6:00 PM","7:00 PM"
-            ];
-        }
-    }
-
-    document.getElementById("time-slots").style.display = "block";
-
-    availableSlots.forEach(time => {
+    availableSlots.forEach(time=>{
         let btn = document.createElement("button");
-        btn.className = "time-slot";
-        btn.textContent = time;
+        btn.className="time-slot";
+        btn.textContent=time;
 
-        btn.onclick = e => {
+        btn.onclick = e=>{
             e.preventDefault();
-            document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
+            document.querySelectorAll(".time-slot").forEach(b=>b.classList.remove("selected"));
             btn.classList.add("selected");
-            document.getElementById("form-date").value = document.getElementById("booking-date").value;
+
+            document.getElementById("form-date").value = dateInput;
             document.getElementById("form-slot").value = time;
-            document.getElementById("booking-form").style.display = "block";
+            document.getElementById("booking-form").style.display="block";
         };
 
         slotButtons.appendChild(btn);
     });
 });
-
 </script>
 
 </body>
