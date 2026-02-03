@@ -52,7 +52,6 @@
         letter-spacing: 0.8px;
     }
 
-    /* SECTION */
     .section {
         width: 100%;
         max-width: 860px;
@@ -84,7 +83,6 @@
         margin: 35px auto 45px;
     }
 
-    /* CARD */
     .card {
         background: var(--white);
         padding: 32px;
@@ -103,7 +101,6 @@
         box-shadow: 0 10px 28px rgba(0,0,0,0.15);
     }
 
-    /* KPI CARDS */
     .h-cards {
         display: flex;
         flex-wrap: wrap;
@@ -129,7 +126,6 @@
         box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
-    /* BUTTON */
     .btn {
         display: inline-block;
         background: var(--accent);
@@ -149,7 +145,6 @@
         box-shadow: 0 6px 18px rgba(0,0,0,0.15);
     }
 
-    /* FORM & SLOTS */
     input[type="date"],
     input[type="text"],
     input[type="email"] {
@@ -208,25 +203,111 @@
     <div class="tagline">Where healing meets connection.</div>
 </div>
 
-<!-- (Sections unchanged... skipped here for brevity) -->
+<!-- SITUATIONS -->
+<section class="section">
+    <h2>We Understand These Moments</h2>
+    <div class="line"></div>
+
+    <div class="card">“Feeling emotionally exhausted — when even small conversations feel heavy.”</div>
+    <div class="card">“Being overwhelmed by work, relationships or life changes but having no one who truly listens.”</div>
+    <div class="card">“Feeling lonely even when surrounded by people — craving understanding, not advice.”</div>
+    <div class="card">“Carrying so much inside that expressing even a little feels like a relief.”</div>
+</section>
+
+<!-- WHY HEALING -->
+<section class="section">
+    <h2>Why Emotional Healing Matters</h2>
+    <div class="line"></div>
+
+    <p>Your mind carries more than it shows.  
+    Healing is the gentle process of releasing the emotional weight you never learned to express.</p>
+
+    <div class="h-cards">
+        <div class="h-card">✓ Reduces mental load</div>
+        <div class="h-card">✓ Creates inner balance</div>
+        <div class="h-card">✓ Clears emotional fog</div>
+        <div class="h-card">✓ Deepens human connection</div>
+    </div>
+</section>
+
+<!-- PSYCHOLOGY -->
+<section class="section">
+    <h2>The Psychology Behind Connection</h2>
+    <div class="line"></div>
+
+    <div class="h-cards">
+        <div class="h-card">• Sharing reduces emotional intensity</div>
+        <div class="h-card">• Feeling heard activates the brain’s safety circuits</div>
+        <div class="h-card">• Oxytocin boosts emotional recovery</div>
+        <div class="h-card">• Mind resets when it feels safe</div>
+        <div class="h-card">• Bonding lowers anxiety cycles</div>
+        <div class="h-card">• Humans heal faster through connection</div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section">
+    <h2>What You Will Experience</h2>
+    <div class="line"></div>
+
+    <div class="h-cards">
+        <div class="h-card">• Guided emotional grounding</div>
+        <div class="h-card">• Calm conversation space</div>
+        <div class="h-card">• Zero judgment</div>
+        <div class="h-card">• Gentle sharing (optional)</div>
+        <div class="h-card">• Reduced loneliness</div>
+        <div class="h-card">• A sense of belonging</div>
+        <div class="h-card">• Emotional clarity</div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+    <h2>What People Say</h2>
+    <div class="line"></div>
+
+    <div class="card">
+        <div class="testimonial-text">
+            “I didn’t expect this level of emotional relief. Speaking in the session helped me see how much I was holding inside.”
+        </div>
+        <div class="testimonial-name">— Aditi</div>
+    </div>
+
+    <div class="card">
+        <div class="testimonial-text">
+            “The space felt warm, kind and safe — something I didn’t know I needed until I joined.”
+        </div>
+        <div class="testimonial-name">— Rohan</div>
+    </div>
+
+    <div class="card">
+        <div class="testimonial-text">
+            “I’m not someone who talks about emotions, but here… it felt natural. Healing became easier.”
+        </div>
+        <div class="testimonial-name">— Sana</div>
+    </div>
+</section>
 
 <!-- BOOKING -->
 <section class="section" id="book">
     <h2>Book a Healing Session</h2>
     <div class="line"></div>
 
+    <!-- PRICE UPDATE ✔️ -->
     <p style="font-size:22px; font-weight:600; text-align:center; margin-bottom:10px;">
         <span style="text-decoration:line-through; color:#A77;">₹499</span>
         &nbsp; <b>Limited Time Offer — ₹399 (30 min session)</b>
     </p>
 
+    <!-- NOTES ✔️ -->
     <p style="text-align:center; color:#6F5A53; font-size:17px; margin-top:6px;">
         *Session timings may vary depending on prior session extensions.  
-        Kindly refer to the email acknowledgement for final confirmation.*  
+        Please refer to the email acknowledgement for the final confirmed slot.*  
         <br><br>
-        *For rescheduling, please email at least 1 hour before the session.*
+        *For rescheduling, kindly email at least 1 hour before the session.*
     </p>
 
+    <!-- NEW: Prevent past date ✔️ -->
     <label><b>Select Date:</b></label>
     <input type="date" id="booking-date" min="">
 
@@ -249,19 +330,25 @@
     </form>
 </section>
 
-<!-- ABOUT + FAQ Sections follow unchanged -->
+<!-- ABOUT ME -->
+<section class="section">
+    <h2>About Me</h2>
+    <div class="line"></div>
+    <p>I’m Nikhil — the creator of Heal & Connect...</p>
+</section>
 
 <footer style="text-align:center; padding:40px;">
     © 2026 Heal & Connect  
     <br><br>
+
+    <!-- EMAIL BUTTON ✔️ -->
     <a href="mailto:healconnectcare@gmail.com" class="email-btn">Email Us</a>
 </footer>
 
 <script>
-/* Enforce MIN date = today */
-const dateInput = document.getElementById("booking-date");
+/* Prevent past dates */
 let today = new Date();
-dateInput.min = today.toISOString().split("T")[0];
+document.getElementById("booking-date").min = today.toISOString().split("T")[0];
 
 /* SLOT LOGIC */
 document.getElementById("booking-date").addEventListener("change", () => {
@@ -271,6 +358,8 @@ document.getElementById("booking-date").addEventListener("change", () => {
     const now = new Date();
 
     const isToday = selectedDate.toDateString() === now.toDateString();
+    const day = selectedDate.getDay();
+
     const slotButtons = document.getElementById("slot-buttons");
     const noSlotsMsg = document.getElementById("no-slots-message");
 
@@ -278,12 +367,13 @@ document.getElementById("booking-date").addEventListener("change", () => {
     noSlotsMsg.style.display = "none";
     document.getElementById("booking-form").style.display = "none";
 
-    const day = selectedDate.getDay();
     let availableSlots = [];
 
+    // WEEKDAY slots
     if (day >= 1 && day <= 5) {
         availableSlots = ["9:00 PM","10:00 PM"];
     } 
+    // WEEKEND slots
     else {
         availableSlots = [
             "11:00 AM","12:00 PM","1:00 PM","2:00 PM",
@@ -291,22 +381,18 @@ document.getElementById("booking-date").addEventListener("change", () => {
         ];
     }
 
-    function convertTo24(time) {
-        let [h, m] = time.split(":");
-        let [min, mer] = m.split(" ");
-        h = parseInt(h);
-        min = parseInt(min);
-
-        if (mer === "PM" && h !== 12) h += 12;
-        if (mer === "AM" && h === 12) h = 0;
-
-        return {h, min};
+    function convert24(time){
+        let [h,m] = time.split(":");
+        let [min,mer] = m.split(" ");
+        h = parseInt(h); min = parseInt(min);
+        if(mer==="PM" && h!==12) h+=12;
+        if(mer==="AM" && h===12) h=0;
+        return {h,min};
     }
 
-    // Remove past times
     if (isToday) {
         availableSlots = availableSlots.filter(t => {
-            const {h, min} = convertTo24(t);
+            const {h,min} = convert24(t);
             return h > now.getHours() || (h === now.getHours() && min > now.getMinutes());
         });
     }
@@ -326,13 +412,10 @@ document.getElementById("booking-date").addEventListener("change", () => {
 
         btn.onclick = e => {
             e.preventDefault();
-
             document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
             btn.classList.add("selected");
-
             document.getElementById("form-date").value = date;
             document.getElementById("form-slot").value = time;
-
             document.getElementById("booking-form").style.display = "block";
         };
 
