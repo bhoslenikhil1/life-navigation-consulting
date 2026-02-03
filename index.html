@@ -29,18 +29,20 @@
         letter-spacing: 0.2px;
     }
 
-    /* LOGO BANNER (Updated wider horizontally) */
+    /* LOGO BANNER (Adjusted to center properly + removed inner tagline) */
     .logo-banner {
         width: 100%;
         background: #F7EFE9;
-        padding: 60px 80px 50px; /* wider horizontally */
+        padding: 60px 0 50px; /* Reset left/right padding to perfectly center */
         text-align: center;
         box-shadow: 0 8px 28px rgba(0,0,0,0.08);
     }
 
     .logo-banner img {
-        width: 480px;   /* wider logo */
+        width: 480px;
         max-width: 100%;
+        margin: 0 auto;
+        display: block;
         filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.12));
     }
 
@@ -103,7 +105,6 @@
         box-shadow: 0 10px 28px rgba(0,0,0,0.15);
     }
 
-    /* KPI CARDS */
     .h-cards {
         display: flex;
         flex-wrap: wrap;
@@ -129,7 +130,6 @@
         box-shadow: 0 12px 30px rgba(0,0,0,0.15);
     }
 
-    /* BUTTON */
     .btn {
         display: inline-block;
         background: var(--accent);
@@ -182,7 +182,7 @@
         border-color: var(--text-dark);
     }
 
-    /* TESTIMONIAL (italic enforced) */
+    /* TESTIMONIAL */
     .testimonial-text {
         font-style: italic !important;
         font-size: 19px;
@@ -192,6 +192,7 @@
     .testimonial-name {
         text-align: right;
         font-size: 17px;
+        font-style: normal;
         font-weight: 500;
         margin-top: 5px;
     }
@@ -236,13 +237,15 @@
 <!-- LOGO -->
 <div class="logo-banner">
     <img src="heal-connect-logo.png">
-    <div class="tagline">Where healing meets connection.</div>
 </div>
+
+<div class="tagline">Where healing meets connection.</div>
 
 <!-- SITUATIONS SECTION -->
 <section class="section">
     <h2>We Understand These Moments</h2>
     <div class="line"></div>
+
     <div class="card">“Feeling emotionally exhausted — when even small conversations feel heavy.”</div>
     <div class="card">“Being overwhelmed by work, relationships or life changes but having no one who truly listens.”</div>
     <div class="card">“Feeling lonely even when surrounded by people — craving understanding, not advice.”</div>
@@ -280,7 +283,7 @@
     </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- EXPERIENCE SECTION -->
 <section class="section">
     <h2>What You Will Experience</h2>
     <div class="line"></div>
@@ -296,7 +299,7 @@
     </div>
 </section>
 
-<!-- TESTIMONIALS (italic works now) -->
+<!-- TESTIMONIALS -->
 <section class="section">
     <h2>What People Say</h2>
     <div class="line"></div>
@@ -323,7 +326,7 @@
     </div>
 </section>
 
-<!-- BOOKING -->
+<!-- BOOKING SECTION -->
 <section class="section" id="book">
     <h2>Book a Healing Session</h2>
     <div class="line"></div>
@@ -362,7 +365,7 @@
     </form>
 </section>
 
-<!-- FAQ (Updated empathetic version, removed 'Do I have to speak?') -->
+<!-- FAQ SECTION -->
 <section class="section">
     <h2>FAQ</h2>
     <div class="line"></div>
@@ -370,43 +373,36 @@
     <details>
         <summary>Is this therapy?</summary>
         <p>No — Heal & Connect is not clinical therapy.  
-        It is a warm human space where you express freely and feel understood without judgment.  
-        Many people say it feels grounding, like finally being heard after a long time.</p>
+        It is a warm human space where you express freely and feel understood without judgment.</p>
     </details>
 
     <details>
         <summary>What happens in a session?</summary>
         <p>We begin with gentle grounding to help you settle emotionally.  
-        You speak at your own pace — slowly, softly, or openly — and I hold the space for you.  
-        The goal is simple: help your mind breathe and release what’s been heavy.</p>
+        You speak at your own pace — slowly, softly, or openly — and I hold the space for you.</p>
     </details>
 
     <details>
         <summary>Can I join if I feel anxious or lonely?</summary>
         <p>Absolutely.  
-        Many who join feel anxious, overwhelmed, or disconnected.  
-        This space is made especially for those phases where you don’t feel okay  
-        but don’t know who to talk to.  
-        You are not alone here.</p>
+        This space is made especially for those phases where you feel emotionally heavy  
+        but don’t know who to talk to.</p>
     </details>
 
     <details>
         <summary>Is it confidential?</summary>
-        <p>Yes — completely confidential with a zero-judgment promise.  
-        Whatever you share stays only between us.</p>
+        <p>Yes — completely confidential with a zero-judgment promise.</p>
     </details>
 
     <details>
         <summary>Can I reschedule?</summary>
-        <p>Yes, you may reschedule once.  
-        Please email at least 1 hour prior to the session time.</p>
+        <p>You may reschedule once.  
+        Just email at least 1 hour before your session.</p>
     </details>
 
     <details>
         <summary>I’ve never spoken about my feelings before. Can I still join?</summary>
-        <p>Yes — this space is created for you.  
-        You can take pauses, speak slowly, or share only what you feel ready for.  
-        You will never be pushed beyond your comfort.</p>
+        <p>Yes — you can take pauses, speak slowly, or share only what feels comfortable.</p>
     </details>
 
 </section>
@@ -421,7 +417,6 @@
     <p>
         This space was born from my own journey through emotional heaviness, loneliness,
         and silent battles that almost everyone carries but rarely talks about.
-        I’ve been through phases where expressing felt impossible and silence felt suffocating.
     </p>
 
     <p>
@@ -438,7 +433,7 @@
 
     <p>
         If you’re here, it means you’re seeking clarity, grounding or even just one peaceful conversation.  
-        And I want to remind you — that’s not weakness. It’s courage.
+        And I want to remind you — that’s courage.
     </p>
 
     <p>
