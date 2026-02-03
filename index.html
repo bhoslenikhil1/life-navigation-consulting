@@ -29,18 +29,18 @@
         letter-spacing: 0.2px;
     }
 
-    /* LOGO */
+    /* LOGO BANNER (Updated wider horizontally) */
     .logo-banner {
         width: 100%;
         background: #F7EFE9;
-        padding: 60px 0 50px;
+        padding: 60px 80px 50px; /* wider horizontally */
         text-align: center;
         box-shadow: 0 8px 28px rgba(0,0,0,0.08);
     }
 
     .logo-banner img {
-        width: 360px;
-        max-width: 95%;
+        width: 480px;   /* wider logo */
+        max-width: 100%;
         filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.12));
     }
 
@@ -182,16 +182,16 @@
         border-color: var(--text-dark);
     }
 
-    /* TESTIMONIAL (Updated → Italic) */
+    /* TESTIMONIAL (italic enforced) */
     .testimonial-text {
         font-style: italic !important;
         font-size: 19px;
         margin-bottom: 10px;
     }
+
     .testimonial-name {
         text-align: right;
         font-size: 17px;
-        font-style: normal;
         font-weight: 500;
         margin-top: 5px;
     }
@@ -243,7 +243,6 @@
 <section class="section">
     <h2>We Understand These Moments</h2>
     <div class="line"></div>
-
     <div class="card">“Feeling emotionally exhausted — when even small conversations feel heavy.”</div>
     <div class="card">“Being overwhelmed by work, relationships or life changes but having no one who truly listens.”</div>
     <div class="card">“Feeling lonely even when surrounded by people — craving understanding, not advice.”</div>
@@ -281,7 +280,7 @@
     </div>
 </section>
 
-<!-- EXPERIENCE SECTION -->
+<!-- EXPERIENCE -->
 <section class="section">
     <h2>What You Will Experience</h2>
     <div class="line"></div>
@@ -297,7 +296,7 @@
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS (italic works now) -->
 <section class="section">
     <h2>What People Say</h2>
     <div class="line"></div>
@@ -324,7 +323,7 @@
     </div>
 </section>
 
-<!-- BOOKING SECTION -->
+<!-- BOOKING -->
 <section class="section" id="book">
     <h2>Book a Healing Session</h2>
     <div class="line"></div>
@@ -343,7 +342,7 @@
 
     <label><b>Select Date:</b></label>
     <input type="date" id="booking-date" min="">
-    
+
     <div id="time-slots" style="display:none;">
         <label><b>Select Time Slot:</b></label><br>
         <div id="slot-buttons"></div>
@@ -363,54 +362,56 @@
     </form>
 </section>
 
-<!-- FAQ SECTION (Restored All 7 FAQs) -->
+<!-- FAQ (Updated empathetic version, removed 'Do I have to speak?') -->
 <section class="section">
     <h2>FAQ</h2>
     <div class="line"></div>
 
     <details>
         <summary>Is this therapy?</summary>
-        <p>No. Heal & Connect is not therapy.  
-        These are emotional wellness circles where you feel safe, heard and supported.  
-        It complements therapy, but doesn't replace it.</p>
+        <p>No — Heal & Connect is not clinical therapy.  
+        It is a warm human space where you express freely and feel understood without judgment.  
+        Many people say it feels grounding, like finally being heard after a long time.</p>
     </details>
 
     <details>
         <summary>What happens in a session?</summary>
-        <p>Your session begins with grounding, followed by a guided conversation that helps you express what feels heavy.  
-        You talk, reflect, pause, breathe — and walk out clearer than before.</p>
-    </details>
-
-    <details>
-        <summary>Do I have to speak?</summary>
-        <p>Yes — this is a two-way communication space.  
-        You don’t need to share everything, but even a little expression helps you feel lighter, grounded and connected.</p>
+        <p>We begin with gentle grounding to help you settle emotionally.  
+        You speak at your own pace — slowly, softly, or openly — and I hold the space for you.  
+        The goal is simple: help your mind breathe and release what’s been heavy.</p>
     </details>
 
     <details>
         <summary>Can I join if I feel anxious or lonely?</summary>
         <p>Absolutely.  
-        These sessions are designed especially for people dealing with emotional overload, loneliness, burnout, or unspoken feelings.</p>
+        Many who join feel anxious, overwhelmed, or disconnected.  
+        This space is made especially for those phases where you don’t feel okay  
+        but don’t know who to talk to.  
+        You are not alone here.</p>
     </details>
 
     <details>
         <summary>Is it confidential?</summary>
-        <p>Yes, completely confidential with a zero-judgment policy.</p>
+        <p>Yes — completely confidential with a zero-judgment promise.  
+        Whatever you share stays only between us.</p>
     </details>
 
     <details>
         <summary>Can I reschedule?</summary>
-        <p>Yes, you may reschedule once. Refunds are not available.</p>
+        <p>Yes, you may reschedule once.  
+        Please email at least 1 hour prior to the session time.</p>
     </details>
 
     <details>
-        <summary>I’ve never spoken about feelings before. Can I still come?</summary>
-        <p>Yes — this space is created for exactly that.  
-        You can speak slowly, take pauses, and express only what feels comfortable.</p>
+        <summary>I’ve never spoken about my feelings before. Can I still join?</summary>
+        <p>Yes — this space is created for you.  
+        You can take pauses, speak slowly, or share only what you feel ready for.  
+        You will never be pushed beyond your comfort.</p>
     </details>
+
 </section>
 
-<!-- ABOUT ME (Restored Detailed Version) -->
+<!-- ABOUT ME -->
 <section class="section">
     <h2>About Me</h2>
     <div class="line"></div>
@@ -419,7 +420,7 @@
 
     <p>
         This space was born from my own journey through emotional heaviness, loneliness,
-        and those silent battles that almost every person carries but rarely talks about.  
+        and silent battles that almost everyone carries but rarely talks about.
         I’ve been through phases where expressing felt impossible and silence felt suffocating.
     </p>
 
@@ -437,14 +438,12 @@
 
     <p>
         If you’re here, it means you’re seeking clarity, grounding or even just one peaceful conversation.  
-        And I want to remind you — that’s not weakness.  
-        It’s strength.  
-        Reaching out is courage.  
+        And I want to remind you — that’s not weakness. It’s courage.
     </p>
 
     <p>
-        One real conversation can genuinely shift the emotional load you’ve been carrying alone.
-        I’m here to walk with you in that direction.
+        One honest conversation can genuinely shift the emotional load  
+        you’ve been carrying alone. I’m here to walk with you in that direction.
     </p>
 </section>
 
