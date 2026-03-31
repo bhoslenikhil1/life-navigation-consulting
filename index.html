@@ -1,529 +1,850 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heal & Connect — A Safe Space to Feel Heard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F8F5F2;
+            --soft: #F4EDE6;
+            --text: #2C211B;
+            --muted: #6B5A52;
+            --accent: #A67C6D;
+            --accent-light: #C9A38A;
+            --white: #FFFFFF;
+            --border: #EDE4DC;
+            --shadow: 0 10px 30px rgba(166, 124, 109, 0.12);
+        }
 
-<title>Heal & Connect — Emotional Wellness Sessions</title>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Premium Editorial Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
 
-<style>
-    :root {
-        --bg: #FCF7F3;
-        --text-dark: #3D2F2A;
-        --subtext: #6F5A53;
-        --line: #E6DAD3;
-        --accent: #B08876;
-        --white: #FFFFFF;
-        --shadow: 0 6px 22px rgba(0,0,0,0.12);
-    }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
 
-    body {
-        margin: 0;
-        background: var(--bg);
-        font-family: 'Inter', sans-serif;
-        color: var(--text-dark);
-        line-height: 1.7;
-        letter-spacing: 0.2px;
-    }
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    /* LOGO */
-    .logo-banner {
-        width: 100%;
-        background: #F7EFE9;
-        padding: 60px 0 50px;
-        text-align: center;
-        box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-    }
+        /* Header & Navigation */
+        header {
+            background: rgba(248, 245, 242, 0.95);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
 
-    .logo-banner img {
-        width: 360px;
-        max-width: 95%;
-        filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.12));
-    }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
 
-    /* TAGLINE (Now placed ONLY outside logo box) */
-    .tagline {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 22px;
-        color: var(--subtext);
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        letter-spacing: 0.8px;
-    }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
 
-    /* SECTION */
-    .section {
-        width: 100%;
-        max-width: 860px;
-        margin: auto;
-        padding: 80px 30px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
 
-    .section h2 {
-        font-family: "Cormorant Garamond", serif;
-        font-size: 46px;
-        font-weight: 600;
-        text-align: center;
-        margin-bottom: 8px;
-        line-height: 1.2;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
 
-    .section p {
-        text-align: center;
-        font-size: 20px;
-        color: var(--subtext);
-        margin-top: 15px;
-        line-height: 1.75;
-    }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
-    .line {
-        width: 70px;
-        height: 2px;
-        background: var(--line);
-        margin: 35px auto 45px;
-    }
+        .book-btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
 
-    /* CARD */
-    .card {
-        background: var(--white);
-        padding: 32px;
-        border-radius: 4px;
-        margin: 22px 0;
-        border: 1px solid var(--line);
-        font-size: 19px;
-        color: var(--text-dark);
-        line-height: 1.75;
-        box-shadow: var(--shadow);
-        transition: 0.25s ease;
-    }
+        .book-btn:hover {
+            background: #8f6859;
+            transform: translateY(-2px);
+        }
 
-    .card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 28px rgba(0,0,0,0.15);
-    }
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #F8F5F2 0%, #F0E9E0 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* KPI CARDS */
-    .h-cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 22px;
-        margin-top: 35px;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(166,124,109,0.08) 0%, transparent 70%);
+            z-index: 0;
+        }
 
-    .h-card {
-        width: 260px;
-        padding: 26px;
-        background: var(--white);
-        border: 1px solid var(--line);
-        border-radius: 4px;
-        font-size: 18px;
-        line-height: 1.6;
-        box-shadow: var(--shadow);
-        transition: 0.25s ease;
-    }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            margin: 0 auto;
+        }
 
-    .h-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            margin-bottom: 24px;
+            color: var(--text);
+        }
 
-    /* BUTTON */
-    .btn {
-        display: inline-block;
-        background: var(--accent);
-        padding: 16px 34px;
-        border-radius: 3px;
-        text-decoration: none;
-        color: var(--white);
-        font-weight: 600;
-        margin-top: 30px;
-        letter-spacing: 0.7px;
-        font-size: 17px;
-        transition: 0.25s ease;
-    }
+        .hero p {
+            font-size: 22px;
+            color: var(--muted);
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
 
-    .btn:hover {
-        background: #9d6f63;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    }
+        .cta-button {
+            background: var(--accent);
+            color: white;
+            padding: 18px 44px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow);
+        }
 
-    /* FORM */
-    input[type="date"],
-    input[type="text"],
-    input[type="email"] {
-        width: 100%;
-        padding: 16px;
-        border-radius: 3px;
-        border: 1px solid var(--line);
-        background: var(--white);
-        margin-top: 10px;
-        margin-bottom: 28px;
-        font-size: 18px;
-        box-shadow: var(--shadow);
-    }
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(166, 124, 109, 0.25);
+            background: #8f6859;
+        }
 
-    .time-slot {
-        padding: 14px 26px;
-        margin: 6px;
-        background: var(--white);
-        border: 1px solid var(--line);
-        font-size: 17px;
-        cursor: pointer;
-        border-radius: 3px;
-        transition: 0.2s ease;
-        box-shadow: var(--shadow);
-    }
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
 
-    .time-slot.selected {
-        background: var(--text-dark);
-        color: var(--white);
-        border-color: var(--text-dark);
-    }
+        .section-title {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
 
-    /* TESTIMONIAL (Updated → Italic) */
-    .testimonial-text {
-        font-style: italic !important;
-        font-size: 19px;
-        margin-bottom: 10px;
-    }
-    .testimonial-name {
-        text-align: right;
-        font-size: 17px;
-        font-style: normal;
-        font-weight: 500;
-        margin-top: 5px;
-    }
+        .section-subtitle {
+            font-size: 20px;
+            text-align: center;
+            color: var(--muted);
+            max-width: 620px;
+            margin: 0 auto 60px;
+        }
 
-    /* FAQ */
-    details {
-        border: 1px solid var(--line);
-        background: var(--white);
-        padding: 22px;
-        border-radius: 3px;
-        box-shadow: var(--shadow);
-        margin-top: 16px;
-    }
+        .divider {
+            width: 64px;
+            height: 3px;
+            background: var(--accent-light);
+            margin: 40px auto;
+            border-radius: 3px;
+        }
 
-    summary {
-        font-weight: 600;
-        font-size: 19px;
-    }
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+        }
 
-    /* EMAIL BUTTON */
-    .email-btn {
-        display: inline-block;
-        background: var(--accent);
-        padding: 14px 28px;
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        border-radius: 4px;
-        box-shadow: var(--shadow);
-        margin-top: 20px;
-    }
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 32px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
 
-    .email-btn:hover {
-        background: #9d6f63;
-    }
+        .card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(166, 124, 109, 0.18);
+        }
 
-</style>
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #FFF8F2, #F8F5F2);
+        }
+
+        /* How it works */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 64px;
+            height: 64px;
+            background: var(--accent-light);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 auto 24px;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '“';
+            font-family: 'Playfair Display', serif;
+            font-size: 120px;
+            position: absolute;
+            top: -30px;
+            left: 30px;
+            opacity: 0.08;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 19px;
+            line-height: 1.65;
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        /* Booking Section */
+        #booking {
+            background: var(--soft);
+        }
+
+        .booking-container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 60px 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-tag {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .original-price {
+            font-size: 18px;
+            text-decoration: line-through;
+            color: #9B7A6E;
+        }
+
+        .offer-price {
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--accent);
+            margin: 8px 0;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        input[type="date"],
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-size: 17px;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(166, 124, 109, 0.15);
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .time-slot {
+            padding: 16px 20px;
+            background: white;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            border-color: var(--accent-light);
+        }
+
+        .time-slot.selected {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .trust-note {
+            background: #F8F5F2;
+            padding: 20px 24px;
+            border-radius: 16px;
+            font-size: 15px;
+            color: var(--muted);
+            margin: 32px 0 24px;
+            border-left: 4px solid var(--accent);
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            padding: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .faq-answer {
+            padding: 0 24px 28px;
+            color: var(--muted);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #2C211B;
+            color: #EDE4DC;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .hero {
+                padding: 100px 0 80px;
+            }
+            
+            .booking-container {
+                padding: 40px 24px;
+            }
+        }
+
+        /* Smooth Scroll & Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- LOGO (Tagline inside removed) -->
-<div class="logo-banner">
-    <img src="heal-connect-logo.png">
-</div>
-
-<!-- CENTERED TAGLINE BELOW LOGO -->
-<div class="tagline">“What happens when people open their hearts? They get better.” — Haruki Murakami</div>
-
-<!-- REST OF YOUR HTML (unchanged) -->
-
-<section class="section">
-    <h2>We Understand These Moments</h2>
-    <div class="line"></div>
-
-    <div class="card">“Feeling emotionally exhausted — when even small conversations feel heavy.”</div>
-    <div class="card">“Being overwhelmed by work, relationships or life changes but having no one who truly listens.”</div>
-    <div class="card">“Feeling lonely even when surrounded by people — craving understanding, not advice.”</div>
-    <div class="card">“Carrying so much inside that expressing even a little feels like a relief.”</div>
-</section>
-
-<section class="section">
-    <h2>Why Emotional Healing Matters</h2>
-    <div class="line"></div>
-
-    <p>Your mind carries more than it shows.  
-    Healing is the gentle process of releasing the emotional weight you never learned to express.</p>
-
-    <div class="h-cards">
-        <div class="h-card">✓ Reduces mental load</div>
-        <div class="h-card">✓ Creates inner balance</div>
-        <div class="h-card">✓ Clears emotional fog</div>
-        <div class="h-card">✓ Deepens human connection</div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>The Psychology Behind Connection</h2>
-    <div class="line"></div>
-
-    <div class="h-cards">
-        <div class="h-card">• Sharing reduces emotional intensity</div>
-        <div class="h-card">• Feeling heard activates the brain’s safety circuits</div>
-        <div class="h-card">• Oxytocin boosts emotional recovery</div>
-        <div class="h-card">• Mind resets when it feels safe</div>
-        <div class="h-card">• Bonding lowers anxiety cycles</div>
-        <div class="h-card">• Humans heal faster through connection</div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>What You Will Experience</h2>
-    <div class="line"></div>
-
-    <div class="h-cards">
-        <div class="h-card">• Guided emotional grounding</div>
-        <div class="h-card">• Calm conversation space</div>
-        <div class="h-card">• Zero judgment</div>
-        <div class="h-card">• Gentle sharing (optional)</div>
-        <div class="h-card">• Reduced loneliness</div>
-        <div class="h-card">• A sense of belonging</div>
-        <div class="h-card">• Emotional clarity</div>
-    </div>
-</section>
-
-<section class="section">
-    <h2>What People Say</h2>
-    <div class="line"></div>
-
-    <div class="card">
-        <div class="testimonial-text">
-            “I didn’t expect this level of emotional relief. Speaking in the session helped me see how much I was holding inside.”
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Heal &amp; Connect</a>
+                <ul class="nav-links">
+                    <li><a href="#how">How it Works</a></li>
+                    <li><a href="#stories">Stories</a></li>
+                    <li><a href="#book">Book a Session</a></li>
+                </ul>
+                <a href="#book" class="book-btn">Book Now</a>
+            </nav>
         </div>
-        <div class="testimonial-name">— Aditi</div>
-    </div>
+    </header>
 
-    <div class="card">
-        <div class="testimonial-text">
-            “The space felt warm, kind and safe — something I didn’t know I needed until I joined.”
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>You don’t have to carry it alone anymore.</h1>
+            <p>A warm, safe space where you can speak freely, feel truly heard, and gently release what’s been weighing on your heart.</p>
+            <a href="#book" class="cta-button">
+                Begin Your Healing Journey
+                <span style="font-size:22px;">→</span>
+            </a>
+            <p style="margin-top: 40px; font-size: 15px; color: #8B6F5F;">
+                30-minute guided emotional wellness sessions • Completely confidential
+            </p>
         </div>
-        <div class="testimonial-name">— Rohan</div>
-    </div>
+    </section>
 
-    <div class="card">
-        <div class="testimonial-text">
-            “I’m not someone who talks about emotions, but here… it felt natural. Healing became easier.”
+    <!-- What is Heal & Connect -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">A Gentle Space for Real Connection</h2>
+            <p class="section-subtitle">Heal &amp; Connect is not therapy. It’s a human-to-human space designed for those moments when life feels heavy, lonely, or overwhelming — and you simply need someone who will listen with care.</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>For the quietly exhausted</h3>
+                    <p>When even small talk feels tiring and you crave a conversation that doesn’t require you to perform.</p>
+                </div>
+                <div class="card">
+                    <h3>For the emotionally lonely</h3>
+                    <p>When you’re surrounded by people but still feel unseen and unheard.</p>
+                </div>
+                <div class="card highlight-card">
+                    <h3>For anyone ready to feel lighter</h3>
+                    <p>One safe conversation at a time.</p>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-name">— Sana</div>
-    </div>
-</section>
+    </section>
 
-<section class="section" id="book">
-    <h2>Book a Healing Session</h2>
-    <div class="line"></div>
+    <!-- How it Works -->
+    <section id="how" style="background: var(--white);">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple, safe, and designed to make you feel supported from the very first step.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Choose a moment</h3>
+                    <p>Pick a date and time that feels right for you. All sessions are 30 minutes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Meet in a safe space</h3>
+                    <p>Join your session through a secure, private video call. No pressure. No judgment.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Feel lighter</h3>
+                    <p>Leave with more clarity, calm, and the knowledge that you were truly heard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <p style="font-size:22px; font-weight:600; text-align:center; margin-bottom:10px;">
-        <span style="text-decoration:line-through; color:#A77;">₹499</span>
-        &nbsp; <b>Limited Time Offer — ₹399 (30 min session)</b>
-    </p>
+    <!-- What You'll Experience -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">What You’ll Experience</h2>
+            <div class="cards-grid">
+                <div class="card">• A warm, non-judgmental presence</div>
+                <div class="card">• Gentle emotional grounding</div>
+                <div class="card">• Space to speak at your own pace</div>
+                <div class="card">• Tools to help you feel calmer</div>
+                <div class="card">• A deep sense of being heard</div>
+                <div class="card">• Emotional relief that lasts</div>
+            </div>
+        </div>
+    </section>
 
-    <p style="text-align:center; color:#6F5A53; font-size:17px; margin-top:6px;">
-        *Session timings may vary depending on prior session extensions.  
-        Please refer to the email acknowledgement for the final confirmed slot.*  
-        <br><br>
-        *For rescheduling, kindly email at least 1 hour before the session.*
-    </p>
+    <!-- Testimonials -->
+    <section id="stories" style="background: var(--soft);">
+        <div class="container">
+            <h2 class="section-title">Real Voices, Real Relief</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">“I didn’t realise how much I was holding inside until I spoke. The session gave me space I didn’t know I needed. I felt lighter for days after.”</p>
+                    <p class="testimonial-author">— Aditi S., Mumbai</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">“It felt incredibly safe. No advice, no fixing — just someone who listened with genuine care. That alone was healing.”</p>
+                    <p class="testimonial-author">— Rohan P., Bangalore</p>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">“I’m not someone who opens up easily, but here it felt natural. One conversation helped me feel less alone in my struggles.”</p>
+                    <p class="testimonial-author">— Sana K., Delhi</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <label><b>Select Date:</b></label>
-    <input type="date" id="booking-date" min="">
-    
-    <div id="time-slots" style="display:none;">
-        <label><b>Select Time Slot:</b></label><br>
-        <div id="slot-buttons"></div>
-    </div>
+    <!-- Booking Section -->
+    <section id="book">
+        <div class="container">
+            <div class="booking-container">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 12px;">Book Your Session</h2>
+                <p style="text-align: center; color: var(--muted); margin-bottom: 40px;">30-minute emotional wellness session</p>
+                
+                <div class="price-tag">
+                    <div class="original-price">₹499</div>
+                    <div class="offer-price">₹399</div>
+                    <p style="color: #8B6F5F; font-size: 15px;">Limited time offer • Valid for first-time sessions</p>
+                </div>
 
-    <p id="no-slots-message" style="color:#B04444; font-weight:600; display:none;"></p>
+                <div class="form-group">
+                    <label for="booking-date">Select Date</label>
+                    <input type="date" id="booking-date" required>
+                </div>
 
-    <form id="booking-form" style="display:none;">
-        <input type="hidden" id="form-date">
-        <input type="hidden" id="form-slot">
+                <div id="time-slots-container" style="display: none;">
+                    <label>Select Time Slot (IST)</label>
+                    <div id="time-slots" class="time-slots"></div>
+                </div>
 
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <input type="text" placeholder="Your Phone Number" required>
+                <p id="no-slots-message" style="color: #9B4D4D; display: none; text-align: center; margin: 20px 0;"></p>
 
-        <button class="btn" id="payment-button" type="button">Proceed to Payment</button>
-    </form>
-</section>
+                <form id="booking-form" style="display: none;">
+                    <input type="hidden" id="form-date">
+                    <input type="hidden" id="form-slot">
 
-<section class="section">
-    <h2>FAQ</h2>
-    <div class="line"></div>
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Priya Sharma" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+                    </div>
 
-    <details>
-        <summary>Is this therapy?</summary>
-        <p>No. Heal & Connect is not therapy.  
-        These are emotional wellness circles where you feel safe, heard and supported.  
-        It complements therapy, but doesn't replace it.</p>
-    </details>
+                    <div class="trust-note">
+                        <strong>Your privacy is sacred here.</strong><br>
+                        All sessions are completely confidential. Nothing you share will ever be recorded or shared.
+                    </div>
 
-    <details>
-        <summary>What happens in a session?</summary>
-        <p>Your session begins with grounding, followed by a guided conversation that helps you express what feels heavy.  
-        You talk, reflect, pause, breathe — and walk out clearer than before.</p>
-    </details>
-   
-    <details>
-        <summary>Can I join if I feel anxious or lonely?</summary>
-        <p>Absolutely.  
-        These sessions are designed especially for people dealing with emotional overload, loneliness, burnout, or unspoken feelings.</p>
-    </details>
+                    <button type="button" id="payment-button" class="cta-button" style="width: 100%; justify-content: center; font-size: 19px; padding: 20px;">
+                        Proceed to Secure Payment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <details>
-        <summary>Is it confidential?</summary>
-        <p>Yes, completely confidential with a zero-judgment policy.</p>
-    </details>
+    <!-- FAQ -->
+    <section style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Is this professional therapy? <span style="font-size:22px;">+</span></div>
+                <div class="faq-answer">No. Heal &amp; Connect offers emotional wellness conversations. These sessions are supportive and complementary to therapy, but do not replace professional mental health treatment.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">What happens during a session? <span style="font-size:22px;">+</span></div>
+                <div class="faq-answer">We begin with a short grounding exercise, then create a calm space for you to share whatever feels heavy. You set the pace. There is no pressure to perform or “fix” anything.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">Is everything confidential? <span style="font-size:22px;">+</span></div>
+                <div class="faq-answer">Yes. Complete confidentiality is maintained. Your comfort and safety come first.</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">I feel very anxious about talking. Can I still join? <span style="font-size:22px;">+</span></div>
+                <div class="faq-answer">Absolutely. Many people feel nervous at first. You are welcome exactly as you are — even if you speak very little.</div>
+            </div>
+        </div>
+    </section>
 
-    <details>
-        <summary>Can I reschedule?</summary>
-        <p>Yes, you may reschedule once. Refunds are not available.</p>
-    </details>
+    <!-- About Nikhil -->
+    <section style="background: var(--soft);">
+        <div class="container" style="max-width: 720px; text-align: center;">
+            <h2 class="section-title">From My Heart to Yours</h2>
+            <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin-bottom: 32px;">
+                I’m Nikhil, the person behind Heal &amp; Connect.<br><br>
+                This platform was born from my own long seasons of emotional heaviness and loneliness. I know how isolating it can feel when you have so much inside but nowhere safe to put it down.
+            </p>
+            <p style="font-size: 19px; line-height: 1.8; color: var(--muted);">
+                My deepest wish is to offer you the kind of space I once needed — warm, patient, and free from judgment. A place where you can simply be, breathe, and feel a little lighter.
+            </p>
+        </div>
+    </section>
 
-    <details>
-        <summary>I’ve never spoken about feelings before. Can I still come?</summary>
-        <p>Yes — this space is created for exactly that.  
-        You can speak slowly, take pauses, and express only what feels comfortable.</p>
-    </details>
-</section>
+    <!-- Final CTA -->
+    <section style="background: var(--accent); color: white; text-align: center; padding: 100px 24px;">
+        <div class="container">
+            <h2 style="color: white; font-size: 44px; margin-bottom: 20px;">Ready to feel a little lighter?</h2>
+            <p style="font-size: 20px; max-width: 520px; margin: 0 auto 40px; opacity: 0.95;">
+                One gentle conversation can make a real difference.
+            </p>
+            <a href="#book" class="cta-button" style="background: white; color: var(--accent); font-size: 19px;">
+                Book Your Session Now
+            </a>
+        </div>
+    </section>
 
-<section class="section">
-    <h2>About Me</h2>
-    <div class="line"></div>
+    <footer>
+        <div class="container">
+            <p style="margin-bottom: 20px;">© 2026 Heal &amp; Connect • A safe space by Nikhil</p>
+            <p>
+                <a href="mailto:healconnectcare@gmail.com">healconnectcare@gmail.com</a>
+            </p>
+            <p style="margin-top: 40px; font-size: 14px; opacity: 0.7;">
+                All sessions are held with care, respect, and complete confidentiality.
+            </p>
+        </div>
+    </footer>
 
-    <p>I’m Nikhil — the creator of Heal & Connect.</p>
+    <script>
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('booking-date').min = today;
 
-    <p>
-        This space was born from my own journey through emotional heaviness, loneliness,
-        and those silent battles that almost every person carries but rarely talks about.  
-        I’ve been through phases where expressing felt impossible and silence felt suffocating.
-    </p>
+        // Booking date change handler
+        document.getElementById('booking-date').addEventListener('change', function() {
+            const date = this.value;
+            const selectedDate = new Date(date);
+            const now = new Date();
+            const isToday = selectedDate.toDateString() === now.toDateString();
+            const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
 
-    <p>
-        I realised what most people truly need is not advice…  
-        but a <b>safe human space</b> where someone genuinely listens.  
-        Not to judge. Not to fix.  
-        Just to understand.
-    </p>
+            const timeSlotsContainer = document.getElementById('time-slots-container');
+            const timeSlotsDiv = document.getElementById('time-slots');
+            const noSlotsMsg = document.getElementById('no-slots-message');
+            const bookingForm = document.getElementById('booking-form');
 
-    <p>
-        Heal & Connect is my way of giving people that space —  
-        a warm, grounded and emotionally safe environment where you can finally put your weight down.
-    </p>
+            timeSlotsDiv.innerHTML = '';
+            noSlotsMsg.style.display = 'none';
+            bookingForm.style.display = 'none';
 
-    <p>
-        If you’re here, it means you’re seeking clarity, grounding or even just one peaceful conversation.  
-        And I want to remind you — that’s not weakness.  
-        It’s strength.  
-        Reaching out is courage.  
-    </p>
+            let availableSlots = [];
 
-    <p>
-        One real conversation can genuinely shift the emotional load you’ve been carrying alone.
-        I’m here to walk with you in that direction.
-    </p>
-</section>
+            // Weekdays vs Weekend slots
+            if (day >= 1 && day <= 5) {
+                availableSlots = ["9:00 PM", "10:00 PM"];
+            } else {
+                availableSlots = [
+                    "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM",
+                    "3:00 PM", "5:00 PM", "6:00 PM", "7:00 PM"
+                ];
+            }
 
-<footer style="text-align:center; padding:40px;">
-    © 2026 Heal & Connect  
-    <br><br>
-    <a href="mailto:healconnectcare@gmail.com" class="email-btn">Email Us</a>
-</footer>
+            // Filter past slots if today
+            if (isToday) {
+                availableSlots = availableSlots.filter(slot => {
+                    const [time, period] = slot.split(' ');
+                    let [hours, minutes] = time.split(':').map(Number);
+                    if (period === 'PM' && hours !== 12) hours += 12;
+                    if (period === 'AM' && hours === 12) hours = 0;
+                    
+                    return hours > now.getHours() || 
+                           (hours === now.getHours() && minutes > now.getMinutes());
+                });
+            }
 
-<script>
-/* PREVENT PAST DATE */
-let today = new Date();
-document.getElementById("booking-date").min = today.toISOString().split("T")[0];
+            if (availableSlots.length === 0) {
+                noSlotsMsg.textContent = "Sorry, no available slots for this date.";
+                noSlotsMsg.style.display = 'block';
+                return;
+            }
 
-/* SLOT LOGIC */
-document.getElementById("booking-date").addEventListener("change", () => {
+            timeSlotsContainer.style.display = 'block';
 
-    const date = document.getElementById("booking-date").value;
-    const selectedDate = new Date(date);
-    const now = new Date();
-
-    const isToday = selectedDate.toDateString() === now.toDateString();
-    const day = selectedDate.getDay();
-
-    const slotButtons = document.getElementById("slot-buttons");
-    const noSlotsMsg = document.getElementById("no-slots-message");
-
-    slotButtons.innerHTML = "";
-    noSlotsMsg.style.display = "none";
-    document.getElementById("booking-form").style.display = "none";
-
-    let availableSlots = [];
-
-    if (day >= 1 && day <= 5) {
-        availableSlots = ["9:00 PM","10:00 PM"];
-    } 
-    else {
-        availableSlots = [
-            "11:00 AM","12:00 PM","1:00 PM","2:00 PM",
-            "3:00 PM","5:00 PM","6:00 PM","7:00 PM"
-        ];
-    }
-
-    function convert24(time){
-        let [h,m] = time.split(":");
-        let [min,mer] = m.split(" ");
-        h = parseInt(h); min = parseInt(min);
-        if(mer==="PM" && h!==12) h+=12;
-        if(mer==="AM" && h===12) h=0;
-        return {h,min};
-    }
-
-    if (isToday) {
-        availableSlots = availableSlots.filter(t => {
-            const {h,min} = convert24(t);
-            return h > now.getHours() || (h === now.getHours() && min > now.getMinutes());
+            availableSlots.forEach(slot => {
+                const btn = document.createElement('div');
+                btn.className = 'time-slot';
+                btn.textContent = slot;
+                btn.onclick = () => selectTimeSlot(btn, date, slot);
+                timeSlotsDiv.appendChild(btn);
+            });
         });
-    }
 
-    if (availableSlots.length === 0) {
-        noSlotsMsg.innerHTML = "No available slots for this date.";
-        noSlotsMsg.style.display = "block";
-        return;
-    }
+        function selectTimeSlot(element, date, time) {
+            // Remove selected from all
+            document.querySelectorAll('.time-slot').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            // Add to clicked
+            element.classList.add('selected');
 
-    document.getElementById("time-slots").style.display = "block";
+            // Populate hidden fields
+            document.getElementById('form-date').value = date;
+            document.getElementById('form-slot').value = time;
 
-    availableSlots.forEach(time => {
-        let btn = document.createElement("button");
-        btn.className = "time-slot";
-        btn.textContent = time;
+            // Show form
+            document.getElementById('booking-form').style.display = 'block';
+            
+            // Smooth scroll to form
+            document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+        }
 
-        btn.onclick = e => {
-            e.preventDefault();
-            document.querySelectorAll(".time-slot").forEach(b => b.classList.remove("selected"));
-            btn.classList.add("selected");
-            document.getElementById("form-date").value = date;
-            document.getElementById("form-slot").value = time;
-            document.getElementById("booking-form").style.display = "block";
-        };
+        // Payment button (placeholder)
+        document.getElementById('payment-button').addEventListener('click', function() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const date = document.getElementById('form-date').value;
+            const slot = document.getElementById('form-slot').value;
 
-        slotButtons.appendChild(btn);
-    });
+            if (!name || !email || !phone || !date || !slot) {
+                alert("Please fill in all the fields.");
+                return;
+            }
 
-});
-</script>
+            // In a real app, this would trigger payment gateway
+            alert(`Thank you, ${name}!\n\nYour session is booked for ${date} at ${slot}.\n\nYou will receive a confirmation email shortly with the meeting link.\n\nWe look forward to holding space for you. 💛`);
+            
+            // Reset form after booking simulation
+            setTimeout(() => {
+                document.getElementById('booking-form').reset();
+                document.getElementById('booking-form').style.display = 'none';
+                document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+            }, 1500);
+        });
 
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.classList.toggle('active');
+            
+            // Rotate the + sign (simple version)
+            const span = element.querySelector('span');
+            if (span) {
+                span.textContent = element.classList.contains('active') ? '−' : '+';
+            }
+        }
+
+        // Simple fade-in on scroll
+        function handleScroll() {
+            const elements = document.querySelectorAll('.card, .step, .testimonial');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) {
+                    el.classList.add('fade-in', 'visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', () => {
+            // Trigger initial fade-ins
+            setTimeout(handleScroll, 300);
+        });
+    </script>
 </body>
 </html>
