@@ -3,848 +3,1718 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heal & Connect — A Safe Space to Feel Heard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+    <title>Heal & Connect — You Don't Have to Carry It Alone</title>
+    <meta name="description" content="A warm, safe space to speak freely and feel truly heard. Book a 30-minute emotional wellness session with Heal & Connect.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
+        /* ═══════════════════════════
+           CSS CUSTOM PROPERTIES
+        ═══════════════════════════ */
         :root {
-            --bg: #F8F5F2;
-            --soft: #F4EDE6;
-            --text: #2C211B;
-            --muted: #6B5A52;
-            --accent: #A67C6D;
-            --accent-light: #C9A38A;
-            --white: #FFFFFF;
-            --border: #EDE4DC;
-            --shadow: 0 10px 30px rgba(166, 124, 109, 0.12);
+            --bg:           #FDFAF7;
+            --surface:      #F5EDE3;
+            --surface-alt:  #EDE0D0;
+            --terra:        #B5856A;
+            --terra-dark:   #8F6750;
+            --terra-light:  #D4A886;
+            --sage:         #6B8C6F;
+            --sage-light:   #9DB8A0;
+            --ink:          #251A13;
+            --mocha:        #5E3E30;
+            --dust:         #9B7E6F;
+            --border:       #E3D5C9;
+            --white:        #FFFFFF;
+            --shadow-sm:    0 2px 12px rgba(37,26,19,0.06);
+            --shadow-md:    0 8px 36px rgba(37,26,19,0.11);
+            --shadow-lg:    0 20px 64px rgba(37,26,19,0.14);
+            --r-sm:         10px;
+            --r-md:         18px;
+            --r-lg:         28px;
+            --r-xl:         40px;
+            --ease:         cubic-bezier(0.4,0,0.2,1);
+            --t:            0.32s;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* ═══════════════════════════
+           RESET & BASE
+        ═══════════════════════════ */
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
 
         body {
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Jost', system-ui, sans-serif;
             background: var(--bg);
-            color: var(--text);
+            color: var(--ink);
             line-height: 1.75;
-            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.12;
             font-weight: 600;
-            line-height: 1.2;
         }
 
+        h1 { font-size: clamp(42px, 6.5vw, 80px); }
+        h2 { font-size: clamp(32px, 4.5vw, 54px); }
+        h3 { font-size: clamp(19px, 2.2vw, 24px); }
+
+        a { color: inherit; }
+
+        /* ═══════════════════════════
+           LAYOUT UTILITIES
+        ═══════════════════════════ */
         .container {
-            max-width: 1080px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
         }
 
-        /* Header & Navigation */
-        header {
-            background: rgba(248, 245, 242, 0.95);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
+        section { padding: 108px 0; }
+
+        .eyebrow {
+            display: inline-block;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terra);
+            margin-bottom: 16px;
         }
 
-        nav {
+        .section-sub {
+            font-size: 18px;
+            color: var(--dust);
+            line-height: 1.75;
+            max-width: 580px;
+        }
+
+        .center { text-align: center; }
+        .center .section-sub { margin: 0 auto; }
+
+        /* ═══════════════════════════
+           SCROLL REVEAL
+        ═══════════════════════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.72s var(--ease), transform 0.72s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.08s; }
+        .d2 { transition-delay: 0.16s; }
+        .d3 { transition-delay: 0.24s; }
+        .d4 { transition-delay: 0.32s; }
+
+        /* ═══════════════════════════
+           NAVIGATION
+        ═══════════════════════════ */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            transition: background var(--t) var(--ease),
+                        box-shadow var(--t) var(--ease);
+        }
+        .site-header.scrolled {
+            background: rgba(253,250,247,0.96);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        .nav-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            justify-content: space-between;
+            padding: 22px 0;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
             font-weight: 600;
-            color: var(--accent);
+            color: var(--ink);
             text-decoration: none;
-            letter-spacing: -0.5px;
+            letter-spacing: -0.2px;
+        }
+        .logo em {
+            font-style: normal;
+            color: var(--terra);
         }
 
         .nav-links {
-            display: flex;
-            gap: 32px;
             list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 36px;
         }
-
         .nav-links a {
             text-decoration: none;
-            color: var(--muted);
+            font-size: 14.5px;
             font-weight: 500;
-            transition: color 0.3s ease;
+            color: var(--mocha);
+            letter-spacing: 0.02em;
+            transition: color var(--t);
+        }
+        .nav-links a:hover { color: var(--terra); }
+
+        .nav-cta {
+            background: var(--terra) !important;
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 100px !important;
+            font-size: 13.5px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.04em !important;
+            transition: background var(--t), transform var(--t), color var(--t) !important;
+        }
+        .nav-cta:hover {
+            background: var(--terra-dark) !important;
+            transform: translateY(-1px);
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 6px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--ink);
+            border-radius: 2px;
+            transition: all 0.3s;
         }
 
-        .book-btn {
-            background: var(--accent);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            font-size: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .book-btn:hover {
-            background: #8f6859;
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 140px 0 100px;
-            text-align: center;
-            background: linear-gradient(135deg, #F8F5F2 0%, #F0E9E0 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(166,124,109,0.08) 0%, transparent 70%);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(42px, 6vw, 68px);
-            margin-bottom: 24px;
-            color: var(--text);
-        }
-
-        .hero p {
-            font-size: 22px;
-            color: var(--muted);
-            max-width: 580px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .cta-button {
-            background: var(--accent);
-            color: white;
-            padding: 18px 44px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(166, 124, 109, 0.25);
-            background: #8f6859;
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 16px;
-            color: var(--text);
-        }
-
-        .section-subtitle {
-            font-size: 20px;
-            text-align: center;
-            color: var(--muted);
-            max-width: 620px;
-            margin: 0 auto 60px;
-        }
-
-        .divider {
-            width: 64px;
-            height: 3px;
-            background: var(--accent-light);
-            margin: 40px auto;
-            border-radius: 3px;
-        }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 28px;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px 32px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: all 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 25px 50px rgba(166, 124, 109, 0.18);
-        }
-
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--accent);
-        }
-
-        .highlight-card {
-            background: linear-gradient(135deg, #FFF8F2, #F8F5F2);
-        }
-
-        /* How it works */
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            width: 64px;
-            height: 64px;
-            background: var(--accent-light);
-            color: white;
-            border-radius: 50%;
-            display: flex;
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(253,250,247,0.98);
+            backdrop-filter: blur(24px);
+            z-index: 999;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            gap: 36px;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
             font-weight: 600;
-            margin: 0 auto 24px;
+            color: var(--ink);
+            text-decoration: none;
+            transition: color var(--t);
         }
-
-        /* Testimonials */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 32px;
-        }
-
-        .testimonial {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            position: relative;
-        }
-
-        .testimonial::before {
-            content: '“';
-            font-family: 'Playfair Display', serif;
-            font-size: 120px;
+        .mobile-nav a:hover { color: var(--terra); }
+        .mobile-nav-close {
             position: absolute;
-            top: -30px;
-            left: 30px;
-            opacity: 0.08;
-            color: var(--accent);
+            top: 24px; right: 28px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--ink);
+            cursor: pointer;
             line-height: 1;
         }
 
-        .testimonial-text {
-            font-size: 19px;
-            line-height: 1.65;
-            color: var(--text);
-            font-style: italic;
-            margin-bottom: 24px;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        /* Booking Section */
-        #booking {
-            background: var(--soft);
-        }
-
-        .booking-container {
-            max-width: 680px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 24px;
-            padding: 60px 50px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-
-        .price-tag {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .original-price {
-            font-size: 18px;
-            text-decoration: line-through;
-            color: #9B7A6E;
-        }
-
-        .offer-price {
-            font-size: 42px;
-            font-weight: 600;
-            color: var(--accent);
-            margin: 8px 0;
-        }
-
-        .form-group {
-            margin-bottom: 28px;
-        }
-
-        label {
-            display: block;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: var(--muted);
-            font-size: 15px;
-        }
-
-        input[type="date"],
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"] {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            font-size: 17px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(166, 124, 109, 0.15);
-        }
-
-        .time-slots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 12px;
-            margin-top: 12px;
-        }
-
-        .time-slot {
-            padding: 16px 20px;
-            background: white;
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            text-align: center;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .time-slot:hover {
-            border-color: var(--accent-light);
-        }
-
-        .time-slot.selected {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-        }
-
-        .trust-note {
-            background: #F8F5F2;
-            padding: 20px 24px;
-            border-radius: 16px;
-            font-size: 15px;
-            color: var(--muted);
-            margin: 32px 0 24px;
-            border-left: 4px solid var(--accent);
-        }
-
-        /* FAQ */
-        .faq-item {
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 16px;
+        /* ═══════════════════════════
+           HERO
+        ═══════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border);
+            padding: 148px 0 100px;
         }
 
-        .faq-question {
-            padding: 24px;
+        /* Ambient blobs */
+        .blobs {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(72px);
+        }
+        .blob-1 {
+            width: 560px; height: 560px;
+            background: radial-gradient(circle, #EDD3BC 0%, #F5EDE3 55%, transparent 100%);
+            top: -80px; right: -80px;
+            opacity: 0.6;
+            animation: drift1 14s ease-in-out infinite;
+        }
+        .blob-2 {
+            width: 380px; height: 380px;
+            background: radial-gradient(circle, #BBCFBE 0%, transparent 70%);
+            bottom: 40px; left: 8%;
+            opacity: 0.45;
+            animation: drift2 18s ease-in-out infinite;
+        }
+        .blob-3 {
+            width: 260px; height: 260px;
+            background: radial-gradient(circle, #D9CBBD 0%, transparent 70%);
+            top: 35%; left: 4%;
+            opacity: 0.35;
+            animation: drift1 22s ease-in-out infinite reverse;
+        }
+        @keyframes drift1 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33%      { transform: translate(18px,-18px) scale(1.025); }
+            66%      { transform: translate(-14px,12px) scale(0.975); }
+        }
+        @keyframes drift2 {
+            0%,100% { transform: translate(0,0); }
+            50%      { transform: translate(22px,-22px); }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 660px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            background: rgba(181,133,106,0.1);
+            border: 1px solid rgba(181,133,106,0.22);
+            border-radius: 100px;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--terra);
+            letter-spacing: 0.04em;
+            margin-bottom: 30px;
+        }
+        .badge-dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--sage);
+            animation: breathe 3s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+        @keyframes breathe {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.4; transform: scale(0.7); }
+        }
+
+        .hero h1 {
+            margin-bottom: 26px;
+            color: var(--ink);
+            font-style: italic;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--terra);
+        }
+
+        .hero-sub {
+            font-size: 19px;
+            color: var(--mocha);
+            max-width: 500px;
+            line-height: 1.8;
+            margin-bottom: 44px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .hero-aside {
+            font-size: 13.5px;
+            color: var(--dust);
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+        .hero-aside::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 1px;
+            background: var(--terra-light);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 34px;
+            border-radius: 100px;
+            font-size: 15.5px;
             font-weight: 600;
+            font-family: 'Jost', sans-serif;
+            letter-spacing: 0.025em;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition:
+                background var(--t) var(--ease),
+                transform   var(--t) var(--ease),
+                box-shadow  var(--t) var(--ease),
+                color       var(--t) var(--ease);
+        }
+        .btn-fill {
+            background: var(--terra);
+            color: white;
+            box-shadow: 0 4px 22px rgba(181,133,106,0.28);
+        }
+        .btn-fill:hover {
+            background: var(--terra-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 38px rgba(143,103,80,0.32);
+            color: white;
+        }
+        .btn-fill .arrow { transition: transform var(--t) var(--ease); }
+        .btn-fill:hover .arrow { transform: translateX(4px); }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--terra);
+            border: 1.5px solid rgba(181,133,106,0.4);
+        }
+        .btn-outline:hover {
+            background: rgba(181,133,106,0.07);
+            border-color: var(--terra);
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--terra-dark);
+            box-shadow: 0 4px 22px rgba(0,0,0,0.15);
+        }
+        .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        /* ═══════════════════════════
+           TRUST BAR
+        ═══════════════════════════ */
+        .trust-bar {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+        .trust-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--mocha);
+        }
+        .trust-item svg {
+            width: 18px; height: 18px;
+            color: var(--sage);
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════
+           ABOUT
+        ═══════════════════════════ */
+        #about { background: var(--bg); }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 70px;
+        }
+
+        .about-text h2 { margin-bottom: 22px; }
+        .about-text p {
+            font-size: 17px;
+            color: var(--mocha);
+            margin-bottom: 18px;
+            line-height: 1.85;
+        }
+
+        .about-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .about-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 26px 22px;
+            transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+        }
+        .about-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .card-emoji { font-size: 26px; margin-bottom: 12px; }
+        .about-card h3 { font-size: 17px; margin-bottom: 8px; }
+        .about-card p {
+            font-size: 14px;
+            color: var(--dust);
+            line-height: 1.65;
+        }
+
+        /* ═══════════════════════════
+           HOW IT WORKS
+        ═══════════════════════════ */
+        #how { background: var(--surface); }
+
+        .steps-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 56px;
+            margin-top: 64px;
+            position: relative;
+        }
+        .steps-wrap::before {
+            content: '';
+            position: absolute;
+            top: 37px;
+            left: calc(50% / 3 + 36px);
+            right: calc(50% / 3 + 36px);
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--terra-light) 30%, var(--terra-light) 70%, transparent);
+            pointer-events: none;
+        }
+
+        .step { text-align: center; }
+        .step-num {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1.5px solid var(--terra-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 26px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--terra);
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+            transition: background var(--t) var(--ease),
+                        color var(--t) var(--ease),
+                        border-color var(--t) var(--ease);
+        }
+        .step:hover .step-num {
+            background: var(--terra);
+            color: white;
+            border-color: var(--terra);
+        }
+        .step h3 { font-size: 21px; margin-bottom: 10px; }
+        .step p {
+            font-size: 15px;
+            color: var(--dust);
+            max-width: 210px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ═══════════════════════════
+           EXPERIENCE CARDS
+        ═══════════════════════════ */
+        .exp-section { background: var(--bg); }
+
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 64px;
+        }
+        .exp-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 28px 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            transition:
+                transform  var(--t) var(--ease),
+                box-shadow var(--t) var(--ease),
+                border-color var(--t) var(--ease);
+        }
+        .exp-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--terra-light);
+        }
+        .exp-icon {
+            width: 42px; height: 42px;
+            background: rgba(181,133,106,0.1);
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .exp-card p {
+            font-size: 15.5px;
+            color: var(--mocha);
+            font-weight: 500;
+            line-height: 1.55;
+            padding-top: 8px;
+        }
+
+        /* ═══════════════════════════
+           TESTIMONIALS
+        ═══════════════════════════ */
+        #stories { background: var(--surface); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 64px;
+        }
+        .t-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 38px 34px;
+            position: relative;
+            transition: transform var(--t) var(--ease), box-shadow var(--t) var(--ease);
+        }
+        .t-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+        }
+        .big-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 88px;
+            line-height: 0.75;
+            color: var(--terra-light);
+            opacity: 0.35;
+            display: block;
+            margin-bottom: 6px;
+        }
+        .t-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18.5px;
+            font-style: italic;
+            color: var(--ink);
+            line-height: 1.75;
+            margin-bottom: 26px;
+        }
+        .t-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .t-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--terra-light), var(--terra));
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .t-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink);
+        }
+        .t-loc {
+            font-size: 12.5px;
+            color: var(--dust);
+        }
+
+        /* ═══════════════════════════
+           BOOKING
+        ═══════════════════════════ */
+        #book { background: var(--bg); }
+
+        .book-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 72px;
+            align-items: start;
+            margin-top: 60px;
+        }
+
+        .book-info {
+            position: sticky;
+            top: 110px;
+        }
+        .book-info h2 { margin-bottom: 18px; }
+        .book-info > p {
+            font-size: 16.5px;
+            color: var(--mocha);
+            line-height: 1.85;
+            margin-bottom: 38px;
+        }
+
+        .book-features { display: flex; flex-direction: column; gap: 20px; }
+        .book-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+        .feat-icon {
+            width: 38px; height: 38px;
+            background: rgba(181,133,106,0.1);
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .feat-body h4 {
+            font-family: 'Jost', sans-serif;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+        .feat-body p {
+            font-size: 13.5px;
+            color: var(--dust);
+            line-height: 1.55;
+        }
+
+        /* Form card */
+        .form-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 50px 44px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .price-box {
+            text-align: center;
+            background: var(--surface);
+            border-radius: var(--r-md);
+            padding: 26px 20px;
+            margin-bottom: 36px;
+        }
+        .p-strike {
+            font-size: 15px;
+            text-decoration: line-through;
+            color: var(--dust);
+        }
+        .p-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 54px;
+            font-weight: 600;
+            color: var(--terra);
+            line-height: 1.05;
+            display: block;
+        }
+        .p-note {
+            font-size: 12.5px;
+            color: var(--dust);
+            margin-top: 5px;
+        }
+
+        .f-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--mocha);
+            margin-bottom: 9px;
+        }
+        .f-group { margin-bottom: 22px; }
+
+        .f-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-sm);
+            font-size: 15.5px;
+            font-family: 'Jost', sans-serif;
+            color: var(--ink);
+            background: var(--bg);
+            transition: border-color var(--t), box-shadow var(--t), background var(--t);
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        .f-input:focus {
+            outline: none;
+            border-color: var(--terra);
+            box-shadow: 0 0 0 3px rgba(181,133,106,0.14);
+            background: white;
+        }
+        .f-input::placeholder { color: var(--dust); }
+
+        .f-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 26px 0;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .slot {
+            padding: 12px 8px;
+            background: var(--bg);
+            border: 1.5px solid var(--border);
+            border-radius: var(--r-sm);
+            text-align: center;
+            font-size: 13.5px;
+            font-weight: 500;
+            font-family: 'Jost', sans-serif;
+            color: var(--mocha);
+            cursor: pointer;
+            transition: all var(--t) var(--ease);
+            user-select: none;
+        }
+        .slot:hover {
+            border-color: var(--terra-light);
+            background: rgba(181,133,106,0.06);
+            color: var(--terra);
+        }
+        .slot.selected {
+            background: var(--terra);
+            color: white;
+            border-color: var(--terra);
+            box-shadow: 0 4px 16px rgba(181,133,106,0.28);
+        }
+
+        .no-slots {
+            text-align: center;
+            font-size: 14px;
+            color: #B5766A;
+            padding: 14px;
+            background: rgba(181,118,106,0.07);
+            border-radius: var(--r-sm);
+            display: none;
+            margin: 12px 0;
+        }
+
+        .trust-pill {
+            background: rgba(107,140,111,0.08);
+            border: 1px solid rgba(107,140,111,0.22);
+            border-left: 3px solid var(--sage);
+            border-radius: var(--r-sm);
+            padding: 16px 18px;
+            font-size: 13.5px;
+            color: var(--mocha);
+            margin: 22px 0;
+            line-height: 1.65;
+        }
+        .trust-pill strong {
+            display: block;
+            color: var(--sage);
+            font-size: 13px;
+            margin-bottom: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-submit {
+            width: 100%;
+            justify-content: center;
+            font-size: 16px;
+            padding: 17px 20px;
+        }
+
+        /* ═══════════════════════════
+           ABOUT NIKHIL
+        ═══════════════════════════ */
+        .nikhil-section { background: var(--surface); }
+
+        .nikhil-wrap {
+            max-width: 740px;
+            margin: 0 auto;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: 64px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        .nikhil-avatar {
+            width: 78px; height: 78px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #CCBBA8, #A8917C);
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 34px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+        .nikhil-wrap h2 { margin: 12px 0 28px; }
+        .nikhil-wrap p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+            color: var(--mocha);
+            line-height: 1.85;
+            margin-bottom: 18px;
+        }
+
+        /* ═══════════════════════════
+           FAQ
+        ═══════════════════════════ */
+        .faq-section { background: var(--bg); }
+
+        .faq-list {
+            max-width: 700px;
+            margin: 60px auto 0;
+        }
+        .faq-item {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: box-shadow var(--t);
+        }
+        .faq-item:hover { box-shadow: var(--shadow-sm); }
+
+        .faq-q {
+            padding: 20px 26px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--ink);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 18px;
+            gap: 16px;
+            transition: color var(--t);
+            user-select: none;
+        }
+        .faq-q:hover { color: var(--terra); }
+
+        .faq-icon {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background: var(--surface);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            color: var(--terra);
+            flex-shrink: 0;
+            transition: background var(--t), transform var(--t), color var(--t);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            line-height: 1;
+        }
+        .faq-item.open .faq-icon {
+            background: var(--terra);
+            color: white;
+            transform: rotate(45deg);
         }
 
-        .faq-answer {
-            padding: 0 24px 28px;
-            color: var(--muted);
-            display: none;
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s var(--ease);
         }
-
-        .faq-item.active .faq-answer {
-            display: block;
+        .faq-body-inner {
+            padding: 0 26px 22px;
+            font-size: 15.5px;
+            color: var(--dust);
+            line-height: 1.8;
         }
+        .faq-item.open .faq-body { max-height: 320px; }
 
-        /* Footer */
-        footer {
-            background: #2C211B;
-            color: #EDE4DC;
-            padding: 80px 0 40px;
+        /* ═══════════════════════════
+           FINAL CTA
+        ═══════════════════════════ */
+        .final-cta {
+            background: linear-gradient(140deg, #2A1E16 0%, #3D2920 100%);
+            padding: 128px 28px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            width: 800px; height: 800px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181,133,106,0.12) 0%, transparent 65%);
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+        }
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 18px;
+            position: relative;
+        }
+        .final-cta p {
+            font-size: 19px;
+            color: rgba(255,255,255,0.68);
+            max-width: 460px;
+            margin: 0 auto 44px;
+            line-height: 1.75;
+            position: relative;
+        }
+        .final-cta .btn-light { position: relative; }
 
-        footer a {
-            color: var(--accent-light);
+        /* ═══════════════════════════
+           FOOTER
+        ═══════════════════════════ */
+        footer {
+            background: var(--ink);
+            color: rgba(255,255,255,0.5);
+            padding: 56px 0 36px;
+        }
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.88);
             text-decoration: none;
         }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            section {
-                padding: 80px 0;
-            }
-            
-            .hero {
-                padding: 100px 0 80px;
-            }
-            
-            .booking-container {
-                padding: 40px 24px;
-            }
+        .footer-logo em {
+            font-style: normal;
+            color: var(--terra-light);
+        }
+        .footer-links {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+        .footer-links a {
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            transition: color var(--t);
+        }
+        .footer-links a:hover { color: var(--terra-light); }
+        .footer-rule {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.09);
+            margin: 32px 0 22px;
+        }
+        .footer-copy {
+            text-align: center;
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.3);
         }
 
-        /* Smooth Scroll & Transitions */
-        html {
-            scroll-behavior: smooth;
+        /* ═══════════════════════════
+           RESPONSIVE
+        ═══════════════════════════ */
+        @media (max-width: 980px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 52px;
+            }
+            .steps-wrap { grid-template-columns: 1fr; gap: 40px; }
+            .steps-wrap::before { display: none; }
+            .exp-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                max-width: 540px;
+                margin-inline: auto;
+            }
+            .book-layout { grid-template-columns: 1fr; gap: 52px; }
+            .book-info { position: static; }
+            .nikhil-wrap { padding: 48px 36px; }
         }
 
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        @media (max-width: 680px) {
+            section { padding: 80px 0; }
+            .hero { padding: 120px 0 80px; min-height: unset; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .exp-grid { grid-template-columns: 1fr; }
+            .about-cards { grid-template-columns: 1fr; }
+            .form-card { padding: 36px 24px; }
+            .nikhil-wrap { padding: 40px 24px; }
+            .trust-row { gap: 18px; flex-direction: column; align-items: flex-start; padding-left: 16px; }
+            .footer-row { flex-direction: column; text-align: center; align-items: center; }
+            .footer-links { flex-direction: column; gap: 14px; align-items: center; }
         }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @media (max-width: 420px) {
+            .hero-actions { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo">Heal &amp; Connect</a>
-                <ul class="nav-links">
-                    <li><a href="#how">How it Works</a></li>
-                    <li><a href="#stories">Stories</a></li>
-                    <li><a href="#book">Book a Session</a></li>
-                </ul>
-                <a href="#book" class="book-btn">Book Now</a>
-            </nav>
-        </div>
-    </header>
+<!-- ─── NAVIGATION ─── -->
+<header class="site-header" id="site-header">
+    <div class="container">
+        <nav class="nav-inner">
+            <a href="#" class="logo">Heal <em>&amp;</em> Connect</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#stories">Stories</a></li>
+                <li><a href="#book" class="nav-cta">Book a Session &nbsp;→</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container hero-content">
-            <h1>You don’t have to carry it alone anymore.</h1>
-            <p>A warm, safe space where you can speak freely, feel truly heard, and gently release what’s been weighing on your heart.</p>
-            <a href="#book" class="cta-button">
-                Begin Your Healing Journey
-                <span style="font-size:22px;">→</span>
-            </a>
-            <p style="margin-top: 40px; font-size: 15px; color: #8B6F5F;">
-                30-minute guided emotional wellness sessions • Completely confidential
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">✕</button>
+    <a href="#about"   onclick="closeMobileNav()">About</a>
+    <a href="#how"     onclick="closeMobileNav()">How It Works</a>
+    <a href="#stories" onclick="closeMobileNav()">Stories</a>
+    <a href="#book"    onclick="closeMobileNav()" style="color:var(--terra);">Book a Session</a>
+</div>
+
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Completely confidential &nbsp;·&nbsp; First-session offer available
+            </div>
+            <h1>You don't have to<br>carry it alone,&nbsp;<em>anymore.</em></h1>
+            <p class="hero-sub">
+                A warm, safe space where you can speak freely, feel truly heard, and gently release what's been weighing on your heart.
             </p>
+            <div class="hero-actions">
+                <a href="#book" class="btn btn-fill">
+                    Begin your healing journey
+                    <span class="arrow">→</span>
+                </a>
+                <span class="hero-aside">30-minute sessions, completely private</span>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- What is Heal & Connect -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">A Gentle Space for Real Connection</h2>
-            <p class="section-subtitle">Heal &amp; Connect is not therapy. It’s a human-to-human space designed for those moments when life feels heavy, lonely, or overwhelming — and you simply need someone who will listen with care.</p>
-            
-            <div class="cards-grid">
-                <div class="card">
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-row">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                100% Confidential
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                30-Minute Sessions
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                Non-Judgmental Space
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                    <line x1="8" y1="21" x2="16" y2="21"/>
+                    <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                Secure Private Video Call
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+
+            <div class="about-text reveal">
+                <span class="eyebrow">What this is</span>
+                <h2>A gentle space built for real connection</h2>
+                <p>Heal &amp; Connect isn't therapy. It's something more immediate — a human space designed for those moments when life feels heavy, lonely, or overwhelming.</p>
+                <p>Sometimes, all you need is one person who will truly listen — with patience, warmth, and no agenda.</p>
+                <a href="#book" class="btn btn-outline" style="margin-top: 10px;">Find your slot →</a>
+            </div>
+
+            <div class="about-cards reveal d1">
+                <div class="about-card">
+                    <div class="card-emoji">🌿</div>
                     <h3>For the quietly exhausted</h3>
-                    <p>When even small talk feels tiring and you crave a conversation that doesn’t require you to perform.</p>
+                    <p>When small talk feels tiring and you crave a conversation that doesn't require you to perform.</p>
                 </div>
-                <div class="card">
+                <div class="about-card">
+                    <div class="card-emoji">🌊</div>
                     <h3>For the emotionally lonely</h3>
-                    <p>When you’re surrounded by people but still feel unseen and unheard.</p>
+                    <p>When you're surrounded by people but still feel unseen and deeply unheard.</p>
                 </div>
-                <div class="card highlight-card">
+                <div class="about-card">
+                    <div class="card-emoji">🌸</div>
+                    <h3>For those carrying too much</h3>
+                    <p>When the weight builds quietly and you need somewhere safe to finally set it down.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-emoji">✨</div>
                     <h3>For anyone ready to feel lighter</h3>
-                    <p>One safe conversation at a time.</p>
+                    <p>One safe, gentle conversation at a time.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how">
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">The process</span>
+            <h2>How it works</h2>
+            <p class="section-sub" style="margin-top: 14px;">Simple, safe, and designed to make you feel supported from the very first step.</p>
+        </div>
+        <div class="steps-wrap">
+            <div class="step reveal d1">
+                <div class="step-num">1</div>
+                <h3>Choose a moment</h3>
+                <p>Pick a date and time that feels right for you. All sessions are 30 minutes.</p>
+            </div>
+            <div class="step reveal d2">
+                <div class="step-num">2</div>
+                <h3>Meet in a safe space</h3>
+                <p>Join through a secure private video call. No pressure. No judgment. No performance.</p>
+            </div>
+            <div class="step reveal d3">
+                <div class="step-num">3</div>
+                <h3>Feel lighter</h3>
+                <p>Leave with clarity, calm, and the deep feeling of being truly heard.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── WHAT YOU'LL EXPERIENCE ─── -->
+<section class="exp-section">
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">What to expect</span>
+            <h2>What you'll experience</h2>
+        </div>
+        <div class="exp-grid">
+            <div class="exp-card reveal d1"><div class="exp-icon">🤍</div><p>A warm, non-judgmental presence</p></div>
+            <div class="exp-card reveal d2"><div class="exp-icon">🌱</div><p>Gentle emotional grounding</p></div>
+            <div class="exp-card reveal d3"><div class="exp-icon">⏳</div><p>Space to speak at your own pace</p></div>
+            <div class="exp-card reveal d1"><div class="exp-icon">🧘</div><p>Simple tools to help you feel calmer</p></div>
+            <div class="exp-card reveal d2"><div class="exp-icon">👂</div><p>A deep sense of being truly heard</p></div>
+            <div class="exp-card reveal d3"><div class="exp-icon">☀️</div><p>Emotional relief that lasts beyond the session</p></div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="stories">
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">Real voices</span>
+            <h2>Real voices, real relief</h2>
+            <p class="section-sub" style="margin-top: 14px;">Experiences shared by those who took the first gentle step.</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="t-card reveal d1">
+                <span class="big-quote">"</span>
+                <p class="t-text">I didn't realise how much I was holding inside until I spoke. The session gave me space I didn't know I needed. I felt lighter for days after.</p>
+                <div class="t-author">
+                    <div class="t-avatar">A</div>
+                    <div><div class="t-name">Aditi S.</div><div class="t-loc">Mumbai</div></div>
+                </div>
+            </div>
+            <div class="t-card reveal d2">
+                <span class="big-quote">"</span>
+                <p class="t-text">It felt incredibly safe. No advice, no fixing — just someone who listened with genuine care. That alone was healing.</p>
+                <div class="t-author">
+                    <div class="t-avatar">R</div>
+                    <div><div class="t-name">Rohan P.</div><div class="t-loc">Bangalore</div></div>
+                </div>
+            </div>
+            <div class="t-card reveal d3">
+                <span class="big-quote">"</span>
+                <p class="t-text">I'm not someone who opens up easily, but here it felt natural. One conversation helped me feel less alone in my struggles.</p>
+                <div class="t-author">
+                    <div class="t-avatar">S</div>
+                    <div><div class="t-name">Sana K.</div><div class="t-loc">Delhi</div></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- How it Works -->
-    <section id="how" style="background: var(--white);">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Simple, safe, and designed to make you feel supported from the very first step.</p>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Choose a moment</h3>
-                    <p>Pick a date and time that feels right for you. All sessions are 30 minutes.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Meet in a safe space</h3>
-                    <p>Join your session through a secure, private video call. No pressure. No judgment.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Feel lighter</h3>
-                    <p>Leave with more clarity, calm, and the knowledge that you were truly heard.</p>
+
+<!-- ─── BOOKING ─── -->
+<section id="book">
+    <div class="container">
+        <div class="book-layout">
+
+            <!-- Left Info -->
+            <div class="book-info reveal">
+                <span class="eyebrow">Book a session</span>
+                <h2>Take the first gentle step</h2>
+                <p>Your first session is simply a chance to breathe, speak, and be heard — with no pressure and no expectations.</p>
+
+                <div class="book-features">
+                    <div class="book-feat">
+                        <div class="feat-icon">📅</div>
+                        <div class="feat-body">
+                            <h4>Flexible scheduling</h4>
+                            <p>Weekday evenings &amp; full weekend slots to fit your life.</p>
+                        </div>
+                    </div>
+                    <div class="book-feat">
+                        <div class="feat-icon">🔒</div>
+                        <div class="feat-body">
+                            <h4>Completely confidential</h4>
+                            <p>Nothing you share will ever be recorded or disclosed — ever.</p>
+                        </div>
+                    </div>
+                    <div class="book-feat">
+                        <div class="feat-icon">💛</div>
+                        <div class="feat-body">
+                            <h4>Safe to show up as you are</h4>
+                            <p>Nervous, quiet, or unsure — you're welcome exactly as you are.</p>
+                        </div>
+                    </div>
+                    <div class="book-feat">
+                        <div class="feat-icon">📱</div>
+                        <div class="feat-body">
+                            <h4>Secure video call</h4>
+                            <p>Private session link sent to your email after booking.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- What You'll Experience -->
-    <section>
-        <div class="container">
-            <h2 class="section-title">What You’ll Experience</h2>
-            <div class="cards-grid">
-                <div class="card">• A warm, non-judgmental presence</div>
-                <div class="card">• Gentle emotional grounding</div>
-                <div class="card">• Space to speak at your own pace</div>
-                <div class="card">• Tools to help you feel calmer</div>
-                <div class="card">• A deep sense of being heard</div>
-                <div class="card">• Emotional relief that lasts</div>
-            </div>
-        </div>
-    </section>
+            <!-- Right: Form Card -->
+            <div class="form-card reveal d1">
 
-    <!-- Testimonials -->
-    <section id="stories" style="background: var(--soft);">
-        <div class="container">
-            <h2 class="section-title">Real Voices, Real Relief</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <p class="testimonial-text">“I didn’t realise how much I was holding inside until I spoke. The session gave me space I didn’t know I needed. I felt lighter for days after.”</p>
-                    <p class="testimonial-author">— Aditi S., Mumbai</p>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">“It felt incredibly safe. No advice, no fixing — just someone who listened with genuine care. That alone was healing.”</p>
-                    <p class="testimonial-author">— Rohan P., Bangalore</p>
-                </div>
-                <div class="testimonial">
-                    <p class="testimonial-text">“I’m not someone who opens up easily, but here it felt natural. One conversation helped me feel less alone in my struggles.”</p>
-                    <p class="testimonial-author">— Sana K., Delhi</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="book">
-        <div class="container">
-            <div class="booking-container">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 12px;">Book Your Session</h2>
-                <p style="text-align: center; color: var(--muted); margin-bottom: 40px;">30-minute emotional wellness session</p>
-                
-                <div class="price-tag">
-                    <div class="original-price">₹499</div>
-                    <div class="offer-price">₹399</div>
-                    <p style="color: #8B6F5F; font-size: 15px;">Limited time offer • Valid for first-time sessions</p>
+                <div class="price-box">
+                    <div class="p-strike">₹499</div>
+                    <span class="p-main">₹399</span>
+                    <p class="p-note">First-time session offer &nbsp;·&nbsp; 30 minutes</p>
                 </div>
 
-                <div class="form-group">
-                    <label for="booking-date">Select Date</label>
-                    <input type="date" id="booking-date" required>
+                <!-- Step 1: Date -->
+                <div class="f-group">
+                    <label class="f-label" for="booking-date">Choose a date</label>
+                    <input type="date" id="booking-date" class="f-input" required>
                 </div>
 
-                <div id="time-slots-container" style="display: none;">
-                    <label>Select Time Slot (IST)</label>
-                    <div id="time-slots" class="time-slots"></div>
+                <!-- Step 2: Time slots (shown after date) -->
+                <div id="slots-wrap" style="display:none;">
+                    <label class="f-label">Choose a time (IST)</label>
+                    <div id="time-slots" class="slots-grid"></div>
                 </div>
 
-                <p id="no-slots-message" style="color: #9B4D4D; display: none; text-align: center; margin: 20px 0;"></p>
+                <p id="no-slots-msg" class="no-slots"></p>
 
-                <form id="booking-form" style="display: none;">
+                <!-- Step 3: Contact form (shown after slot) -->
+                <form id="booking-form" style="display:none;" novalidate>
                     <input type="hidden" id="form-date">
                     <input type="hidden" id="form-slot">
+                    <hr class="f-divider">
 
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" placeholder="Priya Sharma" required>
+                    <div class="f-group">
+                        <label class="f-label" for="f-name">Your name</label>
+                        <input type="text" id="f-name" class="f-input" placeholder="Priya Sharma" required>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="you@email.com" required>
+                    <div class="f-group">
+                        <label class="f-label" for="f-email">Email address</label>
+                        <input type="email" id="f-email" class="f-input" placeholder="you@email.com" required>
                     </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="+91 98765 43210" required>
-                    </div>
-
-                    <div class="trust-note">
-                        <strong>Your privacy is sacred here.</strong><br>
-                        All sessions are completely confidential. Nothing you share will ever be recorded or shared.
+                    <div class="f-group">
+                        <label class="f-label" for="f-phone">Phone number</label>
+                        <input type="tel" id="f-phone" class="f-input" placeholder="+91 98765 43210" required>
                     </div>
 
-                    <button type="button" id="payment-button" class="cta-button" style="width: 100%; justify-content: center; font-size: 19px; padding: 20px;">
-                        Proceed to Secure Payment
+                    <div class="trust-pill">
+                        <strong>🌿 Your privacy is sacred here.</strong>
+                        All sessions are completely confidential. Nothing you share will ever be recorded or disclosed to anyone — ever.
+                    </div>
+
+                    <button type="button" id="pay-btn" class="btn btn-fill btn-submit">
+                        Proceed to secure payment
+                        <span class="arrow">→</span>
                     </button>
                 </form>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FAQ -->
-    <section style="background: white;">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">Is this professional therapy? <span style="font-size:22px;">+</span></div>
-                <div class="faq-answer">No. Heal &amp; Connect offers emotional wellness conversations. These sessions are supportive and complementary to therapy, but do not replace professional mental health treatment.</div>
-            </div>
-            
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">What happens during a session? <span style="font-size:22px;">+</span></div>
-                <div class="faq-answer">We begin with a short grounding exercise, then create a calm space for you to share whatever feels heavy. You set the pace. There is no pressure to perform or “fix” anything.</div>
-            </div>
-            
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">Is everything confidential? <span style="font-size:22px;">+</span></div>
-                <div class="faq-answer">Yes. Complete confidentiality is maintained. Your comfort and safety come first.</div>
-            </div>
-            
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">I feel very anxious about talking. Can I still join? <span style="font-size:22px;">+</span></div>
-                <div class="faq-answer">Absolutely. Many people feel nervous at first. You are welcome exactly as you are — even if you speak very little.</div>
-            </div>
+
+<!-- ─── ABOUT NIKHIL ─── -->
+<section class="nikhil-section">
+    <div class="container">
+        <div class="nikhil-wrap reveal">
+            <div class="nikhil-avatar">N</div>
+            <span class="eyebrow">A note from Nikhil</span>
+            <h2>From my heart to yours</h2>
+            <p>I'm Nikhil, the person behind Heal &amp; Connect.</p>
+            <p>This platform was born from my own long seasons of emotional heaviness and loneliness. I know how isolating it can feel when you have so much inside but nowhere safe to put it down.</p>
+            <p>My deepest wish is to offer you the kind of space I once needed — warm, patient, and free from judgment. A place where you can simply be, breathe, and feel a little lighter.</p>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- About Nikhil -->
-    <section style="background: var(--soft);">
-        <div class="container" style="max-width: 720px; text-align: center;">
-            <h2 class="section-title">From My Heart to Yours</h2>
-            <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin-bottom: 32px;">
-                I’m Nikhil, the person behind Heal &amp; Connect.<br><br>
-                This platform was born from my own long seasons of emotional heaviness and loneliness. I know how isolating it can feel when you have so much inside but nowhere safe to put it down.
-            </p>
-            <p style="font-size: 19px; line-height: 1.8; color: var(--muted);">
-                My deepest wish is to offer you the kind of space I once needed — warm, patient, and free from judgment. A place where you can simply be, breathe, and feel a little lighter.
-            </p>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section">
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">Questions</span>
+            <h2>Frequently asked questions</h2>
         </div>
-    </section>
+        <div class="faq-list">
 
-    <!-- Final CTA -->
-    <section style="background: var(--accent); color: white; text-align: center; padding: 100px 24px;">
-        <div class="container">
-            <h2 style="color: white; font-size: 44px; margin-bottom: 20px;">Ready to feel a little lighter?</h2>
-            <p style="font-size: 20px; max-width: 520px; margin: 0 auto 40px; opacity: 0.95;">
-                One gentle conversation can make a real difference.
-            </p>
-            <a href="#book" class="cta-button" style="background: white; color: var(--accent); font-size: 19px;">
-                Book Your Session Now
-            </a>
+            <div class="faq-item reveal d1">
+                <div class="faq-q">
+                    Is this professional therapy?
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    No. Heal &amp; Connect offers emotional wellness conversations. These sessions are supportive and complementary to therapy, but they do not replace professional mental health treatment. If you're in crisis, please reach out to a mental health professional.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d2">
+                <div class="faq-q">
+                    What happens during a session?
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    We begin with a short grounding exercise to help you settle in, then create a calm space for you to share whatever feels heavy. You set the pace entirely. There is no pressure to perform, explain, or "fix" anything.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d3">
+                <div class="faq-q">
+                    Is everything confidential?
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Yes, completely. Your comfort and safety come first. Nothing you share will ever be recorded, stored, or disclosed to anyone. This space is entirely yours.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d1">
+                <div class="faq-q">
+                    I feel anxious about talking. Can I still join?
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Absolutely. Many people feel nervous at first, and that's completely okay. You are welcome exactly as you are — even if you speak very little, or need a long moment to settle. There's no right or wrong way to show up here.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d2">
+                <div class="faq-q">
+                    What if I cry or get emotional?
+                    <div class="faq-icon">+</div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Emotions are welcomed here — that's exactly why this space exists. Tears are not weakness; they're release. You will never be rushed or made to feel uncomfortable for feeling.
+                </div></div>
+            </div>
+
         </div>
-    </section>
+    </div>
+</section>
 
-    <footer>
-        <div class="container">
-            <p style="margin-bottom: 20px;">© 2026 Heal &amp; Connect • A safe space by Nikhil</p>
-            <p>
-                <a href="mailto:healconnectcare@gmail.com">healconnectcare@gmail.com</a>
-            </p>
-            <p style="margin-top: 40px; font-size: 14px; opacity: 0.7;">
-                All sessions are held with care, respect, and complete confidentiality.
-            </p>
+
+<!-- ─── FINAL CTA ─── -->
+<div class="final-cta">
+    <div class="container">
+        <h2 class="reveal">Ready to feel a little lighter?</h2>
+        <p class="reveal d1">One gentle conversation can make a real difference.</p>
+        <a href="#book" class="btn btn-light reveal d2">
+            Book your session now &nbsp;→
+        </a>
+    </div>
+</div>
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="container">
+        <div class="footer-row">
+            <a href="#" class="footer-logo">Heal <em>&amp;</em> Connect</a>
+            <ul class="footer-links">
+                <li><a href="mailto:healconnectcare@gmail.com">healconnectcare@gmail.com</a></li>
+                <li><a href="#book">Book a session</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
         </div>
-    </footer>
+        <hr class="footer-rule">
+        <p class="footer-copy">© 2026 Heal &amp; Connect &nbsp;·&nbsp; A safe space by Nikhil &nbsp;·&nbsp; All sessions held with complete confidentiality and care.</p>
+    </div>
+</footer>
 
-    <script>
-        // Set minimum date to today
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('booking-date').min = today;
 
-        // Booking date change handler
-        document.getElementById('booking-date').addEventListener('change', function() {
-            const date = this.value;
-            const selectedDate = new Date(date);
-            const now = new Date();
-            const isToday = selectedDate.toDateString() === now.toDateString();
-            const day = selectedDate.getDay(); // 0 = Sunday, 6 = Saturday
+<script>
+/* ═══════════════════════════
+   NAV SCROLL EFFECT
+═══════════════════════════ */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
 
-            const timeSlotsContainer = document.getElementById('time-slots-container');
-            const timeSlotsDiv = document.getElementById('time-slots');
-            const noSlotsMsg = document.getElementById('no-slots-message');
-            const bookingForm = document.getElementById('booking-form');
+/* ═══════════════════════════
+   MOBILE NAV
+═══════════════════════════ */
+const hamburger    = document.getElementById('hamburger');
+const mobileNav    = document.getElementById('mobile-nav');
+const mobileClose  = document.getElementById('mobile-nav-close');
 
-            timeSlotsDiv.innerHTML = '';
-            noSlotsMsg.style.display = 'none';
-            bookingForm.style.display = 'none';
+hamburger.addEventListener('click',   () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
 
-            let availableSlots = [];
+function closeMobileNav() { mobileNav.classList.remove('open'); }
 
-            // Weekdays vs Weekend slots
-            if (day >= 1 && day <= 5) {
-                availableSlots = ["9:00 PM", "10:00 PM"];
-            } else {
-                availableSlots = [
-                    "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM",
-                    "3:00 PM", "5:00 PM", "6:00 PM", "7:00 PM"
-                ];
-            }
-
-            // Filter past slots if today
-            if (isToday) {
-                availableSlots = availableSlots.filter(slot => {
-                    const [time, period] = slot.split(' ');
-                    let [hours, minutes] = time.split(':').map(Number);
-                    if (period === 'PM' && hours !== 12) hours += 12;
-                    if (period === 'AM' && hours === 12) hours = 0;
-                    
-                    return hours > now.getHours() || 
-                           (hours === now.getHours() && minutes > now.getMinutes());
-                });
-            }
-
-            if (availableSlots.length === 0) {
-                noSlotsMsg.textContent = "Sorry, no available slots for this date.";
-                noSlotsMsg.style.display = 'block';
-                return;
-            }
-
-            timeSlotsContainer.style.display = 'block';
-
-            availableSlots.forEach(slot => {
-                const btn = document.createElement('div');
-                btn.className = 'time-slot';
-                btn.textContent = slot;
-                btn.onclick = () => selectTimeSlot(btn, date, slot);
-                timeSlotsDiv.appendChild(btn);
-            });
-        });
-
-        function selectTimeSlot(element, date, time) {
-            // Remove selected from all
-            document.querySelectorAll('.time-slot').forEach(btn => {
-                btn.classList.remove('selected');
-            });
-            
-            // Add to clicked
-            element.classList.add('selected');
-
-            // Populate hidden fields
-            document.getElementById('form-date').value = date;
-            document.getElementById('form-slot').value = time;
-
-            // Show form
-            document.getElementById('booking-form').style.display = 'block';
-            
-            // Smooth scroll to form
-            document.getElementById('booking-form').scrollIntoView({ behavior: 'smooth' });
+/* ═══════════════════════════
+   SCROLL REVEAL (IntersectionObserver)
+═══════════════════════════ */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
         }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-        // Payment button (placeholder)
-        document.getElementById('payment-button').addEventListener('click', function() {
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const date = document.getElementById('form-date').value;
-            const slot = document.getElementById('form-slot').value;
+revealEls.forEach(el => revealObserver.observe(el));
 
-            if (!name || !email || !phone || !date || !slot) {
-                alert("Please fill in all the fields.");
-                return;
-            }
-
-            // In a real app, this would trigger payment gateway
-            alert(`Thank you, ${name}!\n\nYour session is booked for ${date} at ${slot}.\n\nYou will receive a confirmation email shortly with the meeting link.\n\nWe look forward to holding space for you. 💛`);
-            
-            // Reset form after booking simulation
-            setTimeout(() => {
-                document.getElementById('booking-form').reset();
-                document.getElementById('booking-form').style.display = 'none';
-                document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
-            }, 1500);
+/* ═══════════════════════════
+   FAQ ACCORDION
+═══════════════════════════ */
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+            el.classList.remove('open');
+            el.querySelector('.faq-icon').textContent = '+';
         });
-
-        // FAQ Toggle
-        function toggleFAQ(element) {
-            element.classList.toggle('active');
-            
-            // Rotate the + sign (simple version)
-            const span = element.querySelector('span');
-            if (span) {
-                span.textContent = element.classList.contains('active') ? '−' : '+';
-            }
+        if (!isOpen) {
+            item.classList.add('open');
+            item.querySelector('.faq-icon').textContent = '+'; // CSS rotates it
         }
+    });
+});
 
-        // Simple fade-in on scroll
-        function handleScroll() {
-            const elements = document.querySelectorAll('.card, .step, .testimonial');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    el.classList.add('fade-in', 'visible');
-                }
-            });
-        }
+/* ═══════════════════════════
+   BOOKING SYSTEM
+═══════════════════════════ */
+const dateInput     = document.getElementById('booking-date');
+const slotsWrap     = document.getElementById('slots-wrap');
+const timeSlotsEl   = document.getElementById('time-slots');
+const noSlotsMsg    = document.getElementById('no-slots-msg');
+const bookingForm   = document.getElementById('booking-form');
 
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', () => {
-            // Trigger initial fade-ins
-            setTimeout(handleScroll, 300);
+// Set minimum date = today
+dateInput.min = new Date().toISOString().split('T')[0];
+
+dateInput.addEventListener('change', function () {
+    const dateStr     = this.value;
+    const selected    = new Date(dateStr);
+    const now         = new Date();
+    const isToday     = selected.toDateString() === now.toDateString();
+    const day         = selected.getDay(); // 0=Sun, 6=Sat
+
+    // Reset state
+    timeSlotsEl.innerHTML = '';
+    noSlotsMsg.style.display  = 'none';
+    noSlotsMsg.textContent    = '';
+    slotsWrap.style.display   = 'none';
+    bookingForm.style.display = 'none';
+
+    // Build slots list
+    let slots = (day >= 1 && day <= 5)
+        ? ['9:00 PM', '10:00 PM']
+        : ['11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'];
+
+    // Filter past slots if today
+    if (isToday) {
+        slots = slots.filter(slot => {
+            const [time, period] = slot.split(' ');
+            let [h, m] = time.split(':').map(Number);
+            if (period === 'PM' && h !== 12) h += 12;
+            if (period === 'AM' && h === 12) h = 0;
+            return h > now.getHours() || (h === now.getHours() && m > now.getMinutes());
         });
-    </script>
+    }
+
+    if (slots.length === 0) {
+        noSlotsMsg.textContent    = 'No slots available for this date. Please try another day.';
+        noSlotsMsg.style.display  = 'block';
+        return;
+    }
+
+    slotsWrap.style.display = 'block';
+
+    slots.forEach(slot => {
+        const btn = document.createElement('div');
+        btn.className   = 'slot';
+        btn.textContent = slot;
+        btn.addEventListener('click', () => selectSlot(btn, dateStr, slot));
+        timeSlotsEl.appendChild(btn);
+    });
+});
+
+function selectSlot(el, date, time) {
+    // Deselect all
+    document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+    el.classList.add('selected');
+
+    // Store values
+    document.getElementById('form-date').value = date;
+    document.getElementById('form-slot').value = time;
+
+    // Show form
+    bookingForm.style.display = 'block';
+
+    // Smooth scroll to form
+    setTimeout(() => {
+        bookingForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 80);
+}
+
+/* ─── Payment / Submit ─── */
+document.getElementById('pay-btn').addEventListener('click', function () {
+    const name  = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const date  = document.getElementById('form-date').value;
+    const slot  = document.getElementById('form-slot').value;
+
+    if (!name || !email || !phone) {
+        showFormError('Please fill in all fields before proceeding.');
+        return;
+    }
+
+    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRx.test(email)) {
+        showFormError('Please enter a valid email address.');
+        return;
+    }
+
+    // ── In production: replace this with your payment gateway call ──
+    const formatted = new Date(date).toLocaleDateString('en-IN', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+    });
+
+    alert(
+`Thank you, ${name}! 💛
+
+Your session has been reserved for:
+${formatted} at ${slot} IST
+
+A confirmation email will be sent to ${email} with your secure session link.
+
+We look forward to holding space for you.`
+    );
+
+    // Reset form
+    setTimeout(() => {
+        bookingForm.reset();
+        bookingForm.style.display = 'none';
+        document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
+        slotsWrap.style.display   = 'none';
+        dateInput.value           = '';
+    }, 600);
+});
+
+function showFormError(msg) {
+    // Inline toast-style error
+    let toast = document.getElementById('form-toast');
+    if (!toast) {
+        toast = document.createElement('p');
+        toast.id = 'form-toast';
+        toast.style.cssText = `
+            background: rgba(181,118,106,0.1);
+            border: 1px solid rgba(181,118,106,0.3);
+            color: #8A4030;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            margin-bottom: 14px;
+            text-align: center;
+        `;
+        document.getElementById('pay-btn').insertAdjacentElement('beforebegin', toast);
+    }
+    toast.textContent = msg;
+    toast.style.display = 'block';
+    setTimeout(() => { if (toast) toast.style.display = 'none'; }, 4000);
+}
+</script>
+
 </body>
 </html>
