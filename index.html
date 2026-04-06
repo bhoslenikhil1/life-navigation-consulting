@@ -1647,53 +1647,67 @@ function selectSlot(el, date, time) {
     }, 80);
 }
 
+
 /* ─── Payment / Submit ─── */
 document.getElementById('pay-btn').addEventListener('click', function () {
+
     const name  = document.getElementById('f-name').value.trim();
     const email = document.getElementById('f-email').value.trim();
     const phone = document.getElementById('f-phone').value.trim();
     const date  = document.getElementById('form-date').value;
     const slot  = document.getElementById('form-slot').value;
 
-    if (!name || !email || !phone) {
-        showFormError('Please fill in all fields before proceeding.');
+    if (!name || !email || !phone || !date || !slot) {
+        showFormError("Please fill all details before proceeding.");
         return;
     }
 
-    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRx.test(email)) {
-        showFormError('Please enter a valid email address.');
-        return;
-    }
+    var options = {
+        "key": "rzp_test_Sa97YIHRV6HeHP",
+        "amount": 39900,
+        "currency": "INR",
+        "name": "Heal & Connect",
+        "description": "30-Min Emotional Session",
 
-    // ── In production: replace this with your payment gateway call ──
-    const formatted = new Date(date).toLocaleDateString('en-IN', {
-        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
-    });
+        "handler": function (response){
 
-    alert(
-`Thank you, ${name}! 💛
+            alert(
+`Payment Successful ✅
 
-Your session has been reserved for:
-${formatted} at ${slot} IST
+Name: ${name}
+Date: ${date}
+Time: ${slot}
 
-A confirmation email will be sent to ${email} with your secure session link.
+Please confirm your booking on WhatsApp`
+            );
 
-We look forward to holding space for you.`
-    );
+            window.open(
+                `https://wa.me/918108201967?text=Hi, I have booked a session.%0AName: ${name}%0ADate: ${date}%0ATime: ${slot}%0APayment ID: ${response.razorpay_payment_id}`
+            );
+        },
 
-    // Reset form
-    setTimeout(() => {
-        bookingForm.reset();
-        bookingForm.style.display = 'none';
-        document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
-        slotsWrap.style.display   = 'none';
-        dateInput.value           = '';
-    }, 600);
+        "modal": {
+            "ondismiss": function(){
+                alert("Payment was cancelled ❌");
+            }
+        },
+
+        "prefill": {
+            "name": name,
+            "email": email,
+            "contact": phone
+        },
+
+        "theme": {
+            "color": "#B5856A"
+        }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
 });
 
 function showFormError(msg) {
-    // Inline toast-style error
     let toast = document.getElementById('form-toast');
     if (!toast) {
         toast = document.createElement('p');
@@ -1715,6 +1729,9 @@ function showFormError(msg) {
     setTimeout(() => { if (toast) toast.style.display = 'none'; }, 4000);
 }
 </script>
+
+<!-- Razorpay script MUST come after your JS OR just before closing body -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 </body>
 </html>
