@@ -1,282 +1,2918 @@
-<section class="pricing-section" id="book">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak &amp; Settle — You Are Not Alone. I'm Here For You.</title>
+    <meta name="description" content="Expert counselling with 7+ years of analytical experience. Stress, Career, Finance, Relationships & more. Book a 20-min WhatsApp session for just Rs.399.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <style>
+        /* ═══════════════════════════════════════
+           CSS CUSTOM PROPERTIES
+        ═══════════════════════════════════════ */
+        :root {
+            --bg-deep:      #080C14;
+            --bg-dark:      #0C1018;
+            --bg-surface:   #141B27;
+            --bg-card:      #1A2235;
+            --border-dark:  rgba(255,255,255,0.06);
+            --text-primary: #F0EAE3;
+            --text-secondary:#9AA8C4;
+            --text-muted:   #6B7A99;
+
+            --bg-light:     #F4EDE6;
+            --bg-white:     #FFFFFF;
+            --border-light: #E0D6CB;
+            --text-dark:    #1A1612;
+            --text-dim:     #7A6E65;
+
+            --gold:         #C9A55C;
+            --gold-light:   #E4C88A;
+            --gold-dim:     #8B7340;
+            --gold-glow:    rgba(201,165,92,0.22);
+            --teal:         #4A9B8E;
+            --teal-light:   #6CC4B6;
+            --teal-glow:    rgba(108,196,182,0.18);
+
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+            --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --t: 0.4s;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--bg-deep);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        ::selection { background: rgba(201,165,92,0.25); color: #fff; }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        h1 { font-size: clamp(42px, 6.5vw, 84px); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(32px, 4.5vw, 56px); letter-spacing: -0.01em; }
+        h3 { font-size: clamp(20px, 2.2vw, 26px); }
+
+        a { color: inherit; text-decoration: none; }
+
+        /* ─── Layout ─── */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        section { padding: 120px 0; position: relative; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .center { text-align: center; }
+        .center .eyebrow { justify-content: center; }
+        .center .eyebrow::before { display: none; }
+        .center .eyebrow::after {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        /* ─── Reveal Animations ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .d1 { transition-delay: 0.12s; }
+        .d2 { transition-delay: 0.24s; }
+        .d3 { transition-delay: 0.36s; }
+        .d4 { transition-delay: 0.48s; }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+        }
+        .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+        }
+        .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+        }
+        .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+        /* ─── Navigation ─── */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            transition: all var(--t) var(--ease-out);
+        }
+        .site-header.scrolled {
+            background: rgba(8,12,20,0.92);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.3px;
+        }
+        .logo em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            transition: color var(--t);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s var(--ease-out);
+        }
+        .nav-links a:hover { color: #fff; }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--bg-deep) !important;
+            padding: 11px 24px !important;
+            border-radius: 100px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.03em !important;
+            transition: all 0.3s var(--ease-out) !important;
+        }
+        .nav-cta:hover {
+            background: var(--gold-light) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,165,92,0.35);
+        }
+        .nav-cta::after { display: none !important; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(8,12,20,0.98);
+            backdrop-filter: blur(30px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 36px;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        .mobile-nav.open {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .mobile-nav a {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 36px;
+            font-weight: 600;
+            color: #fff;
+            transition: color var(--t);
+        }
+        .mobile-nav a:hover { color: var(--gold); }
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px; right: 28px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* ═══════════════════════════════════════
+           HERO
+        ═══════════════════════════════════════ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 150px 0 100px;
+            background: var(--bg-deep);
+        }
+
+        /* Grid texture */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,165,92,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,165,92,0.035) 1px, transparent 1px);
+            background-size: 70px 70px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Animated gradient mesh orbs */
+        .hero-orbs {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+        }
+        .orb-1 {
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(201,165,92,0.18) 0%, transparent 65%);
+            top: -120px; right: -140px;
+            animation: orbFloat1 18s ease-in-out infinite;
+        }
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(74,155,142,0.14) 0%, transparent 65%);
+            bottom: -80px; left: -100px;
+            animation: orbFloat2 22s ease-in-out infinite;
+        }
+        .orb-3 {
+            width: 350px; height: 350px;
+            background: radial-gradient(circle, rgba(201,165,92,0.1) 0%, transparent 65%);
+            top: 45%; left: 35%;
+            animation: orbFloat3 26s ease-in-out infinite;
+        }
+        @keyframes orbFloat1 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(40px,-50px) scale(1.08); }
+            66% { transform: translate(-30px,30px) scale(0.94); }
+        }
+        @keyframes orbFloat2 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-40px,-40px) scale(1.1); }
+        }
+        @keyframes orbFloat3 {
+            0%,100% { transform: translate(0,0); }
+            25% { transform: translate(25px,25px); }
+            75% { transform: translate(-20px,-30px); }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201,165,92,0.08);
+            border: 1px solid rgba(201,165,92,0.2);
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--gold-light);
+            letter-spacing: 0.04em;
+            margin-bottom: 36px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-badge::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+            animation: badgeShimmer 4s 2s ease-in-out infinite;
+        }
+        @keyframes badgeShimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        .badge-pulse {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--teal-light);
+            flex-shrink: 0;
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%,100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(108,196,182,0.4); }
+            50% { opacity: 0.7; transform: scale(0.8); box-shadow: 0 0 0 5px rgba(108,196,182,0); }
+        }
+
+        .hero h1 {
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-tagline {
+            font-size: clamp(15px, 1.8vw, 19px);
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero-tagline::after {
+            content: '';
+            flex: 1;
+            max-width: 50px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.35;
+        }
+
+        .hero-sub {
+            font-size: 18.5px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            line-height: 1.9;
+            margin-bottom: 48px;
+            font-weight: 300;
+        }
+
+        .hero-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 44px;
+        }
+        .hero-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px;
+            padding: 7px 16px;
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .hero-pill:hover {
+            border-color: rgba(201,165,92,0.3);
+            background: rgba(201,165,92,0.06);
+            color: var(--text-primary);
+        }
+        .hero-pill svg { width: 14px; height: 14px; color: var(--gold); }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 14.5px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.35s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--bg-deep);
+            box-shadow: 0 4px 28px rgba(201,165,92,0.3);
+        }
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(201,165,92,0.45);
+        }
+        .btn-gold .arr { transition: transform 0.3s var(--ease-out); }
+        .btn-gold:hover .arr { transform: translateX(5px); }
+
+        .btn-ghost {
+            background: transparent;
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.15);
+        }
+        .btn-ghost:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.35);
+        }
+
+        .btn-wa {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 28px rgba(37,211,102,0.28);
+        }
+        .btn-wa:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(37,211,102,0.38);
+        }
+
+        /* ─── Trust Bar ─── */
+        .trust-bar {
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+            padding: 24px 0;
+            position: relative;
+            z-index: 3;
+        }
+        .trust-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+        .trust-item svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; }
+        .trust-sep {
+            width: 1px;
+            height: 28px;
+            background: var(--border-dark);
+        }
+
+        /* ═══════════════════════════════════════
+           SECTION DIVIDER WAVES
+        ═══════════════════════════════════════ */
+        .wave-divider {
+            position: absolute;
+            left: 0; right: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 2;
+        }
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 2px);
+            height: 80px;
+        }
+        .wave-top { top: -1px; transform: rotate(180deg); }
+        .wave-bottom { bottom: -1px; }
+
+        /* ═══════════════════════════════════════
+           ABOUT / ANALYST
+        ═══════════════════════════════════════ */
+        .analyst-section {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding-top: 140px;
+        }
+
+        .analyst-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .analyst-left .eyebrow { color: var(--gold-dim); }
+        .analyst-left .eyebrow::before { background: var(--gold-dim); }
+
+        .analyst-left h2 { color: var(--text-dark); margin-bottom: 24px; }
+        .analyst-left p {
+            font-size: 17px;
+            color: var(--text-dim);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .analyst-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(201,165,92,0.1);
+            border: 1px solid rgba(201,165,92,0.22);
+            border-radius: 14px;
+            padding: 16px 22px;
+            margin-top: 18px;
+            transition: all 0.3s;
+        }
+        .analyst-badge:hover {
+            border-color: rgba(201,165,92,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201,165,92,0.12);
+        }
+        .analyst-badge-icon {
+            width: 46px; height: 46px;
+            background: var(--gold);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .analyst-badge-icon svg { width: 24px; height: 24px; color: var(--bg-deep); }
+        .analyst-badge-text strong {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        .analyst-badge-text span {
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border-light);
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-top: 32px;
+        }
+        .stat-box {
+            background: #fff;
+            padding: 28px 22px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .stat-box:hover { background: rgba(201,165,92,0.04); }
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--gold-dim);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 12.5px;
+            color: var(--text-dim);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .expertise-tag {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 16px 18px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.35s var(--ease-out);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            cursor: default;
+        }
+        .expertise-tag:hover {
+            border-color: var(--gold);
+            background: rgba(201,165,92,0.04);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(201,165,92,0.14);
+        }
+        .expertise-tag svg { width: 18px; height: 18px; color: var(--gold-dim); flex-shrink: 0; }
+
+        /* ═══════════════════════════════════════
+           SERVICES (Glassmorphism Cards)
+        ═══════════════════════════════════════ */
+        .services-section {
+            background: var(--bg-deep);
+            padding-top: 140px;
+        }
+        .services-section .eyebrow { color: var(--gold); }
+
+        .services-intro {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 18px auto 0;
+            line-height: 1.85;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-top: 72px;
+        }
+
+        .service-card {
+            background: rgba(26,34,53,0.6);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 36px 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s var(--ease-out);
+            cursor: default;
+            backdrop-filter: blur(12px);
+            --x: 50%;
+            --y: 50%;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(
+                circle 180px at var(--x) var(--y),
+                rgba(201,165,92,0.08) 0%,
+                transparent 80%
+            );
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+        .service-card:hover {
+            border-color: rgba(201,165,92,0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.4), 0 0 60px rgba(201,165,92,0.1);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-card:hover::after { opacity: 1; }
+
+        .service-icon-wrap {
+            width: 56px; height: 56px;
+            background: rgba(201,165,92,0.1);
+            border: 1px solid rgba(201,165,92,0.18);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 24px;
+            transition: all 0.3s;
+        }
+        .service-card:hover .service-icon-wrap {
+            background: rgba(201,165,92,0.18);
+            border-color: rgba(201,165,92,0.35);
+            transform: scale(1.05);
+        }
+        .service-icon-wrap svg { width: 26px; height: 26px; color: var(--gold); }
+
+        .service-card h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .service-card p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+        }
+
+        /* ═══════════════════════════════════════
+           HOW IT WORKS
+        ═══════════════════════════════════════ */
+        .how-section {
+            background: var(--bg-surface);
+            padding-top: 140px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+            position: relative;
+        }
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 38px;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+            opacity: 0.25;
+        }
+
+        .step {
+            text-align: center;
+            padding: 0 18px;
+            position: relative;
+        }
+        .step-circle {
+            width: 76px; height: 76px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1.5px solid rgba(201,165,92,0.2);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 32px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.4s var(--ease-out);
+        }
+        .step:hover .step-circle {
+            background: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 8px rgba(201,165,92,0.1);
+            transform: scale(1.08);
+        }
+        .step-circle svg { width: 28px; height: 28px; color: var(--gold); transition: color 0.3s; }
+        .step:hover .step-circle svg { color: var(--bg-deep); }
+        .step h3 { font-size: 20px; color: #fff; margin-bottom: 12px; }
+        .step p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; max-width: 220px; margin: 0 auto; }
+
+        /* ═══════════════════════════════════════
+           PRICING / BOOKING
+        ═══════════════════════════════════════ */
+        .pricing-section {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding-top: 140px;
+        }
+        .pricing-section .eyebrow { color: var(--gold-dim); }
+        .pricing-section .eyebrow::before { background: var(--gold-dim); }
+        .pricing-section .center .eyebrow::after { background: var(--gold-dim); }
+
+        .pricing-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 64px;
+        }
+
+        .pricing-tiers { display: flex; flex-direction: column; gap: 24px; }
+
+        .pricing-card {
+            background: var(--bg-deep);
+            border-radius: 24px;
+            padding: 44px 36px;
+            box-shadow: 0 24px 72px rgba(0,0,0,0.35);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s var(--ease-out);
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 32px 80px rgba(0,0,0,0.45);
+        }
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .price-display { text-align: center; margin-bottom: 40px; }
+        .price-was {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+        .price-now {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 76px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+        .price-note {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+        .price-badge {
+            display: inline-block;
+            background: rgba(201,165,92,0.12);
+            border: 1px solid rgba(201,165,92,0.22);
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 5px 16px;
+            border-radius: 100px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .pricing-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            margin: 32px 0;
+        }
+
+        .pricing-features {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 36px;
+        }
+        .pricing-feat {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+        .pricing-feat svg { width: 18px; height: 18px; color: var(--teal-light); flex-shrink: 0; }
+
+        .payment-info h3 {
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+        .payment-info p {
+            font-size: 16.5px;
+            color: var(--text-dim);
+            line-height: 1.85;
+            margin-bottom: 28px;
+        }
+
+        .qr-block {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 18px;
+            padding: 28px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        .qr-block:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .qr-img {
+            width: 120px; height: 120px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+            background: var(--bg-light);
+        }
+        .qr-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .qr-text p {
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin-bottom: 12px;
+        }
+        .qr-upi {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gold-dim);
+            background: rgba(201,165,92,0.08);
+            border: 1px solid rgba(201,165,92,0.2);
+            padding: 6px 14px;
+            border-radius: 100px;
+        }
+        .qr-upi svg { width: 14px; height: 14px; }
+
+        .steps-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .step-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .step-num-sm {
+            width: 28px; height: 28px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-row p {
+            font-size: 15px;
+            color: var(--text-dim);
+            line-height: 1.65;
+        }
+        .step-row p strong { color: var(--text-dark); }
+
+        /* Slot tags */
+        .slot-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .slot-tag {
+            background: rgba(201,165,92,0.07);
+            border: 1px solid rgba(201,165,92,0.2);
+            color: var(--text-dark);
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 100px;
+            transition: all 0.2s;
+            cursor: default;
+        }
+        .slot-tag:hover {
+            background: rgba(201,165,92,0.15);
+            border-color: rgba(201,165,92,0.35);
+        }
+        .slot-tag.popular {
+            background: rgba(201,165,92,0.15);
+            border-color: rgba(201,165,92,0.4);
+            color: var(--gold-dim);
+            font-weight: 600;
+        }
+
+        .delay-note {
+            margin-top: 16px;
+            background: rgba(201,165,92,0.06);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 10px 10px 0;
+            padding: 12px 16px;
+        }
+        .delay-note p {
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin: 0;
+        }
+        .delay-note strong { color: var(--gold-dim); }
+
+        /* ═══════════════════════════════════════
+           TESTIMONIALS
+        ═══════════════════════════════════════ */
+        .stories-section {
+            background: var(--bg-deep);
+            padding-top: 140px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 72px;
+        }
+
+        .t-card {
+            background: rgba(26,34,53,0.5);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 40px 32px;
+            transition: all 0.4s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .t-card::after {
+            content: '"';
+            position: absolute;
+            bottom: -18px; right: 22px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 130px;
+            color: var(--gold);
+            opacity: 0.05;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .t-card:hover {
+            border-color: rgba(201,165,92,0.2);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.35), 0 0 40px rgba(201,165,92,0.08);
+        }
+
+        .t-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .t-stars svg { width: 15px; height: 15px; color: var(--gold); fill: var(--gold); }
+
+        .t-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.75;
+            margin-bottom: 28px;
+        }
+
+        .t-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding-top: 22px;
+        }
+        .t-avatar {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+            color: var(--bg-deep);
+            font-size: 15px;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .t-name { font-size: 14.5px; font-weight: 600; color: #fff; }
+        .t-detail { font-size: 12.5px; color: var(--text-secondary); }
+        .t-service {
+            margin-left: auto;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--gold);
+            background: rgba(201,165,92,0.1);
+            border: 1px solid rgba(201,165,92,0.15);
+            padding: 4px 12px;
+            border-radius: 100px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        /* ═══════════════════════════════════════
+           WHY CHOOSE / PROMISE
+        ═══════════════════════════════════════ */
+        .promise-section {
+            background: var(--bg-surface);
+            padding-top: 140px;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 64px;
+        }
+        .promise-card {
+            background: rgba(26,34,53,0.5);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 36px 28px;
+            text-align: center;
+            transition: all 0.4s var(--ease-out);
+            backdrop-filter: blur(8px);
+        }
+        .promise-card:hover {
+            border-color: rgba(201,165,92,0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3), 0 0 40px rgba(201,165,92,0.06);
+        }
+        .promise-icon {
+            width: 64px; height: 64px;
+            background: rgba(201,165,92,0.08);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            border: 1.5px solid rgba(201,165,92,0.15);
+            transition: all 0.4s var(--ease-spring);
+        }
+        .promise-card:hover .promise-icon {
+            background: rgba(201,165,92,0.14);
+            transform: rotate(-6deg) scale(1.1);
+            border-color: rgba(201,165,92,0.3);
+        }
+        .promise-icon svg { width: 26px; height: 26px; color: var(--gold); }
+        .promise-card h3 { font-size: 18px; color: #fff; margin-bottom: 12px; }
+        .promise-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+        /* ═══════════════════════════════════════
+           FAQ
+        ═══════════════════════════════════════ */
+        .faq-section {
+            background: var(--bg-light);
+            color: var(--text-dark);
+            padding-top: 140px;
+        }
+        .faq-section .eyebrow { color: var(--gold-dim); }
+        .faq-section .center .eyebrow::after { background: var(--gold-dim); }
+
+        .faq-list {
+            max-width: 760px;
+            margin: 64px auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        .faq-item:first-child { border-top: 1px solid var(--border-light); }
+
+        .faq-q {
+            padding: 26px 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transition: color 0.3s;
+            user-select: none;
+        }
+        .faq-q:hover { color: var(--gold-dim); }
+
+        .faq-toggle {
+            width: 32px; height: 32px;
+            background: var(--border-light);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.4s var(--ease-out);
+        }
+        .faq-toggle svg { width: 14px; height: 14px; color: var(--text-dim); transition: all 0.3s; }
+        .faq-item.open .faq-toggle { background: var(--gold); transform: rotate(45deg); }
+        .faq-item.open .faq-toggle svg { color: var(--bg-deep); }
+
+        .faq-body {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s var(--ease-out);
+        }
+        .faq-item.open .faq-body { grid-template-rows: 1fr; }
+        .faq-body-inner {
+            overflow: hidden;
+            padding: 0 0 26px;
+            font-size: 15.5px;
+            color: var(--text-dim);
+            line-height: 1.85;
+        }
+
+        /* ═══════════════════════════════════════
+           FINAL CTA
+        ═══════════════════════════════════════ */
+        .final-cta {
+            background: linear-gradient(150deg, var(--bg-deep) 0%, var(--bg-card) 100%);
+            padding: 140px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            width: 1000px; height: 1000px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,165,92,0.1) 0%, transparent 60%);
+            top: 50%; left: 50%;
+            transform: translate(-50%,-50%);
+            pointer-events: none;
+            animation: ctaPulse 8s ease-in-out infinite;
+        }
+        @keyframes ctaPulse {
+            0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%,-50%) scale(1.15); opacity: 0.8; }
+        }
+        .final-cta h2 { color: #fff; margin-bottom: 18px; position: relative; }
+        .final-cta p {
+            font-size: 18.5px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+            position: relative;
+        }
+        .final-cta .btn-group { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+        /* ═══════════════════════════════════════
+           FOOTER
+        ═══════════════════════════════════════ */
+        footer {
+            background: #050810;
+            padding: 56px 0 36px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 56px;
+            margin-bottom: 56px;
+        }
+        .footer-brand .logo { font-size: 22px; display: block; margin-bottom: 16px; }
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 260px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+            position: relative;
+        }
+        .footer-col ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s var(--ease-out);
+        }
+        .footer-col ul li a:hover { color: #fff; }
+        .footer-col ul li a:hover::after { width: 100%; }
+
+        .footer-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 28px;
+        }
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            text-align: center;
+        }
+        .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); text-align: center; }
+        .footer-disclaimer { font-size: 12px; color: rgba(255,255,255,0.18); max-width: 520px; text-align: center; line-height: 1.6; }
+
+        /* ═══════════════════════════════════════
+           PAGE LOADER
+        ═══════════════════════════════════════ */
+        #page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--bg-deep);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transition: opacity 0.7s var(--ease-out), visibility 0.7s;
+        }
+        #page-loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            animation: loaderPulse 1.6s ease-in-out infinite;
+        }
+        .loader-logo em { font-style: normal; color: var(--gold); }
+        @keyframes loaderPulse {
+            0%,100% { opacity: 1; }
+            50% { opacity: 0.35; }
+        }
+        .loader-bar-wrap {
+            width: 180px;
+            height: 2px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .loader-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+            border-radius: 2px;
+            animation: loaderFill 1.4s var(--ease-out) forwards;
+        }
+        @keyframes loaderFill {
+            from { width: 0%; }
+            to   { width: 100%; }
+        }
+
+        /* ═══════════════════════════════════════
+           SCROLL PROGRESS BAR
+        ═══════════════════════════════════════ */
+        #scroll-progress {
+            position: fixed;
+            top: 0; left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--teal-light));
+            z-index: 2000;
+            transition: width 0.1s linear;
+            box-shadow: 0 0 10px rgba(201,165,92,0.4);
+        }
+
+        /* ═══════════════════════════════════════
+           FLOATING WHATSAPP
+        ═══════════════════════════════════════ */
+        .wa-float {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 800;
+            width: 60px; height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 6px 32px rgba(37,211,102,0.4);
+            color: white;
+            text-decoration: none;
+            animation: waEntrance 0.8s 2.2s var(--ease-out) both;
+            transition: transform 0.3s var(--ease-out), box-shadow 0.3s;
+        }
+        .wa-float:hover {
+            transform: scale(1.12) translateY(-3px);
+            box-shadow: 0 14px 48px rgba(37,211,102,0.55);
+            color: white;
+        }
+        .wa-float svg { width: 30px; height: 30px; }
+        @keyframes waEntrance {
+            from { opacity: 0; transform: scale(0) rotate(-180deg); }
+            to   { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+        .wa-float-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(37,211,102,0.45);
+            animation: waPulseRing 2.5s ease-out infinite;
+        }
+        .wa-float-ring:nth-child(2) { animation-delay: 0.8s; }
+        @keyframes waPulseRing {
+            0%   { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.7); opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════
+           PARTICLE CANVAS
+        ═══════════════════════════════════════ */
+        #hero-canvas {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ═══════════════════════════════════════
+           MAGNETIC BUTTON EFFECT
+        ═══════════════════════════════════════ */
+        .btn-magnetic { will-change: transform; }
+
+        /* ═══════════════════════════════════════
+           SOCIAL PROOF TOAST
+        ═══════════════════════════════════════ */
+        .social-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 24px;
+            z-index: 700;
+            background: rgba(26,34,53,0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(201,165,92,0.15);
+            border-radius: 14px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transform: translateX(-120%);
+            transition: transform 0.6s var(--ease-out);
+            max-width: 300px;
+        }
+        .social-toast.show { transform: translateX(0); }
+        .social-toast-avatar {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+            color: var(--bg-deep);
+            font-size: 13px;
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+        }
+        .social-toast-text { font-size: 13px; color: var(--text-primary); line-height: 1.45; }
+        .social-toast-text strong { color: var(--gold); font-weight: 600; }
+        .social-toast-time { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+        /* ═══════════════════════════════════════
+           CUSTOM CURSOR GLOW
+        ═══════════════════════════════════════ */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,165,92,0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: left 0.15s ease-out, top 0.15s ease-out;
+            mix-blend-mode: screen;
+        }
+
+        /* ═══════════════════════════════════════
+           TYPEWRITER CURSOR
+        ═══════════════════════════════════════ */
+        .typewriter-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        #typewriter-text { display: inline; }
+        .cursor-blink {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background: var(--gold);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: cursorBlink 0.9s step-end infinite;
+        }
+        @keyframes cursorBlink {
+            0%,100% { opacity: 1; }
+            50%      { opacity: 0; }
+        }
+
+        /* ═══════════════════════════════════════
+           RESPONSIVE
+        ═══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .promise-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-brand { grid-column: span 2; }
+            .cursor-glow { display: none; }
+        }
+
+        @media (max-width: 900px) {
+            .analyst-grid { grid-template-columns: 1fr; gap: 56px; }
+            .pricing-layout { grid-template-columns: 1fr; }
+            .testimonial-grid { grid-template-columns: 1fr; max-width: 540px; margin-inline: auto; }
+            .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+            .steps-grid::before { display: none; }
+            .social-toast { left: 16px; right: 16px; max-width: none; bottom: 90px; }
+        }
+
+        @media (max-width: 680px) {
+            section { padding: 90px 0; }
+            .hero { padding: 140px 0 90px; min-height: unset; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .services-grid { grid-template-columns: 1fr; }
+            .promise-grid { grid-template-columns: 1fr 1fr; }
+            .expertise-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+            .trust-row { gap: 16px; }
+            .trust-sep { display: none; }
+            .qr-block { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-brand { grid-column: span 1; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-disclaimer { text-align: center; }
+        }
+
+        @media (max-width: 420px) {
+            .hero-actions { flex-direction: column; align-items: flex-start; }
+            .promise-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .reveal, .reveal-left, .reveal-right, .reveal-scale {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── PAGE LOADER ─── -->
+<div id="page-loader">
+    <div class="loader-logo">Speak <em>&amp;</em> Settle</div>
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- ─── SCROLL PROGRESS ─── -->
+<div id="scroll-progress"></div>
+
+<!-- ─── CUSTOM CURSOR GLOW ─── -->
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<!-- ─── SOCIAL PROOF TOAST ─── -->
+<div class="social-toast" id="social-toast">
+    <div class="social-toast-avatar" id="toast-avatar">A</div>
+    <div>
+        <div class="social-toast-text" id="toast-text"><strong>Aditi from Mumbai</strong> just booked a session</div>
+        <div class="social-toast-time" id="toast-time">2 minutes ago</div>
+    </div>
+</div>
+
+<!-- ─── FLOATING WHATSAPP ─── -->
+<a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20would%20like%20to%20book%20a%20counselling%20session." target="_blank" class="wa-float" title="Start Free Chat">
+    <span class="wa-float-ring"></span>
+    <span class="wa-float-ring"></span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ─── NAVIGATION ─── -->
+<header class="site-header" id="site-header">
     <div class="container">
+        <nav class="nav-inner">
+            <a href="#" class="logo">Speak <em>&amp;</em> Settle</a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#stories">Testimonials</a></li>
+                <li><a href="#book" class="nav-cta">Book Now Rs.399 &rarr;</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </div>
+</header>
 
-        <div class="center reveal">
-            <div class="eyebrow">
-                Start Your Healing Journey
+<!-- Mobile nav -->
+<div class="mobile-nav" id="mobile-nav">
+    <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close">&times;</button>
+    <a href="#about"    onclick="closeMobileNav()">About</a>
+    <a href="#services" onclick="closeMobileNav()">Services</a>
+    <a href="#stories"  onclick="closeMobileNav()">Testimonials</a>
+    <a href="#book"     onclick="closeMobileNav()" style="color:var(--gold);">Book Now Rs.399</a>
+</div>
+
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+
+            <div class="hero-badge reveal">
+                <span class="badge-pulse"></span>
+                You Are Not Alone &nbsp;&middot;&nbsp; Free Chat Available &nbsp;&middot;&nbsp; I'm Here For You
             </div>
 
-            <h2>
-                Choose Your Support Session
-            </h2>
-
-            <p class="services-intro">
-                Whether you need a quick healing session,
-                emotional clarity, or a deep one-on-one conversation —
-                you are welcome here.
+            <p class="hero-tagline reveal d1">
+                <span class="typewriter-wrap"><span id="typewriter-text"></span><span class="cursor-blink"></span></span>
             </p>
+
+            <h1 class="reveal d1" id="hero-h1">
+                You don't have<br>to carry this<br><em>alone, anymore.</em>
+            </h1>
+
+            <p class="hero-sub reveal d2">
+                Whatever you're going through — heartbreak, confusion, stress, or just feeling lost — I'm here. Speak freely. Be heard. Start healing. Free on WhatsApp, or book a personalised call.
+            </p>
+
+            <div class="hero-pills reveal d2">
+                <div class="hero-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    20-Min Sessions
+                </div>
+                <div class="hero-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    100% Confidential
+                </div>
+                <div class="hero-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>
+                    Direct WhatsApp Call
+                </div>
+                <div class="hero-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                    Free Chat or Rs.399 Call
+                </div>
+            </div>
+
+            <div class="hero-actions reveal d3">
+                <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat for Free
+                </a>
+                <a href="#book" class="btn btn-gold">
+                    Book a Call Rs.399
+                    <span class="arr">&rarr;</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-row">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                100% Confidential
+            </div>
+            <div class="trust-sep"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Free WhatsApp Counselling
+            </div>
+            <div class="trust-sep"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                7+ Years Analyst Experience
+            </div>
+            <div class="trust-sep"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>
+                WhatsApp Chat &amp; Call
+            </div>
+            <div class="trust-sep"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                Personalised Call &mdash; Rs.399 / 20 Min
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ─── ABOUT / ANALYST ─── -->
+<section class="analyst-section" id="about">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#F4EDE6"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="analyst-grid">
+
+            <div class="analyst-left reveal reveal-left">
+                <span class="eyebrow">About Nikhil</span>
+                <h2>You Are Not Alone.<br><em style="font-style:italic;color:var(--gold-dim);">I'm Here For You.</em></h2>
+                <p>
+                    Life can feel unbearably heavy sometimes &mdash; and carrying it alone makes everything harder. I've been there too. I created Speak &amp; Settle because I believe every person deserves a safe, judgment-free space to finally let it all out.
+                </p>
+                <p>
+                    With 7+ years of analytical experience combined with genuine human empathy, I help you untangle whatever's weighing on your heart &mdash; confusion, grief, stress, fear, or just feeling completely lost. You're not alone, and you don't have to figure this out by yourself.
+                </p>
+
+                <div class="analyst-badge reveal d1">
+                    <div class="analyst-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <div class="analyst-badge-text">
+                        <strong>Certified Analyst-Counsellor</strong>
+                        <span>7+ Years &middot; Data-Driven &middot; Human-Centred</span>
+                    </div>
+                </div>
+
+                <div class="stats-row reveal d2">
+                    <div class="stat-box">
+                        <div class="stat-num" data-count="7" data-suffix="+">7+</div>
+                        <div class="stat-label">Years of<br>Experience</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num" data-count="100" data-suffix="+">100+</div>
+                        <div class="stat-label">Sessions<br>Conducted</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-num" data-count="7" data-suffix="">7</div>
+                        <div class="stat-label">Specialised<br>Services</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal reveal-right d1">
+                <div class="expertise-grid">
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                        Stress Management
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                        Career Transition
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                        Debt Management
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+                        Emotional Healing
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                        Self-Confidence
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        Parenting Support
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Decision-Making
+                    </div>
+                    <div class="expertise-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        Life Management
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── SERVICES ─── -->
+<section class="services-section" id="services">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#080C14"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">Specialised Services</span>
+            <h2>How I Can Help You</h2>
+            <p class="services-intro">Structured, analytical counselling across the areas that matter most &mdash; delivered with clarity and care.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="service-card reveal d1">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                </div>
+                <h3>Stress &amp; Life Management</h3>
+                <p>Feeling overwhelmed by daily demands? I help you identify root triggers, build sustainable coping systems, and create a calmer, more structured approach to life.</p>
+            </div>
+
+            <div class="service-card reveal d2">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                </div>
+                <h3>Career Transition &amp; Job Switch</h3>
+                <p>Stuck in a role that doesn't fit? I provide analytical guidance on evaluating opportunities, navigating uncertainty, and making career moves with confidence.</p>
+            </div>
+
+            <div class="service-card reveal d3">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+                </div>
+                <h3>Debt &amp; Money Management</h3>
+                <p>Financial stress is deeply personal. I help you create a clear picture of your situation, prioritise obligations, and build a realistic roadmap out of debt.</p>
+            </div>
+
+            <div class="service-card reveal d1">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+                </div>
+                <h3>Breakup &amp; Emotional Healing</h3>
+                <p>Heartbreak deserves more than generic advice. I offer a structured, empathetic process to help you process grief, rebuild perspective, and move forward with clarity.</p>
+            </div>
+
+            <div class="service-card reveal d2">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                </div>
+                <h3>Self-Confidence &amp; Personality</h3>
+                <p>Self-doubt can hold you back silently. I work with you to identify limiting beliefs, build authentic confidence, and develop the personality traits that align with your goals.</p>
+            </div>
+
+            <div class="service-card reveal d3">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                </div>
+                <h3>Parenting Counselling</h3>
+                <p>Parenting in today's world is complex. I help parents understand their child's behaviour patterns, improve communication dynamics, and build stronger family relationships.</p>
+            </div>
+
+            <div class="service-card reveal d1">
+                <div class="service-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h3>Decision-Making Counselling</h3>
+                <p>When every path looks uncertain, I apply proven analytical frameworks to help you weigh options, eliminate cognitive bias, and make decisions you won't regret.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── HOW IT WORKS ─── -->
+<section class="how-section">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#141B27"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">The Process</span>
+            <h2>3 Steps to Clarity</h2>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step reveal d1">
+                <div class="step-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <h3>Pay &amp; Book</h3>
+                <p>Scan the QR or pay Rs.399 via UPI. Instantly confirm your preferred time slot.</p>
+            </div>
+            <div class="step reveal d2">
+                <div class="step-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>
+                </div>
+                <h3>Connect on WhatsApp</h3>
+                <p>No IVR. No waiting room. I connect with you directly on WhatsApp &mdash; Chat or Voice Call.</p>
+            </div>
+            <div class="step reveal d3">
+                <div class="step-circle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <h3>Get Actionable Clarity</h3>
+                <p>Leave with a clear perspective, a structured plan, and the confidence to move forward.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PRICING / BOOKING ─── -->
+<section class="pricing-section" id="book">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#F4EDE6"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">Choose Your Support</span>
+            <h2>Free or Personalised &mdash; Your Choice</h2>
         </div>
 
         <div class="pricing-layout">
 
-            <!-- LEFT SIDE -->
-            <div class="pricing-tiers">
+            <!-- Pricing Cards - Two Tiers -->
+            <div class="pricing-tiers reveal reveal-scale">
 
-                <!-- WEEKLY HEALING -->
-                <div class="pricing-card reveal-scale">
-
-                    <div style="
-                        position:absolute;
-                        top:18px;
-                        right:18px;
-                        background:#25D366;
-                        color:white;
-                        padding:6px 14px;
-                        border-radius:100px;
-                        font-size:11px;
-                        font-weight:700;
-                        letter-spacing:1px;
-                    ">
-                        MOST POPULAR
-                    </div>
-
+                <!-- FREE TIER -->
+                <div class="pricing-card pricing-card-free" style="margin-bottom:24px; background: rgba(20,27,39,0.8); border: 1.5px solid rgba(108,196,182,0.25);">
                     <div class="price-display">
-
-                        <div class="price-was">
-                            Regular Price Rs.299
-                        </div>
-
-                        <span class="price-now">
-                            Rs.99
-                        </span>
-
-                        <div class="price-note">
-                            Weekly Healing Masterclass
-                        </div>
-
-                        <div class="price-badge">
-                            GROUP SESSION
-                        </div>
-
+                        <span class="price-badge" style="background:rgba(108,196,182,0.12); border-color:rgba(108,196,182,0.35); color:var(--teal-light); margin-bottom:12px; display:inline-block;">Always Free</span>
+                        <span class="price-now" style="color:var(--teal-light); font-size:64px;">Rs.0</span>
+                        <p class="price-note">WhatsApp Chat Counselling</p>
                     </div>
-
                     <hr class="pricing-divider">
-
                     <div class="pricing-features">
-
                         <div class="pricing-feat">
-                            ✓ Weekly Live Healing Session
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Text chat on WhatsApp &mdash; completely free
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Stress, Anxiety & Overthinking Support
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Share what's on your heart, no pressure
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Relationship & Emotional Guidance
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            100% confidential &amp; judgment-free
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Positive Healing Community
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Reply based on availability (11 AM &ndash; 10 PM)
                         </div>
-
-                        <div class="pricing-feat">
-                            ✓ WhatsApp Group Access
-                        </div>
-
                     </div>
-
-                    <a href="https://rzp.io/rzp/WHrKRvy"
-                       target="_blank"
-                       class="btn btn-gold btn-magnetic"
-                       style="width:100%;justify-content:center;">
-
-                        Join Healing Session — Rs.99
-
+                    <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa" style="width:100%; justify-content:center; font-size:15px; background:var(--teal);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Start Free Chat Now
                     </a>
-
                 </div>
 
-                <!-- PERSONAL CALL -->
-                <div class="pricing-card reveal-scale">
-
-                    <div style="
-                        position:absolute;
-                        top:18px;
-                        right:18px;
-                        background:#C9A55C;
-                        color:black;
-                        padding:6px 14px;
-                        border-radius:100px;
-                        font-size:11px;
-                        font-weight:700;
-                        letter-spacing:1px;
-                    ">
-                        PREMIUM
+                <!-- PAID TIER -->
+                <div class="pricing-card" style="position:relative;">
+                    <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--bg-deep); font-size:11px; font-weight:700; padding:5px 18px; border-radius:0 0 12px 12px; letter-spacing:0.1em; text-transform:uppercase;">Most Popular</div>
+                    <div class="price-display" style="padding-top:12px;">
+                        <p class="price-was">Regular price: Rs.599</p>
+                        <span class="price-now">Rs.399</span>
+                        <p class="price-note">Personalised 20-Min Voice Call</p>
+                        <span class="price-badge">Limited Offer</span>
                     </div>
-
-                    <div class="price-display">
-
-                        <div class="price-was">
-                            Regular Price Rs.599
-                        </div>
-
-                        <span class="price-now">
-                            Rs.399
-                        </span>
-
-                        <div class="price-note">
-                            Personalised 1-on-1 WhatsApp Call
-                        </div>
-
-                        <div class="price-badge">
-                            PRIVATE SESSION
-                        </div>
-
-                    </div>
-
                     <hr class="pricing-divider">
-
                     <div class="pricing-features">
-
                         <div class="pricing-feat">
-                            ✓ 20-Minute One-on-One Call
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            20-minute one-on-one voice call
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Deep Emotional Guidance
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Deep-dive, structured personal guidance
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Direct Call With Nikhil
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Direct call with Nikhil on WhatsApp
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ 100% Confidential
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Slots: 11 AM &ndash; 10 PM, 7 days a week
                         </div>
-
                         <div class="pricing-feat">
-                            ✓ Actionable Clarity & Support
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            100% confidential &mdash; nothing recorded
                         </div>
-
+                        <div class="pricing-feat">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            Actionable clarity &amp; emotional support
+                        </div>
                     </div>
-
-                    <a href="https://rzp.io/rzp/MHPjV5R"
-                       target="_blank"
-                       class="btn btn-wa btn-magnetic"
-                       style="width:100%;justify-content:center;">
-
-                        Book Personal Session — Rs.399
-
+                    <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20would%20like%20to%20book%20a%20personalised%20counselling%20call.%20Please%20share%20available%20slots." target="_blank" class="btn btn-wa" style="width:100%; justify-content:center; font-size:15px;">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Book a Call &mdash; Rs.399
                     </a>
-
                 </div>
 
             </div>
 
-            <!-- RIGHT SIDE -->
-            <div class="payment-info reveal-right">
+            <!-- Payment Info -->
+            <div class="payment-info reveal d1">
+                <h3>Book Your<br>Personalised Call</h3>
+                <p>Pay Rs.399 via UPI and confirm your slot on WhatsApp. Available every day from <strong style="color:var(--gold-dim);">11:00 AM to 10:00 PM</strong> &mdash; choose any time that works for you.</p>
 
-                <h3>
-                    Talk Freely.<br>
-                    Heal Slowly.<br>
-                    You Are Safe Here.
-                </h3>
+                <!-- Time Slots Display -->
+                <div style="background:#fff; border:1px solid var(--border-light); border-radius:18px; padding:20px 24px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+                    <p style="font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold-dim); margin-bottom:14px;">Available Time Slots (IST)</p>
+                    <div class="slot-grid">
+                        <span class="slot-tag">11:00 AM</span>
+                        <span class="slot-tag">12:00 PM</span>
+                        <span class="slot-tag">1:00 PM</span>
+                        <span class="slot-tag">2:00 PM</span>
+                        <span class="slot-tag">3:00 PM</span>
+                        <span class="slot-tag">4:00 PM</span>
+                        <span class="slot-tag popular">5:00 PM &starf;</span>
+                        <span class="slot-tag">6:00 PM</span>
+                        <span class="slot-tag popular">7:00 PM &starf;</span>
+                        <span class="slot-tag">8:00 PM</span>
+                        <span class="slot-tag popular">9:00 PM &starf;</span>
+                        <span class="slot-tag">10:00 PM</span>
+                    </div>
+                    <div class="delay-note">
+                        <p><strong>Please Note:</strong> There may be a slight delay in confirming your slot. Nikhil will respond and confirm your session time as soon as possible via WhatsApp.</p>
+                    </div>
+                </div>
 
-                <p>
-                    Sometimes all we need is one honest conversation.
-                    No judgement. No pressure.
-                    Just someone who listens and understands.
-                </p>
-
-                <div style="
-                    background:white;
-                    border-radius:22px;
-                    padding:35px;
-                    border:1px solid #e5ddd5;
-                    margin-bottom:25px;
-                    box-shadow:0 10px 40px rgba(0,0,0,0.08);
-                ">
-
-                    <h4 style="
-                    font-size:28px;
-                    margin-bottom:15px;
-                    color:#111;
-                    ">
-                        Free WhatsApp Support
-                    </h4>
-
-                    <p style="
-                    color:#666;
-                    line-height:1.8;
-                    margin-bottom:25px;
-                    ">
-                        Before booking anything,
-                        you can directly message me on WhatsApp.
-                        Share what you're feeling.
-                        Speak openly.
-                    </p>
-
-                    <a href="https://wa.me/918591201967"
-                       target="_blank"
-                       class="btn btn-wa"
-                       style="
-                       width:100%;
-                       justify-content:center;
-                       font-size:17px;
-                       ">
-
-                       Chat On WhatsApp Now
-
-                    </a>
-
+                <div class="qr-block">
+                    <div style="width:150px; height:150px; border-radius:12px; overflow:hidden; flex-shrink:0; border:2px solid var(--border-light); box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+                        <img src="data:image/png;base64,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" alt="Scan & Pay Rs.399 QR Code" style="width:100%; height:100%; object-fit:cover; display:block;">
+                    </div>
+                    <div class="qr-text">
+                        <h4>Scan &amp; Pay Rs.399</h4>
+                        <p>Works with Google Pay, PhonePe, Paytm, BHIM &amp; all UPI apps.</p>
+                        <span class="qr-upi">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Secure UPI Payment
+                        </span>
+                    </div>
                 </div>
 
                 <div class="steps-list">
-
                     <div class="step-row">
                         <div class="step-num-sm">1</div>
-
-                        <p>
-                            <strong>Select your preferred session</strong>
-                            and complete secure payment through Razorpay.
-                        </p>
+                        <p><strong>Scan &amp; Pay Rs.399</strong> using any UPI app &mdash; Google Pay, PhonePe, Paytm, BHIM.</p>
                     </div>
-
                     <div class="step-row">
                         <div class="step-num-sm">2</div>
-
-                        <p>
-                            <strong>Share your preferred timing</strong>
-                            on WhatsApp after payment.
-                        </p>
+                        <p><strong>Send payment screenshot</strong> on WhatsApp to +91 85912 01967.</p>
                     </div>
-
                     <div class="step-row">
                         <div class="step-num-sm">3</div>
-
-                        <p>
-                            <strong>Receive session confirmation</strong>
-                            directly from Nikhil.
-                        </p>
+                        <p><strong>Request your preferred slot</strong> (11 AM&ndash;10 PM) &mdash; Nikhil will confirm as soon as possible.</p>
                     </div>
-
                     <div class="step-row">
                         <div class="step-num-sm">4</div>
-
-                        <p>
-                            <strong>Begin your healing journey</strong>
-                            comfortably through WhatsApp.
-                        </p>
+                        <p><strong>Session begins on WhatsApp</strong> &mdash; Chat or Voice Call. No apps to download.</p>
                     </div>
-
                 </div>
 
+                <div style="margin-top: 32px;">
+                    <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20have%20completed%20the%20payment%20of%20Rs.399.%20Please%20confirm%20my%20session%20slot." target="_blank" class="btn btn-wa">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Confirm Booking on WhatsApp
+                    </a>
+                </div>
             </div>
 
         </div>
-
     </div>
+</section>
+<!-- MASTERCLASS SECTION START -->
+<section id="masterclass" style="
+background: linear-gradient(180deg,#0C1018 0%, #080C14 100%);
+padding: 120px 20px;
+text-align:center;
+">
+
+<div style="
+max-width:1100px;
+margin:auto;
+">
+
+<p style="
+color:#C9A55C;
+font-size:14px;
+letter-spacing:3px;
+margin-bottom:20px;
+text-transform:uppercase;
+">
+LIVE HEALING MASTERCLASS
+</p>
+
+<h2 style="
+color:white;
+font-size:56px;
+margin-bottom:25px;
+line-height:1.2;
+font-family:'Cormorant Garamond', serif;
+">
+Overcoming Rejection 
+<span style="color:#C9A55C;">in Love</span>
+</h2>
+
+<p style="
+max-width:750px;
+margin:auto;
+color:#9AA8C4;
+font-size:18px;
+line-height:1.9;
+margin-bottom:60px;
+">
+Feeling emotionally broken after heartbreak, rejection,
+attachment or loneliness?
+
+This live masterclass is designed to help you heal emotionally,
+stop overthinking, rebuild confidence and move forward with self-worth.
+</p>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+margin-bottom:70px;
+">
+
+<div style="
+background:#141B27;
+padding:35px 25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.06);
+">
+<div style="font-size:42px;margin-bottom:20px;">❤️</div>
+<h3 style="color:white;margin-bottom:15px;">
+Emotional Healing
+</h3>
+<p style="color:#9AA8C4;line-height:1.7;">
+Learn how to heal from emotional pain and heartbreak.
+</p>
+</div>
+
+<div style="
+background:#141B27;
+padding:35px 25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.06);
+">
+<div style="font-size:42px;margin-bottom:20px;">🧠</div>
+<h3 style="color:white;margin-bottom:15px;">
+Stop Overthinking
+</h3>
+<p style="color:#9AA8C4;line-height:1.7;">
+Understand emotional attachment and regain mental peace.
+</p>
+</div>
+
+<div style="
+background:#141B27;
+padding:35px 25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.06);
+">
+<div style="font-size:42px;margin-bottom:20px;">✨</div>
+<h3 style="color:white;margin-bottom:15px;">
+Confidence Rebuild
+</h3>
+<p style="color:#9AA8C4;line-height:1.7;">
+Reconnect with your self-worth and emotional strength.
+</p>
+</div>
+
+<div style="
+background:#141B27;
+padding:35px 25px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,0.06);
+">
+<div style="font-size:42px;margin-bottom:20px;">🎤</div>
+<h3 style="color:white;margin-bottom:15px;">
+Live Q&A Session
+</h3>
+<p style="color:#9AA8C4;line-height:1.7;">
+Ask questions and receive live relationship guidance.
+</p>
+</div>
+
+</div>
+
+<p style="
+color:#9AA8C4;
+text-decoration:line-through;
+font-size:22px;
+margin-bottom:10px;
+">
+Rs.999
+</p>
+
+<h2 style="
+color:#C9A55C;
+font-size:72px;
+margin-bottom:10px;
+font-family:'Cormorant Garamond', serif;
+">
+Rs.99
+</h2>
+
+<p style="
+color:#9AA8C4;
+margin-bottom:40px;
+font-size:16px;
+">
+Launch Offer • Limited Seats Available
+</p>
+
+<a 
+href="https://rzp.io/rzp/WHrKRvy"
+target="_blank"
+style="
+display:inline-block;
+background:#C9A55C;
+color:#080C14;
+padding:18px 42px;
+border-radius:100px;
+font-size:17px;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+box-shadow:0 8px 28px rgba(201,165,92,0.35);
+">
+Join Masterclass Now
+</a>
+
+<p style="
+color:#6B7A99;
+margin-top:20px;
+font-size:14px;
+">
+Secure Payment via Razorpay
+</p>
+
+</div>
 
 </section>
+<!-- MASTERCLASS SECTION END -->
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="stories-section" id="stories">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#080C14"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">Client Testimonials</span>
+            <h2>Words from Those I've Helped</h2>
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="t-card reveal d1">
+                <div class="t-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-text">Nikhil helped me see my debt situation with complete clarity. Within 20 minutes, I had a realistic action plan I could actually follow. The analytical approach made all the difference.</p>
+                <div class="t-author">
+                    <div class="t-avatar">A</div>
+                    <div>
+                        <div class="t-name">Aditi S.</div>
+                        <div class="t-detail">Mumbai</div>
+                    </div>
+                    <span class="t-service">Debt Coaching</span>
+                </div>
+            </div>
+
+            <div class="t-card reveal d2">
+                <div class="t-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-text">I was terrified about switching industries after 8 years. One session with Nikhil gave me a structured framework to evaluate my options. I made the move and haven't looked back.</p>
+                <div class="t-author">
+                    <div class="t-avatar">R</div>
+                    <div>
+                        <div class="t-name">Rohan P.</div>
+                        <div class="t-detail">Bangalore</div>
+                    </div>
+                    <span class="t-service">Career Switch</span>
+                </div>
+            </div>
+
+            <div class="t-card reveal d3">
+                <div class="t-stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <p class="t-text">After my breakup I felt stuck for months. Nikhil didn't just listen &mdash; he helped me understand the pattern. It was the first time someone broke it down without judgment. Genuinely life-changing.</p>
+                <div class="t-author">
+                    <div class="t-avatar">S</div>
+                    <div>
+                        <div class="t-name">Sana K.</div>
+                        <div class="t-detail">Delhi</div>
+                    </div>
+                    <span class="t-service">Emotional Healing</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── PROMISE ─── -->
+<section class="promise-section">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="#141B27"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">The Difference</span>
+            <h2>Why Speak &amp; Settle</h2>
+        </div>
+
+        <div class="promise-grid">
+            <div class="promise-card reveal d1">
+                <div class="promise-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                </div>
+                <h3>Analytical Precision</h3>
+                <p>7+ years of professional analysis applied to your personal challenges &mdash; structured, clear, and outcome-focused.</p>
+            </div>
+            <div class="promise-card reveal d2">
+                <div class="promise-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16z"/></svg>
+                </div>
+                <h3>No IVR. No Waiting.</h3>
+                <p>You call, I answer. No automated systems, no receptionist, no queue. Direct access the moment you need it.</p>
+            </div>
+            <div class="promise-card reveal d3">
+                <div class="promise-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                </div>
+                <h3>Complete Privacy</h3>
+                <p>Everything shared in our session stays strictly between us. Never recorded, never disclosed &mdash; guaranteed.</p>
+            </div>
+            <div class="promise-card reveal d4">
+                <div class="promise-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Respect Your Time</h3>
+                <p>20 focused minutes. No small talk, no filler. Every session is structured to deliver maximum value in minimum time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section">
+    <!-- Wave top -->
+    <div class="wave-divider wave-top" style="top:-79px;">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#F4EDE6"></path>
+        </svg>
+    </div>
+
+    <div class="container">
+        <div class="center reveal">
+            <span class="eyebrow">FAQ</span>
+            <h2>Questions &amp; Answers</h2>
+        </div>
+
+        <div class="faq-list">
+
+            <div class="faq-item reveal d1">
+                <div class="faq-q">
+                    Is this professional therapy or mental health treatment?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    No. Speak &amp; Settle provides structured counselling and analytical coaching, not clinical therapy or psychiatric treatment. Sessions are focused on practical guidance, decision-making support, and emotional clarity. If you are experiencing a mental health crisis, please consult a licensed mental health professional.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d2">
+                <div class="faq-q">
+                    How does the session work &mdash; Chat or Call?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Sessions are conducted on WhatsApp &mdash; you may choose a text chat or a voice call, whichever you're more comfortable with. After payment confirmation, Nikhil will send you the session link or initiate contact at your scheduled time.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d3">
+                <div class="faq-q">
+                    Is my information completely confidential?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Absolutely. Everything discussed in your session is strictly private. No recordings are made, no information is shared with any third party, and no notes are stored. Your privacy is a non-negotiable commitment.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d1">
+                <div class="faq-q">
+                    What if I'm nervous or don't know where to start?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    That's completely normal. Most people come in unsure of where to begin. Nikhil will guide the conversation from the start using structured questions that gently surface what matters most. You don't need to prepare anything &mdash; just show up.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d2">
+                <div class="faq-q">
+                    Can I book multiple sessions?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Yes. Many clients find value in follow-up sessions as they implement advice and encounter new decisions. Each session is priced independently at Rs.399. Discuss your needs with Nikhil via WhatsApp and a schedule can be arranged.
+                </div></div>
+            </div>
+
+            <div class="faq-item reveal d3">
+                <div class="faq-q">
+                    What are the available session timings?
+                    <div class="faq-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </div>
+                </div>
+                <div class="faq-body"><div class="faq-body-inner">
+                    Sessions are available from 11 AM to 10 PM IST, 7 days a week. After payment, message Nikhil on WhatsApp with your preferred time and he will confirm availability within minutes.
+                </div></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ─── FINAL CTA ─── -->
+<div class="final-cta">
+    <div class="container">
+        <h2 class="reveal">You Don't Have to Face This Alone.</h2>
+        <p class="reveal d1">Reach out &mdash; free on WhatsApp, or book a personalised 20-min call. I'm here for you, every day from 11 AM to 10 PM.</p>
+        <div class="btn-group reveal d2">
+            <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Book on WhatsApp
+            </a>
+            <a href="#book" class="btn btn-gold">
+                Book a Call &mdash; Rs.399
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">Speak <em>&amp;</em> Settle</a>
+                <p>Expert analytical counselling for life's most important decisions. Direct, private, and focused. By Nikhil &mdash; 7+ years of professional experience.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Stress &amp; Life Management</a></li>
+                    <li><a href="#services">Career Transition</a></li>
+                    <li><a href="#services">Debt &amp; Money Coaching</a></li>
+                    <li><a href="#services">Breakup &amp; Healing</a></li>
+                    <li><a href="#services">Self-Confidence Coaching</a></li>
+                    <li><a href="#services">Parenting Counselling</a></li>
+                    <li><a href="#services">Decision-Making</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://wa.me/918591201967" target="_blank">WhatsApp: +91 85912 01967</a></li>
+                    <li><a href="mailto:healconnectcare@gmail.com">healconnectcare@gmail.com</a></li>
+                    <li><a href="#book">Book a Session</a></li>
+                    <li><a href="#about">About Nikhil</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Speak &amp; Settle &nbsp;&middot;&nbsp; By Nikhil &nbsp;&middot;&nbsp; All sessions conducted with complete confidentiality.</p>
+            <p class="footer-disclaimer">Speak &amp; Settle provides analytical counselling and coaching services. Sessions are not a substitute for licensed clinical therapy, psychiatric treatment, or emergency mental health services.</p>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ─── SCRIPTS ─── -->
+<script>
+/* ════════════════════════════════
+   PAGE LOADER
+════════════════════════════════ */
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('page-loader').classList.add('hidden');
+    }, 1400);
+});
+
+/* ════════════════════════════════
+   SCROLL PROGRESS BAR
+════════════════════════════════ */
+const progressBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total    = document.body.scrollHeight - window.innerHeight;
+    progressBar.style.width = (scrolled / total * 100) + '%';
+}, { passive: true });
+
+/* ════════════════════════════════
+   NAV SCROLL
+════════════════════════════════ */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+/* ════════════════════════════════
+   MOBILE NAV
+════════════════════════════════ */
+const hamburger   = document.getElementById('hamburger');
+const mobileNav   = document.getElementById('mobile-nav');
+const mobileClose = document.getElementById('mobile-nav-close');
+hamburger.addEventListener('click',   () => mobileNav.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileNav.classList.remove('open'));
+function closeMobileNav() { mobileNav.classList.remove('open'); }
+
+/* ════════════════════════════════
+   PARTICLE CANVAS (Constellation)
+════════════════════════════════ */
+(function () {
+    const canvas = document.getElementById('hero-canvas');
+    const ctx    = canvas.getContext('2d');
+    let particles = [];
+    let W, H;
+
+    function resize() {
+        W = canvas.width  = canvas.offsetWidth;
+        H = canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener('resize', resize, { passive: true });
+    resize();
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x    = Math.random() * W;
+            this.y    = Math.random() * H;
+            this.r    = Math.random() * 1.2 + 0.4;
+            this.a    = Math.random() * Math.PI * 2;
+            this.spd  = Math.random() * 0.2 + 0.04;
+            this.op   = Math.random() * 0.35 + 0.1;
+            this.col  = Math.random() > 0.55 ? '201,165,92' : '108,196,182';
+        }
+        update() {
+            this.y -= this.spd;
+            this.x += Math.sin(this.a) * 0.25;
+            this.a += 0.008;
+            this.op -= 0.0006;
+            if (this.op <= 0 || this.y < -5) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.col},${this.op})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 70; i++) {
+        const p = new Particle();
+        p.y = Math.random() * H;
+        particles.push(p);
+    }
+
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(201,165,92,${0.08 * (1 - dist/120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function loop() {
+        ctx.clearRect(0, 0, W, H);
+        drawConnections();
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(loop);
+    }
+    loop();
+})();
+
+/* ════════════════════════════════
+   TYPEWRITER (Hero tagline)
+════════════════════════════════ */
+(function () {
+    const phrases = [
+        'You Are Not Alone.',
+        'I Am Here To Help You.',
+        'Speak Freely. Be Heard. Heal.',
+        'Free Chat. Or Book a Call.',
+        'Your Pain Deserves To Be Heard.'
+    ];
+    const el = document.getElementById('typewriter-text');
+    let pi = 0, ci = 0, deleting = false;
+
+    function type() {
+        const phrase = phrases[pi];
+        if (!deleting) {
+            el.textContent = phrase.slice(0, ++ci);
+            if (ci === phrase.length) { deleting = true; setTimeout(type, 2500); return; }
+            setTimeout(type, 55);
+        } else {
+            el.textContent = phrase.slice(0, --ci);
+            if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(type, 450); return; }
+            setTimeout(type, 28);
+        }
+    }
+    setTimeout(type, 1800);
+})();
+
+/* ════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════ */
+const revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+const revealEls       = document.querySelectorAll(revealSelectors);
+const revealObserver  = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            revealObserver.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ════════════════════════════════
+   STATS COUNTER ANIMATION
+════════════════════════════════ */
+function animateCount(el, target, suffix, duration) {
+    let start = 0;
+    const step = Math.ceil(target / (duration / 16));
+    const run = () => {
+        start = Math.min(start + step, target);
+        el.textContent = start + suffix;
+        if (start < target) requestAnimationFrame(run);
+        else el.textContent = target + suffix;
+    };
+    requestAnimationFrame(run);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el  = e.target;
+        const raw = el.dataset.count;
+        if (!raw) return;
+        const num    = parseInt(raw);
+        const suffix = el.dataset.suffix || '';
+        animateCount(el, num, suffix, 1400);
+        statsObserver.unobserve(el);
+    });
+}, { threshold: 0.6 });
+document.querySelectorAll('.stat-num[data-count]').forEach(el => statsObserver.observe(el));
+
+/* ════════════════════════════════
+   SERVICE CARD SPOTLIGHT HOVER
+════════════════════════════════ */
+document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--x', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--y', (e.clientY - r.top)  + 'px');
+    });
+});
+
+/* ════════════════════════════════
+   TESTIMONIAL 3D TILT
+════════════════════════════════ */
+document.querySelectorAll('.t-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const r    = card.getBoundingClientRect();
+        const cx   = r.left + r.width  / 2;
+        const cy   = r.top  + r.height / 2;
+        const rotX = ((e.clientY - cy) / (r.height / 2)) * -5;
+        const rotY = ((e.clientX - cx) / (r.width  / 2)) *  5;
+        card.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+/* ════════════════════════════════
+   MAGNETIC BUTTONS
+════════════════════════════════ */
+document.querySelectorAll('.btn-gold, .btn-wa').forEach(btn => {
+    btn.classList.add('btn-magnetic');
+    btn.addEventListener('mousemove', (e) => {
+        const r  = btn.getBoundingClientRect();
+        const dx = (e.clientX - r.left - r.width  / 2) * 0.25;
+        const dy = (e.clientY - r.top  - r.height / 2) * 0.25;
+        btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-3px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+        btn.style.transition = 'transform 0.5s var(--ease-out), box-shadow 0.3s, background 0.3s';
+        setTimeout(() => { btn.style.transition = ''; }, 500);
+    });
+});
+
+/* ════════════════════════════════
+   FAQ ACCORDION (Grid transition)
+════════════════════════════════ */
+document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+    });
+});
+
+/* ════════════════════════════════
+   CUSTOM CURSOR GLOW
+════════════════════════════════ */
+const cursorGlow = document.getElementById('cursor-glow');
+if (cursorGlow && window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top  = e.clientY + 'px';
+    }, { passive: true });
+}
+
+/* ════════════════════════════════
+   SOCIAL PROOF TOAST
+════════════════════════════════ */
+const toastData = [
+    { name: 'Aditi from Mumbai', action: 'just booked a session', time: '2 minutes ago', avatar: 'A' },
+    { name: 'Rohan from Bangalore', action: 'started a free chat', time: '5 minutes ago', avatar: 'R' },
+    { name: 'Sana from Delhi', action: 'just booked a session', time: '8 minutes ago', avatar: 'S' },
+    { name: 'Vikram from Pune', action: 'sent a payment screenshot', time: '12 minutes ago', avatar: 'V' },
+    { name: 'Meera from Chennai', action: 'started a free chat', time: '15 minutes ago', avatar: 'M' },
+];
+
+let toastIndex = 0;
+const toastEl = document.getElementById('social-toast');
+const toastText = document.getElementById('toast-text');
+const toastTime = document.getElementById('toast-time');
+const toastAvatar = document.getElementById('toast-avatar');
+
+function showToast() {
+    const data = toastData[toastIndex];
+    toastText.innerHTML = `<strong>${data.name}</strong> ${data.action}`;
+    toastTime.textContent = data.time;
+    toastAvatar.textContent = data.avatar;
+    toastEl.classList.add('show');
+
+    setTimeout(() => {
+        toastEl.classList.remove('show');
+    }, 4500);
+
+    toastIndex = (toastIndex + 1) % toastData.length;
+}
+
+setTimeout(showToast, 8000);
+setInterval(showToast, 18000);
+</script>
+</body>
+</html>
