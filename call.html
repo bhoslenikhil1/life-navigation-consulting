@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Personal Call — 20 Min Counselling | Speak &amp; Settle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep:      #080C14;
+            --bg-surface:   #141B27;
+            --text-primary: #F0EAE3;
+            --text-secondary:#9AA8C4;
+            --gold:         #C9A55C;
+            --gold-light:   #E4C88A;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+            --t: 0.4s;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        h2 { font-size: clamp(32px, 4.5vw, 56px); }
+        h3 { font-size: 20px; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ─── Header ─── */
+        header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(8,12,20,0.92);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 20px 0;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .back-btn {
+            background: var(--gold);
+            color: var(--bg-deep);
+            padding: 10px 20px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        /* ─── Main Content ─── */
+        main {
+            padding-top: 100px;
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg,#0C1018 0%, #080C14 100%);
+        }
+
+        .eyebrow {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(36px, 5vw, 72px);
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-section h1 em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* ─── Content Grid ─── */
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .info-card {
+            background: var(--bg-surface);
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .info-card h3 {
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .checkmark {
+            color: var(--gold);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .time-slots {
+            background: var(--bg-surface);
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .time-slots h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .slot-tag {
+            background: rgba(201,165,92,0.07);
+            border: 1px solid rgba(201,165,92,0.2);
+            color: var(--text-primary);
+            font-size: 12px;
+            padding: 10px 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .slot-tag.popular {
+            background: rgba(201,165,92,0.15);
+            border-color: rgba(201,165,92,0.4);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* ─── Payment Section ─── */
+        .payment-section {
+            background: var(--bg-surface);
+            padding: 48px 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.06);
+            text-align: center;
+            position: sticky;
+            top: 120px;
+        }
+
+        .price-display {
+            margin-bottom: 32px;
+        }
+
+        .price-was {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+
+        .price-now {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+            margin: 16px 0;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(201,165,92,0.12);
+            border: 1px solid rgba(201,165,92,0.22);
+            color: var(--gold-light);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 100px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        .price-note {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+
+        .features-list {
+            text-align: left;
+            margin: 32px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--text-primary);
+        }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 100px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-deep);
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,165,92,0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.06);
+            color: #fff;
+            border: 1.5px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 900px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-section {
+                position: static;
+            }
+        }
+
+        @media (max-width: 680px) {
+            main {
+                padding-top: 80px;
+            }
+
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .payment-section {
+                padding: 32px 24px;
+            }
+
+            .slots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ─── Loading & Success States ─── */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .payment-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--bg-deep);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(201,165,92,0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+    <div class="container">
+        <div class="nav-inner">
+            <a href="index.html" class="logo">Speak <em>&amp;</em> Settle</a>
+            <a href="index.html" class="back-btn">← Back</a>
+        </div>
+    </div>
+</header>
+
+<!-- ─── MAIN ─── -->
+<main>
+    <div class="hero-section">
+        <span class="eyebrow">Personalized Counselling</span>
+        <h1>20-Minute Voice <em>Call</em></h1>
+        <p>One-on-one guidance for your most pressing challenges. Get clarity, perspective, and an actionable plan — delivered with deep focus and genuine care.</p>
+    </div>
+
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-card">
+                    <h3>📞 What You Get</h3>
+                    <div class="services-list">
+                        <div class="service-item">
+                            <span class="checkmark">✓</span>
+                            <span>20-minute one-on-one voice call</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="checkmark">✓</span>
+                            <span>Structured personal guidance</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="checkmark">✓</span>
+                            <span>Direct WhatsApp contact with Nikhil</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="checkmark">✓</span>
+                            <span>Actionable clarity & emotional support</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="checkmark">✓</span>
+                            <span>100% confidential — nothing recorded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>🎯 Perfect For</h3>
+                    <p style="margin-bottom: 14px;">Stress & anxiety • Career decisions • Relationship issues • Financial planning • Emotional healing • Self-confidence • Parenting challenges • Life direction</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>🕐 How It Works</h3>
+                    <ol style="padding-left: 20px; color: var(--text-secondary); font-size: 14px; line-height: 1.8;">
+                        <li>Pay Rs.399 via UPI & confirm your slot on WhatsApp</li>
+                        <li>Nikhil connects with you on WhatsApp at your scheduled time</li>
+                        <li>Enjoy a focused 20-minute conversation</li>
+                        <li>Leave with clarity & a plan forward</li>
+                    </ol>
+                </div>
+
+                <div class="time-slots">
+                    <h3>📅 Available Slots (IST)</h3>
+                    <div class="slots-grid">
+                        <div class="slot-tag">11:00 AM</div>
+                        <div class="slot-tag">12:00 PM</div>
+                        <div class="slot-tag">1:00 PM</div>
+                        <div class="slot-tag">2:00 PM</div>
+                        <div class="slot-tag">3:00 PM</div>
+                        <div class="slot-tag">4:00 PM</div>
+                        <div class="slot-tag popular">5:00 PM ★</div>
+                        <div class="slot-tag">6:00 PM</div>
+                        <div class="slot-tag popular">7:00 PM ★</div>
+                        <div class="slot-tag">8:00 PM</div>
+                        <div class="slot-tag popular">9:00 PM ★</div>
+                        <div class="slot-tag">10:00 PM</div>
+                    </div>
+                    <p style="font-size: 12px; color: var(--text-secondary); margin-top: 12px;">★ Most Popular Slots</p>
+                </div>
+            </div>
+
+            <!-- Payment Section -->
+            <div class="payment-section">
+                <div class="price-display">
+                    <div class="price-was">Regular Price: Rs.599</div>
+                    <div class="price-now">Rs.399</div>
+                    <p class="price-note">Personalized 20-Min Call</p>
+                    <span class="price-badge">Limited Time Offer</span>
+                </div>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="checkmark">✓</span>
+                        <span>Deep-dive counselling</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="checkmark">✓</span>
+                        <span>Direct WhatsApp call</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="checkmark">✓</span>
+                        <span>Flexible scheduling</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="checkmark">✓</span>
+                        <span>Completely private</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="initiatePayment()">
+                    Book Your Call Now — Rs.399
+                </button>
+
+                <button class="btn btn-secondary" onclick="window.open('https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20would%20like%20to%20book%20a%20personalised%20call.%20Can%20you%20share%20available%20slots%3F', '_blank')">
+                    Ask on WhatsApp First
+                </button>
+
+                <p style="font-size: 12px; color: var(--text-secondary); margin-top: 20px;">
+                    Secure payment via Razorpay • Instant confirmation
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- ─── Payment Modal ─── -->
+<div class="payment-modal" id="paymentModal">
+    <div class="modal-content">
+        <div class="spinner"></div>
+        <h3 style="color: #fff; margin-top: 20px;">Processing Payment...</h3>
+        <p style="color: var(--text-secondary); margin-top: 10px;">Please wait while we redirect you to payment...</p>
+    </div>
+</div>
+
+<!-- ─── Scripts ─── -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    function initiatePayment() {
+        // Show loading modal
+        document.getElementById('paymentModal').classList.add('show');
+
+        // Razorpay Payment Options
+        var options = {
+            "key": "rzp_test_T1PHUBUH5uxwjT", // Replace with your test key
+            "amount": 39900, // Amount in paise (399 * 100)
+            "currency": "INR",
+            "name": "Speak & Settle",
+            "description": "20-Min Personalized Voice Call - Counselling",
+            "image": "https://via.placeholder.com/100", // Add your logo URL here
+            "handler": function(response) {
+                // Payment successful
+                alert("Payment successful! Transaction ID: " + response.razorpay_payment_id);
+                
+                // Redirect to WhatsApp for confirmation
+                window.location.href = 'https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20have%20just%20completed%20the%20payment%20of%20Rs.399%20for%20the%20personal%20call.%20Payment%20ID%3A%20' + response.razorpay_payment_id + '%20Please%20confirm%20my%20preferred%20slot.';
+            },
+            "prefill": {
+                "name": "",
+                "email": "",
+                "contact": ""
+            },
+            "theme": {
+                "color": "#C9A55C"
+            },
+            "modal": {
+                "ondismiss": function() {
+                    // Payment cancelled
+                    document.getElementById('paymentModal').classList.remove('show');
+                    alert("Payment cancelled. Please try again.");
+                }
+            }
+        };
+
+        var rzp = new Razorpay(options);
+        rzp.open();
+
+        // Hide modal on payment attempt
+        setTimeout(() => {
+            document.getElementById('paymentModal').classList.remove('show');
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
