@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Speak &amp; Settle</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep:      #080C14;
+            --bg-dark:      #0C1018;
+            --bg-surface:   #141B27;
+            --text-primary: #F0EAE3;
+            --text-secondary:#9AA8C4;
+            --gold:         #C9A55C;
+            --gold-light:   #E4C88A;
+            --border-dark:  rgba(255,255,255,0.06);
+            --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.8;
+        }
+
+        h1, h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        h1 { font-size: 48px; }
+        h2 { font-size: 28px; color: var(--gold); }
+
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            background: rgba(8,12,20,0.95);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 22px 28px;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo em {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 36px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: #fff; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 28px;
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 60px;
+        }
+
+        .contact-hero h1 {
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .contact-hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .contact-card {
+            background: rgba(26, 34, 53, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s var(--ease-out);
+            backdrop-filter: blur(12px);
+        }
+
+        .contact-card:hover {
+            border-color: rgba(201, 165, 92, 0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4), 0 0 60px rgba(201, 165, 92, 0.1);
+        }
+
+        .contact-card-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        .contact-card a {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            word-break: break-all;
+        }
+
+        .contact-card a:hover {
+            color: var(--gold-light);
+            transform: translateX(4px);
+        }
+
+        .contact-form {
+            background: rgba(26, 34, 53, 0.6);
+            border: 1.5px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 48px;
+            margin-top: 60px;
+            backdrop-filter: blur(12px);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 32px;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(201, 165, 92, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-radius: 100px;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201, 165, 92, 0.35);
+        }
+
+        .faq {
+            margin-top: 80px;
+            padding-top: 60px;
+            border-top: 1px solid var(--border-dark);
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        footer {
+            background: #050810;
+            padding: 40px 0 20px;
+            border-top: 1px solid var(--border-dark);
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        footer p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                padding: 100px 20px 40px;
+            }
+
+            h1 { font-size: 32px; }
+            h2 { font-size: 22px; }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-form {
+                padding: 32px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Speak <em>&amp;</em> Settle</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="terms.html">Terms &amp; Conditions</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="container">
+    <div class="contact-hero">
+        <h1>Get in Touch</h1>
+        <p>Have questions? Need support? I'm here to help. Reach out through any channel that works best for you.</p>
+    </div>
+
+    <!-- Contact Methods -->
+    <div class="contact-grid">
+        <div class="contact-card">
+            <div class="contact-card-icon">💬</div>
+            <h3>WhatsApp</h3>
+            <p>Instant messaging for free chats and quick inquiries</p>
+            <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20have%20a%20question..." target="_blank">
+                +91 8591 201967
+            </a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-card-icon">📧</div>
+            <h3>Email</h3>
+            <p>Detailed inquiries and support requests</p>
+            <a href="mailto:contact@speakandsettle.online">
+                contact@speakandsettle.online
+            </a>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-card-icon">🌐</div>
+            <h3>Website</h3>
+            <p>Visit our website for services and updates</p>
+            <a href="https://speakandsettle.online" target="_blank">
+                speakandsettle.online
+            </a>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2>Send us a Message</h2>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (WhatsApp)</label>
+                <input type="tel" id="phone" name="phone" placeholder="+91">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+            <h4>❓ What's the response time for queries?</h4>
+            <p>We typically respond to WhatsApp messages within 2-4 hours on business hours. Emails are answered within 24 hours. Session bookings are confirmed within 1 hour.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ Can I reschedule a booked session?</h4>
+            <p>Yes! You can reschedule up to 24 hours before your session. Contact us via WhatsApp or email with your new preferred time.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ What payment methods do you accept?</h4>
+            <p>We accept UPI (Google Pay, PhonePe, BHIM), WhatsApp Pay, bank transfers, and digital wallets. All payments are secured and encrypted.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ Is my information secure?</h4>
+            <p>Absolutely. All your personal data and session information is encrypted and stored securely. We never share your information with third parties.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ Can I record my session?</h4>
+            <p>Session recordings require explicit written consent. Please inform us beforehand if you wish to record. Without consent, recording is not permitted.</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ What if I'm in crisis?</h4>
+            <p>Our services are supportive counselling, not crisis intervention. If you're experiencing a mental health emergency, please contact:<br><br>
+            <strong>AASRA (India):</strong> 9820466726<br>
+            <strong>iCall:</strong> 9152987821<br>
+            <strong>Emergency:</strong> 112</p>
+        </div>
+
+        <div class="faq-item">
+            <h4>❓ How do I book the masterclass?</h4>
+            <p>Click "Masterclass Rs.99" on the home page. You'll be taken to the registration and payment page. Once payment is confirmed, you'll receive session details via email and WhatsApp.</p>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Speak &amp; Settle. All rights reserved. | <a href="terms.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">Terms</a> | <a href="privacy.html" style="color: rgba(255,255,255,0.5); text-decoration: none;">Privacy</a></p>
+</footer>
+
+<script>
+    // Handle contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Create mailto link with form data
+        const mailtoLink = `mailto:contact@speakandsettle.online?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`)}`;
+        
+        window.location.href = mailtoLink;
+
+        // Show confirmation message
+        alert('Opening your default email client. If it doesn\'t open, please email contact@speakandsettle.online directly.');
+        
+        // Reset form
+        this.reset();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speak &amp; Settle — You Are Not Alone. I'm Here For You.</title>
+    <meta name="description" content="Expert counselling with 7+ years of analytical experience. Stress, Career, Finance, Relationships & more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ═══════════════════════════════════════
+           CSS CUSTOM PROPERTIES
+        ═══════════════════════════════════════ */
+        :root {
+            --bg-deep:      #080C14;
+            --bg-dark:      #0C1018;
+            --bg-surface:   #141B27;
+            --bg-card:      #1A2235;
+            --border-dark:  rgba(255,255,255,0.06);
+            --text-primary: #F0EAE3;
+            --text-secondary:#9AA8C4;
+            --text-muted:   #6B7A99;
+            --gold:         #C9A55C;
+            --gold-light:   #E4C88A;
+            --gold-dim:     #8B7340;
+            --gold-glow:    rgba(201,165,92,0.22);
+            --teal:         #4A9B8E;
+            --teal-light:   #6CC4B6;
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+            --t: 0.4s;
+        }
+
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) var(--bg-deep);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            line-height: 1.15;
+            font-weight: 600;
+        }
+
+        h1 { font-size: clamp(42px, 6.5vw, 84px); letter-spacing: -0.02em; }
+        h2 { font-size: clamp(32px, 4.5vw, 56px); letter-spacing: -0.01em; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ═══════════════════════════════════════
+           SPARKLE & PARTICLE EFFECTS
+        ═══════════════════════════════════════ */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            width: 4px;
+            height: 4px;
+            background: var(--gold-light);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--gold-light);
+            animation: sparkleFloat 2.5s ease-out forwards;
+        }
+
+        @keyframes sparkleFloat {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0);
+            }
+        }
+
+        .particles-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(201, 165, 92, 0.3);
+            border-radius: 50%;
+            animation: particleFloat 6s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100vh) translateX(100px);
+            }
+        }
+
+        /* ─── Navigation ─── */
+        .site-header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            transition: all var(--t) var(--ease-out);
+            background: rgba(8,12,20,0.92);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.3px;
+            text-decoration: none;
+        }
+        .logo em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.02em;
+            transition: color var(--t);
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover { color: #fff; }
+
+        .nav-cta {
+            background: var(--gold) !important;
+            color: var(--bg-deep) !important;
+            padding: 11px 24px !important;
+            border-radius: 100px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s var(--ease-out) !important;
+        }
+        
+        .nav-cta:hover {
+            background: var(--gold-light) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,165,92,0.35);
+        }
+
+        /* ─── Hero Section ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 0 100px;
+            text-align: center;
+            background: var(--bg-deep);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(201,165,92,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201,165,92,0.035) 1px, transparent 1px);
+            background-size: 70px 70px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-orbs {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.6;
+        }
+        
+        .orb-1 {
+            width: 700px; height: 700px;
+            background: radial-gradient(circle, rgba(201,165,92,0.18) 0%, transparent 65%);
+            top: -120px; right: -140px;
+            animation: orbFloat1 18s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(74,155,142,0.14) 0%, transparent 65%);
+            bottom: -80px; left: -100px;
+            animation: orbFloat2 22s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat1 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(40px,-50px) scale(1.08); }
+            66% { transform: translate(-30px,30px) scale(0.94); }
+        }
+
+        @keyframes orbFloat2 {
+            0%,100% { transform: translate(0,0) scale(1); }
+            50% { transform: translate(-40px,-40px) scale(1.1); }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .hero h1 {
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-tagline {
+            font-size: clamp(15px, 1.8vw, 19px);
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero-sub {
+            font-size: 18.5px;
+            color: var(--text-secondary);
+            max-width: 540px;
+            margin: 0 auto 48px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        /* ─── Service Cards (Tab-like) ─── */
+        .services-wrapper {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .service-option {
+            background: rgba(26,34,53,0.6);
+            border: 1.5px solid rgba(255,255,255,0.06);
+            border-radius: 24px;
+            padding: 48px 36px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out);
+            backdrop-filter: blur(12px);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .service-option:hover {
+            border-color: rgba(201,165,92,0.25);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px rgba(0,0,0,0.4), 0 0 60px rgba(201,165,92,0.1);
+        }
+
+        .service-option-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .service-option h3 {
+            font-size: 28px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .service-option-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: var(--gold);
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .service-option-desc {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+
+        .service-option .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--gold);
+            color: var(--bg-deep);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .service-option .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(201,165,92,0.35);
+        }
+
+        /* ─── Buttons ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 100px;
+            font-size: 14.5px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.35s var(--ease-out);
+            text-decoration: none;
+        }
+
+        .btn-wa {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 28px rgba(37,211,102,0.28);
+        }
+        
+        .btn-wa:hover {
+            background: #1DB954;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 48px rgba(37,211,102,0.38);
+        }
+
+        /* ═══════════════════════════════════════
+           BOOKING NOTIFICATION POPUP
+        ═══════════════════════════════════════ */
+        .booking-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: rgba(26, 34, 53, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 165, 92, 0.3);
+            border-radius: 16px;
+            padding: 16px 20px;
+            max-width: 300px;
+            z-index: 900;
+            animation: slideIn 0.4s var(--ease-out);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+        }
+
+        .booking-notification.exit {
+            animation: slideOut 0.4s var(--ease-out) forwards;
+        }
+
+        .booking-notification-icon {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: rgba(201, 165, 92, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .booking-notification-content {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .booking-notification-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .booking-notification-action {
+            font-size: 12px;
+            color: var(--gold);
+        }
+
+        .booking-notification-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ─── Service Delivery Section ─── */
+        .service-delivery {
+            background: var(--bg-surface);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-dark);
+            border-bottom: 1px solid var(--border-dark);
+        }
+
+        .service-delivery h2 {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .delivery-item {
+            text-align: center;
+        }
+
+        .delivery-item-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .delivery-item h3 {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .delivery-item p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .business-identity {
+            background: rgba(201, 165, 92, 0.08);
+            border: 1px solid rgba(201, 165, 92, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .business-identity h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 18px;
+        }
+
+        .business-identity p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            background: #050810;
+            padding: 56px 0 36px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-section h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 16px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-contact {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+        }
+
+        .footer-contact strong {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.25);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 680px) {
+            .services-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+
+            .booking-notification {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                max-width: none;
+            }
+
+            .delivery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── Particle Background ─── -->
+<div class="particles-bg" id="particlesBg"></div>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+    <div class="container">
+        <nav class="nav-inner">
+            <a href="index.html" class="logo">Speak <em>&amp;</em> Settle</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank">Free Chat</a></li>
+                <li><a href="masterclass.html" class="nav-cta">Masterclass Rs.99</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+    <div class="hero-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    <div class="container">
+        <div class="hero-inner">
+            <h1>You don't have to<br>carry this<br><em>alone, anymore.</em></h1>
+            
+            <p class="hero-tagline">Expert Analytical Counselling</p>
+
+            <p class="hero-sub">
+                Whatever you're going through — heartbreak, confusion, stress, or just feeling lost — I'm here. Speak freely. Be heard. Start healing. Free on WhatsApp, or book a personalised call.
+            </p>
+
+            <!-- Service Selection Cards -->
+            <div class="services-wrapper" id="services">
+                <!-- Masterclass Card -->
+                <a href="masterclass.html" class="service-option">
+                    <div class="service-option-icon">🎓</div>
+                    <h3>Live Masterclass</h3>
+                    <p class="service-option-desc">Overcoming Rejection in Love<br>Limited Seats • Launch Offer</p>
+                    <div class="service-option-price">Rs.99</div>
+                    <button class="btn" style="background:var(--gold); color:var(--bg-deep); width:100%; justify-content:center;">
+                        Explore Masterclass →
+                    </button>
+                </a>
+
+                <!-- Personal Call Card -->
+                <a href="call.html" class="service-option">
+                    <div class="service-option-icon">📞</div>
+                    <h3>20-Min Voice Call</h3>
+                    <p class="service-option-desc">Personalized 1-on-1 Counselling<br>Deep Guidance • Instant Clarity</p>
+                    <div class="service-option-price">Rs.399</div>
+                    <button class="btn" style="background:var(--gold); color:var(--bg-deep); width:100%; justify-content:center;">
+                        Book Your Call →
+                    </button>
+                </a>
+            </div>
+
+            <!-- Free Chat CTA -->
+            <div style="margin-top: 48px;">
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">Or start with a free chat on WhatsApp</p>
+                <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Chat for Free on WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── SERVICE DELIVERY & BUSINESS INFO ─── -->
+<section class="service-delivery">
+    <div class="container">
+        <h2>How We Work</h2>
+        
+        <div class="delivery-grid">
+            <div class="delivery-item">
+                <div class="delivery-item-icon">🔒</div>
+                <h3>100% Confidential</h3>
+                <p>All sessions are conducted with complete privacy and discretion. Your story stays between us.</p>
+            </div>
+            <div class="delivery-item">
+                <div class="delivery-item-icon">⚡</div>
+                <h3>Instant Availability</h3>
+                <p>Book a session on your schedule. WhatsApp support available throughout the day.</p>
+            </div>
+            <div class="delivery-item">
+                <div class="delivery-item-icon">🎯</div>
+                <h3>Analytical Approach</h3>
+                <p>7+ years of experience in stress, relationships, career, and finance counselling.</p>
+            </div>
+            <div class="delivery-item">
+                <div class="delivery-item-icon">💬</div>
+                <h3>Real Solutions</h3>
+                <p>Not just listening—actionable insights to help you navigate life's challenges.</p>
+            </div>
+        </div>
+
+        <!-- Business Identity -->
+        <div class="business-identity">
+            <h3>📋 Business & Service Information</h3>
+            <p><strong>Service Provider:</strong> Nikhil (Speak &amp; Settle)</p>
+            <p><strong>Service Type:</strong> Analytical Counselling & Life Coaching</p>
+            <p><strong>Experience:</strong> 7+ Years in Mental Wellness &amp; Coaching</p>
+            <p><strong>Contact:</strong> +91 8591 201967</p>
+            <p><strong>Email:</strong> contact@speakandsettle.online</p>
+            <p style="margin-top: 20px; font-size: 12px; color: var(--text-muted);">
+                ⚠️ <strong>Disclaimer:</strong> Sessions are NOT a substitute for licensed clinical therapy or medical treatment. For mental health crises, please consult a qualified mental health professional.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank">WhatsApp Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="call.html">Book a Call</a></li>
+                    <li><a href="masterclass.html">Masterclass</a></li>
+                    <li><a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank">Free Chat</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Terms &amp; Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <div class="footer-contact">
+                    <p><strong>Phone:</strong><br>+91 8591 201967</p>
+                    <p style="margin-top: 12px;"><strong>Email:</strong><br>contact@speakandsettle.online</p>
+                    <p style="margin-top: 12px;"><strong>Website:</strong><br>speakandsettle.online</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Speak &amp; Settle &nbsp;&middot;&nbsp; By Nikhil &nbsp;&middot;&nbsp; All sessions conducted with complete confidentiality.</p>
+            <p style="margin-top: 12px;">Speak &amp; Settle provides analytical counselling and coaching services. Sessions are not a substitute for licensed clinical therapy.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ─── BOOKING NOTIFICATIONS ─── -->
+<div id="notificationContainer"></div>
+
+<script>
+    // ════════════════════════════════════════
+    // PARTICLE EFFECTS
+    // ════════════════════════════════════════
+    function createParticles() {
+        const container = document.getElementById('particlesBg');
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 6 + 's';
+            particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            container.appendChild(particle);
+        }
+    }
+
+    // ════════════════════════════════════════
+    // SPARKLE EFFECT
+    // ════════════════════════════════════════
+    function createSparkle(e) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 5 + Math.random() * 10;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+        
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        sparkle.style.setProperty('--tx', tx + 'px');
+        sparkle.style.setProperty('--ty', ty + 'px');
+        
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 2500);
+    }
+
+    // Add sparkles on mouse move (subtle effect)
+    let lastSparkleTime = 0;
+    document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastSparkleTime > 50 && Math.random() > 0.7) {
+            createSparkle(e);
+            lastSparkleTime = now;
+        }
+    });
+
+    // ════════════════════════════════════════
+    // BOOKING NOTIFICATION SYSTEM
+    // ════════════════════════════════════════
+    const bookingNames = [
+        { name: 'Priya K.', action: 'booked a 20-min call' },
+        { name: 'Rahul M.', action: 'joined the masterclass' },
+        { name: 'Anjali S.', action: 'started free chat' },
+        { name: 'Vikram P.', action: 'booked a 20-min call' },
+        { name: 'Neha R.', action: 'joined the masterclass' },
+        { name: 'Arjun K.', action: 'started free chat' },
+        { name: 'Divya N.', action: 'booked a 20-min call' },
+        { name: 'Rohan S.', action: 'joined the masterclass' },
+    ];
+
+    function getRandomBooking() {
+        return bookingNames[Math.floor(Math.random() * bookingNames.length)];
+    }
+
+    function getTimeAgo() {
+        const minutes = Math.floor(Math.random() * 45) + 1;
+        if (minutes === 1) return '1 minute ago';
+        return `${minutes} minutes ago`;
+    }
+
+    function showNotification() {
+        const booking = getRandomBooking();
+        const container = document.getElementById('notificationContainer');
+        
+        const notification = document.createElement('div');
+        notification.className = 'booking-notification';
+        
+        notification.innerHTML = `
+            <div style="display: flex; align-items: flex-start;">
+                <div class="booking-notification-icon">✓</div>
+                <div class="booking-notification-content">
+                    <span class="booking-notification-name">${booking.name}</span>
+                    <span class="booking-notification-action">${booking.action}</span>
+                    <div class="booking-notification-time">${getTimeAgo()}</div>
+                </div>
+            </div>
+        `;
+        
+        container.appendChild(notification);
+        
+        // Remove after 5 seconds with animation
+        setTimeout(() => {
+            notification.classList.add('exit');
+            setTimeout(() => notification.remove(), 400);
+        }, 5000);
+    }
+
+    // Show notifications every 8-12 seconds
+    function scheduleNextNotification() {
+        const delay = Math.random() * 4000 + 8000;
+        setTimeout(() => {
+            showNotification();
+            scheduleNextNotification();
+        }, delay);
+    }
+
+    // ════════════════════════════════════════
+    // HEADER SCROLL EFFECT
+    // ════════════════════════════════════════
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('.site-header');
+        if (window.scrollY > 40) {
+            header.style.background = 'rgba(8,12,20,0.95)';
+        } else {
+            header.style.background = 'rgba(8,12,20,0.92)';
+        }
+    });
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+        createParticles();
+        scheduleNextNotification();
+    });
+</script>
+
+</body>
+</html>
