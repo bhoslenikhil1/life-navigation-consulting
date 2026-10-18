@@ -1,262 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms &amp; Conditions - Speak &amp; Settle</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — Speak & Settle</title>
+  <meta name="description" content="Terms and conditions for Speak & Settle sessions, booking, privacy, and service use." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120a0d;
+      --bg-deep: #1a0d12;
+      --bg-soft: #2a121b;
+      --gold: #d7af73;
+      --gold-soft: #e9c998;
+      --cream: #fff9f6;
+      --muted: #d9c0b8;
+      --text: #f7efe9;
+      --line: rgba(215, 175, 115, 0.16);
+    }
 
-    <style>
-        :root {
-            --bg-deep:      #080C14;
-            --bg-dark:      #0C1018;
-            --bg-surface:   #141B27;
-            --text-primary: #F0EAE3;
-            --text-secondary:#9AA8C4;
-            --gold:         #C9A55C;
-            --border-dark:  rgba(255,255,255,0.06);
-        }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(180deg, #120a0d 0%, #1a0d12 22%, #160b0f 100%);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0 0 12px; }
+    h1 { font-size: clamp(36px, 5vw, 56px); }
+    h2 { font-size: clamp(24px, 3vw, 34px); color: var(--gold-soft); }
+    p, li { color: var(--muted); }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(18, 10, 13, 0.8);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            line-height: 1.15;
-            font-weight: 600;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.04em;
+    }
 
-        h1 { font-size: 48px; margin: 40px 0 20px; }
-        h2 { font-size: 32px; margin: 30px 0 16px; color: var(--gold); }
-        h3 { font-size: 20px; margin: 24px 0 12px; }
+    .logo em { color: var(--gold); font-style: italic; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 28px;
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-        .site-header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(8,12,20,0.95);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-dark);
-        }
+    .nav-links a { opacity: 0.9; }
+    .nav-links a:hover { opacity: 1; color: #fff; }
 
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 22px 0;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 22px 28px;
-        }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 54px 32px 80px;
+    }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
+    .lead {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      opacity: 0.85;
+    }
 
-        .logo em {
-            color: var(--gold);
-        }
+    .section {
+      margin-bottom: 26px;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 36px;
-        }
+    ul, ol {
+      padding-left: 22px;
+      margin: 10px 0 0;
+      line-height: 1.9;
+    }
 
-        .nav-links a {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    strong { color: var(--gold-soft); }
 
-        .nav-links a:hover { color: #fff; }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 40px;
+      text-align: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+    }
 
-        .nav-cta {
-            background: var(--gold) !important;
-            color: var(--bg-deep) !important;
-            padding: 11px 24px !important;
-            border-radius: 100px !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
-        }
-
-        p {
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
-
-        ul, ol {
-            margin-left: 24px;
-            margin-bottom: 16px;
-            color: var(--text-secondary);
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        strong {
-            color: var(--gold);
-        }
-
-        footer {
-            background: #050810;
-            padding: 40px 0 20px;
-            border-top: 1px solid var(--border-dark);
-            text-align: center;
-        }
-
-        footer p {
-            font-size: 12px;
-            color: rgba(255,255,255,0.3);
-        }
-
-        @media (max-width: 680px) {
-            .container {
-                padding: 100px 20px 40px;
-            }
-
-            h1 { font-size: 32px; }
-            h2 { font-size: 24px; }
-
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+    @media (max-width: 680px) {
+      .nav { padding-left: 20px; padding-right: 20px; }
+      .nav-links { display: none; }
+      .container { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
 </head>
 <body>
-
-<header class="site-header">
-    <div class="nav-inner">
-        <a href="index.html" class="logo">Speak <em>&amp;</em> Settle</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+  <header class="topbar">
+    <div class="nav">
+      <a href="index.html" class="logo">Speak <em>&</em> Settle</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </div>
-</header>
+  </header>
 
-<div class="container">
-    <h1>Terms &amp; Conditions</h1>
-    <p style="color: var(--text-muted); font-size: 14px;">Last Updated: January 2026</p>
+  <main class="container">
+    <h1>Terms & Conditions</h1>
+    <p class="lead">Last updated: January 2026</p>
 
-    <h2>1. Acceptance of Terms</h2>
-    <p>By accessing and using Speak &amp; Settle services, you agree to be bound by these Terms &amp; Conditions. If you do not agree to any part of these terms, you may not use our services.</p>
+    <div class="section">
+      <h2>1. Acceptance of Terms</h2>
+      <p>By using Speak & Settle, you agree to these Terms & Conditions. If you do not agree, please do not use the services.</p>
+    </div>
 
-    <h2>2. Service Description</h2>
-    <p>Speak &amp; Settle provides analytical counselling and life coaching services through WhatsApp messaging, voice calls, and masterclass sessions. Our services are NOT a substitute for professional medical advice, therapy, or psychiatric treatment.</p>
+    <div class="section">
+      <h2>2. Service Description</h2>
+      <p>Speak & Settle offers relationship guidance, dating clarity support, emotional counselling, and structured conversations through WhatsApp and voice calls. These services are for personal guidance and are not medical or clinical treatment.</p>
+    </div>
 
-    <h2>3. Eligibility</h2>
-    <ul>
-        <li>You must be 18 years or older to use our services</li>
-        <li>You are responsible for providing accurate information during registration</li>
-        <li>You agree not to use our services for any illegal or harmful purposes</li>
-    </ul>
+    <div class="section">
+      <h2>3. Eligibility</h2>
+      <ul>
+        <li>Users must be 18 years or older.</li>
+        <li>All information provided should be accurate and truthful.</li>
+        <li>Services should not be used for abusive, harmful, or illegal purposes.</li>
+      </ul>
+    </div>
 
-    <h2>4. Service Availability &amp; Limitations</h2>
-    <ul>
-        <li>Services are available as per the provider's schedule</li>
-        <li>We reserve the right to reschedule or cancel sessions with 24-hour notice</li>
-        <li>Services may be temporarily unavailable due to technical issues</li>
-        <li>Response times for WhatsApp queries: 24-48 hours</li>
-    </ul>
+    <div class="section">
+      <h2>4. Booking & Payment</h2>
+      <ul>
+        <li>All prices are in Indian Rupees.</li>
+        <li>Payment is required before a session begins.</li>
+        <li>Once a session is booked, the user agrees to the selected slot and timing.</li>
+        <li>We reserve the right to reschedule or cancel sessions when necessary.</li>
+      </ul>
+    </div>
 
-    <h2>5. Payment Terms</h2>
-    <ul>
-        <li>All prices are in Indian Rupees (Rs.)</li>
-        <li>Payment must be completed before the session begins</li>
-        <li>We accept: UPI, WhatsApp Pay, Bank Transfer, and Digital Wallets</li>
-        <li>No refunds are provided once the session has commenced</li>
-        <li>Invoices/receipts are provided via email or WhatsApp</li>
-    </ul>
+    <div class="section">
+      <h2>5. Confidentiality</h2>
+      <p>We respect the private nature of your conversations. Your information is handled with care and in line with our privacy policy.</p>
+    </div>
 
-    <h2>6. Confidentiality &amp; Privacy</h2>
-    <ul>
-        <li>All information shared during sessions is strictly confidential</li>
-        <li>We do not share your data with third parties</li>
-        <li>Session records are kept secure for billing purposes only</li>
-        <li>See our Privacy Policy for detailed information handling practices</li>
-        <li>Exceptions: We may disclose information if required by law or if there's an immediate threat to safety</li>
-    </ul>
+    <div class="section">
+      <h2>6. Limitations</h2>
+      <p>Our guidance is for clarity, direction, and support. It is not a replacement for licensed mental health care, therapy, psychiatry, or urgent emergency care.</p>
+    </div>
 
-    <h2>7. User Responsibilities</h2>
-    <ul>
-        <li>You are responsible for maintaining the confidentiality of your WhatsApp/call details</li>
-        <li>You agree not to record sessions without explicit written consent</li>
-        <li>You will not harass, abuse, or threaten the service provider</li>
-        <li>You agree not to share session content publicly</li>
-    </ul>
+    <div class="section">
+      <h2>7. User Responsibilities</h2>
+      <ul>
+        <li>Do not misuse or harass the service provider.</li>
+        <li>Respect confidential boundaries.</li>
+        <li>Use the service responsibly and respectfully.</li>
+      </ul>
+    </div>
 
-    <h2>8. Limitations of Liability</h2>
-    <p><strong>IMPORTANT DISCLAIMER:</strong> Our counselling services are for informational and supportive purposes only. They are NOT:</p>
-    <ul>
-        <li>A replacement for professional mental health treatment</li>
-        <li>Medical or psychiatric advice</li>
-        <li>A substitute for crisis intervention services</li>
-    </ul>
-    <p>If you are experiencing a mental health crisis, suicidal thoughts, or severe distress, please contact:</p>
-    <ul>
-        <li><strong>AASRA (India):</strong> 9820466726</li>
-        <li><strong>iCall:</strong> 9152987821</li>
-        <li><strong>Vandrevala Foundation:</strong> 9999 666 555</li>
-        <li><strong>Local Emergency Services:</strong> 112</li>
-    </ul>
+    <div class="section">
+      <h2>8. Termination</h2>
+      <p>We reserve the right to discontinue service if a user violates these terms, misuses the platform, or engages in abusive behavior.</p>
+    </div>
 
-    <h2>9. Intellectual Property</h2>
-    <p>All content, materials, and advice provided are the intellectual property of Speak &amp; Settle. You may not reproduce, distribute, or use any materials without explicit permission.</p>
+    <div class="section">
+      <h2>9. Contact</h2>
+      <p>If you have questions, contact us:</p>
+      <ul>
+        <li>Email: contact@speakandsettle.online</li>
+        <li>WhatsApp: +91 85912 01967</li>
+      </ul>
+    </div>
+  </main>
 
-    <h2>10. Termination of Service</h2>
-    <p>We reserve the right to terminate services to any user who:</p>
-    <ul>
-        <li>Violates these terms</li>
-        <li>Engages in abusive or threatening behavior</li>
-        <li>Provides false information</li>
-        <li>Fails to make payment</li>
-    </ul>
-
-    <h2>11. Changes to Terms</h2>
-    <p>We may update these Terms &amp; Conditions at any time. Updated terms will be posted on our website, and continued use of our services constitutes acceptance of the new terms.</p>
-
-    <h2>12. Governing Law</h2>
-    <p>These terms are governed by the laws of India. Any disputes shall be subject to the jurisdiction of courts in Maharashtra.</p>
-
-    <h2>13. Contact Us</h2>
-    <p>If you have questions about these Terms &amp; Conditions, please contact us:</p>
-    <ul>
-        <li><strong>WhatsApp:</strong> +91 8591 201967</li>
-        <li><strong>Email:</strong> contact@speakandsettle.online</li>
-    </ul>
-</div>
-
-<footer>
-    <p>&copy; 2026 Speak &amp; Settle. All rights reserved.</p>
-</footer>
-
+  <footer>
+    © 2026 Speak & Settle · All rights reserved.
+  </footer>
 </body>
 </html>

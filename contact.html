@@ -1,223 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Speak &amp; Settle</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Speak & Settle</title>
+  <meta name="description" content="Contact Speak & Settle for dating guidance, bookings, and WhatsApp support." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120a0d;
+      --bg-deep: #1a0d12;
+      --bg-soft: #2a121b;
+      --gold: #d7af73;
+      --gold-soft: #e9c998;
+      --cream: #fff9f6;
+      --muted: #d9c0b8;
+      --text: #f7efe9;
+      --line: rgba(215, 175, 115, 0.16);
+    }
 
-    <style>
-        :root {
-            --bg-deep:      #080C14;
-            --bg-dark:      #0C1018;
-            --bg-surface:   #141B27;
-            --text-primary: #F0EAE3;
-            --text-secondary:#9AA8C4;
-            --gold:         #C9A55C;
-            --gold-light:   #E4C88A;
-            --border-dark:  rgba(255,255,255,0.06);
-            --ease-out:     cubic-bezier(0.22, 1, 0.36, 1);
-        }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(180deg, #120a0d 0%, #1a0d12 22%, #160b0f 100%);
+      color: var(--text);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0 0 12px; }
+    h1 { font-size: clamp(40px, 6vw, 72px); }
+    h2 { font-size: clamp(28px, 4vw, 42px); }
+    p, li { color: var(--muted); }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(18, 10, 13, 0.8);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(16px);
+    }
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.8;
-        }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        h1, h2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            line-height: 1.15;
-            font-weight: 600;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.04em;
+    }
 
-        h1 { font-size: 48px; }
-        h2 { font-size: 28px; color: var(--gold); }
+    .logo em { color: var(--gold); font-style: italic; }
 
-        .site-header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(8,12,20,0.95);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border-dark);
-        }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
 
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 22px 0;
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 22px 28px;
-        }
+    .nav-links a { opacity: 0.9; }
+    .nav-links a:hover { opacity: 1; color: #fff; }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 54px 32px 80px;
+    }
 
-        .logo em {
-            color: var(--gold);
-        }
+    .hero {
+      text-align: center;
+      padding: 30px 0 60px;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 36px;
-        }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(215, 175, 115, 0.2);
+      background: rgba(255,255,255,0.03);
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
 
-        .nav-links a {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+    .lead {
+      max-width: 690px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
 
-        .nav-links a:hover { color: #fff; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      margin-top: 52px;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 60px 28px;
-        }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(215, 175, 115, 0.1);
+      border-radius: 22px;
+      padding: 26px 22px;
+      text-align: center;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.16);
+    }
 
-        .contact-hero {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-top: 60px;
-        }
+    .icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
 
-        .contact-hero h1 {
-            margin-bottom: 16px;
-            color: #fff;
-        }
+    .card h3 {
+      color: var(--text);
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
 
-        .contact-hero p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--gold-soft);
+      font-weight: 700;
+    }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
+    .cta {
+      margin-top: 60px;
+      text-align: center;
+    }
 
-        .contact-card {
-            background: rgba(26, 34, 53, 0.6);
-            border: 1.5px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.4s var(--ease-out);
-            backdrop-filter: blur(12px);
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #120a0d;
+      box-shadow: 0 12px 30px rgba(215, 175, 115, 0.24);
+    }
 
-        .contact-card:hover {
-            border-color: rgba(201, 165, 92, 0.25);
-            transform: translateY(-8px);
-            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.4), 0 0 60px rgba(201, 165, 92, 0.1);
-        }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 26px 0 40px;
+      text-align: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+    }
 
-        .contact-card-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
 
-        .contact-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            color: #fff;
-            margin-bottom: 12px;
-        }
+    @media (max-width: 680px) {
+      .nav { padding-left: 20px; padding-right: 20px; }
+      .nav-links { display: none; }
+      .container { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav">
+      <a href="index.html" class="logo">Speak <em>&</em> Settle</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+      </ul>
+    </div>
+  </header>
 
-        .contact-card p {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            font-size: 14px;
-        }
+  <main class="container">
+    <section class="hero">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Let’s talk.</h1>
+      <p class="lead">Whether you want a free WhatsApp message, a private session, or to ask about the masterclass, we’re here to help with clarity and discretion.</p>
+    </section>
 
-        .contact-card a {
-            display: inline-block;
-            color: var(--gold);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            word-break: break-all;
-        }
+    <section class="grid">
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>WhatsApp</h3>
+        <p>Get quick answers or ask for a session slot.</p>
+        <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20want%20to%20book%20a%20session." target="_blank" rel="noreferrer">+91 85912 01967</a>
+      </div>
 
-        .contact-card a:hover {
-            color: var(--gold-light);
-            transform: translateX(4px);
-        }
+      <div class="card">
+        <div class="icon">📧</div>
+        <h3>Email</h3>
+        <p>Reach out for private questions or partnership requests.</p>
+        <a href="mailto:contact@speakandsettle.online">contact@speakandsettle.online</a>
+      </div>
 
-        .contact-form {
-            background: rgba(26, 34, 53, 0.6);
-            border: 1.5px solid rgba(255, 255, 255, 0.06);
-            border-radius: 24px;
-            padding: 48px;
-            margin-top: 60px;
-            backdrop-filter: blur(12px);
-        }
+      <div class="card">
+        <div class="icon">🔖</div>
+        <h3>Book</h3>
+        <p>Choose a personal 20-minute guidance call.</p>
+        <a href="call.html">Book a call →</a>
+      </div>
+    </section>
 
-        .contact-form h2 {
-            margin-bottom: 32px;
-            text-align: left;
-        }
+    <div class="cta">
+      <a class="btn" href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" rel="noreferrer">Chat on WhatsApp</a>
+    </div>
+  </main>
 
-        .form-group {
-            margin-bottom: 24px;
-        }
+  <footer>
+    © 2026 Speak & Settle · All rights reserved.
+  </footer>
+</body>
+</html>
 
-        .form-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            letter-spacing: 0.02em;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--gold);
-            box-shadow: 0 0 20px rgba(201, 165, 92, 0.15);
-        }
-
-        .form-group textarea {
             resize: vertical;
             min-height: 120px;
         }

@@ -1,512 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Masterclass — Overcoming Rejection in Love | Speak &amp; Settle</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Masterclass — Speak & Settle</title>
+  <meta name="description" content="A live healing masterclass on overcoming rejection in love, heartbreak recovery and emotional clarity with Speak & Settle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #120a0d;
+      --bg-deep: #1a0d12;
+      --bg-soft: #2a121b;
+      --panel: rgba(40, 18, 22, 0.9);
+      --panel-strong: #1d0d12;
+      --gold: #d7af73;
+      --gold-soft: #e9c998;
+      --wine: #792a35;
+      --wine-2: #5f1824;
+      --rose: #d58d8e;
+      --cream: #fff9f6;
+      --muted: #d9c0b8;
+      --text: #f7efe9;
+      --brown: #3b1e1a;
+      --shadow: rgba(0, 0, 0, 0.28);
+    }
 
-    <style>
-        :root {
-            --bg-deep:      #080C14;
-            --bg-surface:   #141B27;
-            --text-primary: #F0EAE3;
-            --text-secondary:#9AA8C4;
-            --gold:         #C9A55C;
-            --gold-light:   #E4C88A;
-            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-            --t: 0.4s;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background: linear-gradient(180deg, #120a0d 0%, #1a0d12 32%, #160b0f 100%);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0; }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(18, 10, 13, 0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(215, 175, 115, 0.18);
+    }
 
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            line-height: 1.15;
-            font-weight: 600;
-        }
+    .nav {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        h2 { font-size: clamp(32px, 4.5vw, 56px); }
-        h3 { font-size: 20px; }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: white;
+      font-family: 'Playfair Display', serif;
+    }
 
-        .container {
-            max-width: 1140px;
-            margin: 0 auto;
-            padding: 0 28px;
-        }
+    .logo em {
+      color: var(--gold);
+      font-style: italic;
+    }
 
-        /* ─── Header ─── */
-        header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            background: rgba(8,12,20,0.92);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 20px 0;
-        }
+    .nav a.back {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #130b0d;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 10px 28px rgba(215, 175, 115, 0.25);
+    }
 
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .hero {
+      padding: 92px 0 60px;
+      background: radial-gradient(circle at top left, rgba(121, 42, 53, 0.28), transparent 30%),
+                  radial-gradient(circle at bottom right, rgba(215, 175, 115, 0.12), transparent 28%);
+    }
 
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      text-align: center;
+    }
 
-        .logo em {
-            color: var(--gold);
-            font-style: normal;
-        }
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 18px;
+      border: 1px solid rgba(215, 175, 115, 0.28);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 999px;
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
 
-        .back-btn {
-            background: var(--gold);
-            color: var(--bg-deep);
-            padding: 10px 20px;
-            border-radius: 100px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: none;
-            cursor: pointer;
-        }
+    h1 {
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 22px;
+    }
 
-        .back-btn:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-        }
+    h1 em {
+      color: var(--gold-soft);
+      font-style: italic;
+    }
 
-        /* ─── Main Content ─── */
-        main {
-            padding-top: 100px;
-            min-height: 100vh;
-            padding-bottom: 60px;
-        }
+    .lead {
+      max-width: 760px;
+      margin: 0 auto 44px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
 
-        .hero-section {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(180deg,#0C1018 0%, #080C14 100%);
-        }
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: start;
+      padding: 30px 0 90px;
+    }
 
-        .eyebrow {
-            display: inline-block;
-            color: var(--gold);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
+    .feature-list {
+      display: grid;
+      gap: 22px;
+    }
 
-        .hero-section h1 {
-            font-size: clamp(36px, 5vw, 72px);
-            color: #fff;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(215, 175, 115, 0.12);
+      border-radius: 22px;
+      padding: 28px 24px;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.16);
+    }
 
-        .hero-section h1 em {
-            color: var(--gold);
-            font-style: italic;
-        }
+    .feature-emoji {
+      font-size: 38px;
+      margin-bottom: 12px;
+      display: block;
+    }
 
-        .hero-section p {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
+    .card h3 {
+      font-size: clamp(22px, 2vw, 28px);
+      color: white;
+      margin-bottom: 10px;
+    }
 
-        /* ─── Content Grid ─── */
-        .content-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: start;
-            margin-bottom: 80px;
-        }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
 
-        .features-grid {
-            display: grid;
-            gap: 24px;
-        }
+    .pricing {
+      position: sticky;
+      top: 92px;
+      background: linear-gradient(180deg, rgba(47, 17, 24, 0.9), rgba(19, 11, 13, 0.95));
+      border: 1px solid rgba(215, 175, 115, 0.16);
+      border-radius: 28px;
+      padding: 30px 22px 24px;
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.24);
+    }
 
-        .feature-card {
-            background: var(--bg-surface);
-            padding: 32px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
+    .old-price {
+      text-align: center;
+      color: #bdb1ad;
+      text-decoration: line-through;
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
 
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
+    .new-price {
+      text-align: center;
+      font-size: clamp(54px, 6vw, 78px);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--gold-soft);
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 14px;
+    }
 
-        .feature-card h3 {
-            color: #fff;
-            margin-bottom: 12px;
-        }
+    .note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
 
-        .feature-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
+    .badge {
+      display: inline-block;
+      margin: 0 auto 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(215, 175, 115, 0.12);
+      border: 1px solid rgba(215, 175, 115, 0.2);
+      color: var(--gold-soft);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
 
-        /* ─── Payment Section ─── */
-        .payment-section {
-            background: var(--bg-surface);
-            padding: 48px 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.06);
-            text-align: center;
-        }
+    .feature-list-inline {
+      list-style: none;
+      margin: 18px 0 26px;
+      padding: 0;
+      display: grid;
+      gap: 12px;
+    }
 
-        .price-display {
-            margin-bottom: 32px;
-        }
+    .feature-list-inline li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      color: var(--text);
+      font-size: 15px;
+    }
 
-        .price-was {
-            font-size: 18px;
-            color: #999;
-            text-decoration: line-through;
-            margin-bottom: 8px;
-        }
+    .feature-list-inline li::before {
+      content: '✓';
+      color: var(--gold-soft);
+      font-weight: 700;
+      margin-top: 1px;
+    }
 
-        .price-now {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 72px;
-            font-weight: 700;
-            color: var(--gold);
-            line-height: 1;
-            margin: 16px 0;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 16px 22px;
+      border-radius: 999px;
+      border: none;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
 
-        .price-badge {
-            display: inline-block;
-            background: rgba(201,165,92,0.12);
-            border: 1px solid rgba(201,165,92,0.22);
-            color: var(--gold-light);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 8px 16px;
-            border-radius: 100px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-top: 12px;
-        }
+    .btn:hover {
+      transform: translateY(-2px);
+    }
 
-        .price-note {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-top: 12px;
-        }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-soft));
+      color: #120a0d;
+      box-shadow: 0 10px 28px rgba(215, 175, 115, 0.24);
+    }
 
-        .features-list {
-            text-align: left;
-            margin: 32px 0;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
+    .btn-secondary {
+      margin-top: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: white;
+    }
 
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            font-size: 15px;
-            color: var(--text-primary);
-        }
+    .small-note {
+      display: block;
+      text-align: center;
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+    }
 
-        .checkmark {
-            color: var(--gold);
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+    @media (max-width: 900px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
 
-        /* ─── Buttons ─── */
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            border-radius: 100px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s var(--ease-out);
-            border: none;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-        }
+      .pricing {
+        position: static;
+      }
+    }
 
-        .btn-primary {
-            background: var(--gold);
-            color: var(--bg-deep);
-            width: 100%;
-            margin-bottom: 16px;
-        }
+    @media (max-width: 620px) {
+      .nav {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
 
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(201,165,92,0.35);
-        }
+      .container {
+        padding: 0 20px;
+      }
 
-        .btn-secondary {
-            background: rgba(255,255,255,0.06);
-            color: #fff;
-            border: 1.5px solid rgba(255,255,255,0.1);
-            width: 100%;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        /* ─── Responsive ─── */
-        @media (max-width: 900px) {
-            .content-wrapper {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 680px) {
-            main {
-                padding-top: 80px;
-            }
-
-            .hero-section {
-                padding: 60px 20px;
-            }
-
-            .payment-section {
-                padding: 32px 24px;
-            }
-        }
-
-        /* ─── Loading & Success States ─── */
-        .payment-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .payment-modal.show {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--bg-deep);
-            padding: 40px;
-            border-radius: 20px;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(201,165,92,0.2);
-            border-top-color: var(--gold);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+      .hero {
+        padding-top: 64px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <header class="topbar">
+    <div class="nav">
+      <a href="index.html" class="logo">Speak <em>&</em> Settle</a>
+      <a href="index.html" class="back">← Back</a>
+    </div>
+  </header>
 
-<!-- ─── HEADER ─── -->
-<header>
-    <div class="container">
-        <div class="nav-inner">
-            <a href="index.html" class="logo">Speak <em>&amp;</em> Settle</a>
-            <a href="index.html" class="back-btn">← Back</a>
+  <main class="hero">
+    <div class="container hero-inner">
+      <span class="eyebrow">Live Healing Masterclass</span>
+      <h1>Overcoming Rejection <em>in Love</em></h1>
+      <p class="lead">
+        Feeling emotionally broken after heartbreak, rejection, attachment, or loneliness? This live masterclass is designed to help you heal, stop overthinking, rebuild confidence, and move forward with self-worth.
+      </p>
+    </div>
+
+    <div class="container main-grid">
+      <div class="feature-list">
+        <div class="card">
+          <span class="feature-emoji">❤️</span>
+          <h3>Emotional Healing</h3>
+          <p>Learn how to heal from emotional pain and heartbreak without shutting down or chasing false closure.</p>
         </div>
-    </div>
-</header>
 
-<!-- ─── MAIN ─── -->
-<main>
-    <div class="hero-section">
-        <span class="eyebrow">Live Healing Masterclass</span>
-        <h1>Overcoming Rejection <em>in Love</em></h1>
-        <p>Feeling emotionally broken after heartbreak, rejection, attachment or loneliness? This live masterclass helps you heal emotionally, stop overthinking, rebuild confidence and move forward with self-worth.</p>
-    </div>
-
-    <div class="container">
-        <div class="content-wrapper">
-            <!-- Features -->
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">❤️</div>
-                    <h3>Emotional Healing</h3>
-                    <p>Learn how to heal from emotional pain and heartbreak with proven techniques.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🧠</div>
-                    <h3>Stop Overthinking</h3>
-                    <p>Understand emotional attachment and regain mental peace and clarity.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">✨</div>
-                    <h3>Confidence Rebuild</h3>
-                    <p>Reconnect with your self-worth and emotional strength.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🎤</div>
-                    <h3>Live Q&A Session</h3>
-                    <p>Ask questions and receive live guidance from Nikhil directly.</p>
-                </div>
-            </div>
-
-            <!-- Payment Section -->
-            <div class="payment-section">
-                <div class="price-display">
-                    <div class="price-was">Regular Price: Rs.999</div>
-                    <div class="price-now">Rs.99</div>
-                    <p class="price-note">Limited Time Launch Offer</p>
-                    <span class="price-badge">Only 20 Seats</span>
-                </div>
-
-                <div class="features-list">
-                    <div class="feature-item">
-                        <span class="checkmark">✓</span>
-                        <span>Live 2-hour healing masterclass</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="checkmark">✓</span>
-                        <span>Structured emotional healing process</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="checkmark">✓</span>
-                        <span>Interactive Q&A with live guidance</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="checkmark">✓</span>
-                        <span>Confidence rebuilding framework</span>
-                    </div>
-                    <div class="feature-item">
-                        <span class="checkmark">✓</span>
-                        <span>100% confidential & supportive space</span>
-                    </div>
-                </div>
-
-                <button class="btn btn-primary" onclick="initiatePayment()">
-                    Join Masterclass Now — Rs.99
-                </button>
-
-                <button class="btn btn-secondary" onclick="window.open('https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20am%20interested%20in%20the%20masterclass.%20Can%20you%20share%20more%20details%3F', '_blank')">
-                    Ask Questions on WhatsApp
-                </button>
-
-                <p style="font-size: 12px; color: var(--text-secondary); margin-top: 20px;">
-                    Secure payment via Razorpay • No hidden charges
-                </p>
-            </div>
+        <div class="card">
+          <span class="feature-emoji">🧠</span>
+          <h3>Stop Overthinking</h3>
+          <p>Understand emotional attachment, mixed signals, and the mental loops that keep you stuck after rejection.</p>
         </div>
+
+        <div class="card">
+          <span class="feature-emoji">✨</span>
+          <h3>Confidence Rebuild</h3>
+          <p>Reconnect with your self-worth, emotional strength, and the ability to move on calmly and confidently.</p>
+        </div>
+
+        <div class="card">
+          <span class="feature-emoji">🎤</span>
+          <h3>Live Q&A Session</h3>
+          <p>Ask your questions and receive live guidance for your specific emotional struggles and relationship patterns.</p>
+        </div>
+      </div>
+
+      <aside class="pricing">
+        <div class="old-price">Regular Price: Rs.999</div>
+        <div class="new-price">Rs.99</div>
+        <div class="note">Limited-time launch offer</div>
+        <div style="display:flex;justify-content:center;"><span class="badge">Only 20 Seats</span></div>
+
+        <ul class="feature-list-inline">
+          <li>Live 2-hour healing masterclass</li>
+          <li>Structured emotional recovery process</li>
+          <li>Interactive Q&A and live guidance</li>
+          <li>Confidence rebuilding framework</li>
+          <li>Safe, confidential support space</li>
+        </ul>
+
+        <a class="btn btn-primary" href="https://rzp.io/rzp/MyktwNUx" target="_blank" rel="noreferrer">Join Masterclass Now — Rs.99</a>
+        <a class="btn btn-secondary" href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20want%20to%20know%20more%20about%20the%20masterclass." target="_blank" rel="noreferrer">Ask Questions on WhatsApp</a>
+        <span class="small-note">Secure payment via Razorpay · No hidden charges</span>
+      </aside>
     </div>
-</main>
-
-<!-- ─── Payment Modal ─── -->
-<div class="payment-modal" id="paymentModal">
-    <div class="modal-content">
-        <div class="spinner"></div>
-        <h3 style="color: #fff; margin-top: 20px;">Processing Payment...</h3>
-        <p style="color: var(--text-secondary); margin-top: 10px;">Please wait while we redirect you to payment...</p>
-    </div>
-</div>
-
-<!-- ─── Scripts ─── -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-<script>
-    function initiatePayment() {
-        // Show loading modal
-        document.getElementById('paymentModal').classList.add('show');
-
-        // Razorpay Payment Options
-        var options = {
-            "key": "rzp_test_T1PHUBUH5uxwjT", // Replace with your test key
-            "amount": 9900, // Amount in paise (99 * 100)
-            "currency": "INR",
-            "name": "Speak & Settle",
-            "description": "Live Masterclass - Overcoming Rejection in Love",
-            "image": "https://via.placeholder.com/100", // Add your logo URL here
-            "handler": function(response) {
-                // Payment successful
-                alert("Payment successful! Transaction ID: " + response.razorpay_payment_id);
-                
-                // Send confirmation to WhatsApp (optional backend integration)
-                window.location.href = 'https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20have%20just%20completed%20the%20masterclass%20payment.%20Please%20confirm%20my%20registration.';
-            },
-            "prefill": {
-                "name": "",
-                "email": "",
-                "contact": ""
-            },
-            "theme": {
-                "color": "#C9A55C"
-            },
-            "modal": {
-                "ondismiss": function() {
-                    // Payment cancelled
-                    document.getElementById('paymentModal').classList.remove('show');
-                    alert("Payment cancelled. Please try again.");
-                }
-            }
-        };
-
-        var rzp = new Razorpay(options);
-        rzp.open();
-
-        // Hide modal on payment attempt
-        setTimeout(() => {
-            document.getElementById('paymentModal').classList.remove('show');
-        }, 1000);
-    }
-</script>
-
+  </main>
 </body>
 </html>
