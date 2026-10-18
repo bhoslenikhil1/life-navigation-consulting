@@ -224,6 +224,7 @@ canvas#hc{position:absolute;inset:0;z-index:1;pointer-events:none;}
 .hero-card{
   background:rgba(19,11,13,0.68);border:1px solid rgba(215,175,115,0.18);border-radius:30px;padding:26px 22px;backdrop-filter:blur(12px);box-shadow:0 24px 60px rgba(0,0,0,0.25);
 }
+.hero-copy,.hero-card,.visual-stack{width:100%;}
 .visual-stack{display:grid;gap:18px;position:relative;}
 .image-frame{position:relative;border-radius:30px;overflow:hidden;border:1px solid rgba(215,175,115,0.2);background:rgba(255,255,255,0.04);box-shadow:0 18px 40px rgba(8,6,12,0.28);}
 .image-frame img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(1.12) contrast(1.18) brightness(0.86);}
@@ -238,6 +239,12 @@ canvas#hc{position:absolute;inset:0;z-index:1;pointer-events:none;}
 }
 .visual-grid{display:none;}
 .visual-note{display:none;}
+.sensual-gallery .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;}
+.sensual-gallery .gallery-card{height:430px;border-radius:28px;position:relative;overflow:hidden;}
+.sensual-gallery .gallery-card img{display:block;width:100%;height:100%;object-fit:cover;}
+.sensual-gallery .gallery-copy{position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,10,12,0.12),rgba(19,10,12,0.72));display:flex;align-items:flex-end;padding:20px;}
+.sensual-gallery .gallery-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:8px;}
+.sensual-gallery .gallery-title{font-size:22px;color:#fff;font-family:'Playfair Display',serif;line-height:1.1;}
 .hero-badge{
   display:inline-flex;align-items:center;gap:9px;
   background:rgba(255,255,255,0.04);border:1px solid rgba(215,175,115,0.3);
@@ -545,17 +552,27 @@ footer{background:#0C0A18;padding:56px 0 34px;border-top:1px solid rgba(255,255,
   .c-glow{display:none;}
 }
 @media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:26px;align-items:start;}
+  .hero-copy{max-width:100%;}
+  .image-large{height:420px;}
   .about-grid{grid-template-columns:1fr;gap:50px;}
   .book-layout{grid-template-columns:1fr;}
   .testi-grid{grid-template-columns:1fr;max-width:530px;margin-inline:auto;}
   .steps-row{grid-template-columns:1fr;gap:38px;}
   .steps-row::before{display:none;}
+  .sensual-gallery .gallery-grid{grid-template-columns:1fr;gap:18px;}
+  .sensual-gallery .gallery-card{height:360px;}
 }
 @media(max-width:680px){
   section{padding:90px 0;}
-  .hero{padding:150px 0 90px;min-height:unset;}
+  .hero{padding:130px 0 70px;min-height:unset;}
   .nav-links{display:none;}
   .hamburger{display:flex;}
+  .hero h1{font-size:clamp(2.5rem,10vw,4rem);line-height:0.95;}
+  .hero-sub{font-size:16px;line-height:1.8;}
+  .hero-pills{margin-bottom:28px;}
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .hero-actions .btn{width:100%;justify-content:center;}
   .svcs-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr 1fr;}
   .expertise-grid{grid-template-columns:1fr;}
@@ -564,10 +581,14 @@ footer{background:#0C0A18;padding:56px 0 34px;border-top:1px solid rgba(255,255,
   .trust-sep{display:none;}
   .ft-grid{grid-template-columns:1fr;}
   .ft-brand{grid-column:span 1;}
+  .sensual-gallery .gallery-card{height:300px;}
+  .sensual-gallery .gallery-title{font-size:18px;}
 }
 @media(max-width:420px){
   .hero-actions{flex-direction:column;align-items:flex-start;}
   .why-grid{grid-template-columns:1fr;}
+  .image-large{height:320px;}
+  .sensual-gallery .gallery-card{height:280px;}
 }
 </style>
 </head>
@@ -614,39 +635,37 @@ footer{background:#0C0A18;padding:56px 0 34px;border-top:1px solid rgba(255,255,
   <canvas id="hc"></canvas>
   <div class="container">
     <div class="hero-inner">
-          <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="hero-badge rv">
-            <span class="pulse-dot"></span>
-            Dating smarter. Connecting deeper. &nbsp;·&nbsp; Private sessions available
-          </div>
-          <p class="hero-tagline rv d1">
-            <span class="tw-wrap"><span id="tw-txt"></span><span class="cur-blink"></span></span>
-          </p>
-          <h1 class="rv d1">
-            Love should feel<br>electric, not<br><em>confusing.</em>
-          </h1>
-          <p class="hero-sub rv d2">For adult men and women navigating modern dating, relationship ambiguity, communication gaps, and difficult decisions about love — support that feels honest, sensual and deeply grounded.</p>
-          <div class="hero-pills rv d2">
-            <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Dating guidance</div>
-            <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Relationship clarity</div>
-            <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>Private sessions</div>
-            <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Masterclasses</div>
-          </div>
-          <div class="hero-actions rv d3">
-            <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-              Chat for Free
-            </a>
-            <a href="#book" class="btn btn-gold">Book a Call — Rs.399 <span class="arr">→</span></a>
-          </div>
+      <div class="hero-copy">
+        <div class="hero-badge rv">
+          <span class="pulse-dot"></span>
+          Dating smarter. Connecting deeper. &nbsp;·&nbsp; Private sessions available
         </div>
+        <p class="hero-tagline rv d1">
+          <span class="tw-wrap"><span id="tw-txt"></span><span class="cur-blink"></span></span>
+        </p>
+        <h1 class="rv d1">
+          Love should feel<br>electric, not<br><em>confusing.</em>
+        </h1>
+        <p class="hero-sub rv d2">For adult men and women navigating modern dating, relationship ambiguity, communication gaps, and difficult decisions about love — support that feels honest, sensual and deeply grounded.</p>
+        <div class="hero-pills rv d2">
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Dating guidance</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Relationship clarity</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14z"/></svg>Private sessions</div>
+          <div class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Masterclasses</div>
+        </div>
+        <div class="hero-actions rv d3">
+          <a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank" class="btn btn-wa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat for Free
+          </a>
+          <a href="#book" class="btn btn-gold">Book a Call — Rs.399 <span class="arr">→</span></a>
+        </div>
+      </div>
 
-        <div class="visual-stack rv d2">
-          <div class="image-frame image-large">
-            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Dating expert portrait" />
-            <div class="image-badge">Dating expert</div>
-          </div>
+      <div class="visual-stack rv d2">
+        <div class="image-frame image-large">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80" alt="Dating expert portrait" />
+          <div class="image-badge">Dating expert</div>
         </div>
       </div>
     </div>
@@ -675,31 +694,31 @@ footer{background:#0C0A18;padding:56px 0 34px;border-top:1px solid rgba(255,255,
       <h2 style="color:#fff;">A deeper kind of attraction.</h2>
       <p class="svcs-intro" style="color:var(--fog);max-width:640px;">Not just chemistry. A grounded understanding of what you want, what you deserve, and how to build connection without confusion.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;">
-      <div class="image-frame rv d1" style="height:430px;border-radius:28px;">
-        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Woman with sensual portrait" style="width:100%;height:100%;object-fit:cover;" />
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,10,12,0.12),rgba(19,10,12,0.72));display:flex;align-items:flex-end;padding:20px;">
+    <div class="gallery-grid">
+      <div class="image-frame rv d1 gallery-card">
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Woman with sensual portrait" />
+        <div class="gallery-copy">
           <div>
-            <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:8px;">Romance</div>
-            <div style="font-size:22px;color:#fff;font-family:'Playfair Display',serif;line-height:1.1;">Confidence that attracts.</div>
+            <div class="gallery-label">Romance</div>
+            <div class="gallery-title">Confidence that attracts.</div>
           </div>
         </div>
       </div>
-      <div class="image-frame rv d2" style="height:430px;border-radius:28px;">
-        <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=900&q=80" alt="Sensual guidance portrait" style="width:100%;height:100%;object-fit:cover;" />
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,10,12,0.12),rgba(19,10,12,0.72));display:flex;align-items:flex-end;padding:20px;">
+      <div class="image-frame rv d2 gallery-card">
+        <img src="https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=900&q=80" alt="Sensual guidance portrait" />
+        <div class="gallery-copy">
           <div>
-            <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:8px;">Connection</div>
-            <div style="font-size:22px;color:#fff;font-family:'Playfair Display',serif;line-height:1.1;">Clear signals. Real chemistry.</div>
+            <div class="gallery-label">Connection</div>
+            <div class="gallery-title">Clear signals. Real chemistry.</div>
           </div>
         </div>
       </div>
-      <div class="image-frame rv d3" style="height:430px;border-radius:28px;">
-        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Sensual self-worth portrait" style="width:100%;height:100%;object-fit:cover;" />
-        <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,10,12,0.12),rgba(19,10,12,0.72));display:flex;align-items:flex-end;padding:20px;">
+      <div class="image-frame rv d3 gallery-card">
+        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Sensual self-worth portrait" />
+        <div class="gallery-copy">
           <div>
-            <div style="font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);font-weight:700;margin-bottom:8px;">Self-worth</div>
-            <div style="font-size:22px;color:#fff;font-family:'Playfair Display',serif;line-height:1.1;">Desire with intention.</div>
+            <div class="gallery-label">Self-worth</div>
+            <div class="gallery-title">Desire with intention.</div>
           </div>
         </div>
       </div>
