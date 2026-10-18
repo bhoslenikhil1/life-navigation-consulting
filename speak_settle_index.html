@@ -645,7 +645,7 @@
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank">Free Chat</a></li>
-                <li><a href="masterclass.html" class="nav-cta">Masterclass Rs.99</a></li>
+                <li><a href="call.html" class="nav-cta">One-to-One Session Rs.399</a></li>
             </ul>
         </nav>
     </div>
@@ -669,25 +669,14 @@
 
             <!-- Service Selection Cards -->
             <div class="services-wrapper" id="services">
-                <!-- Masterclass Card -->
-                <a href="masterclass.html" class="service-option">
-                    <div class="service-option-icon">🎓</div>
-                    <h3>Live Masterclass</h3>
-                    <p class="service-option-desc">Overcoming Rejection in Love<br>Limited Seats • Launch Offer</p>
-                    <div class="service-option-price">Rs.99</div>
-                    <button class="btn" style="background:var(--gold); color:var(--bg-deep); width:100%; justify-content:center;">
-                        Explore Masterclass →
-                    </button>
-                </a>
-
                 <!-- Personal Call Card -->
-                <a href="call.html" class="service-option">
+                <a href="call.html" class="service-option" style="grid-column: 1 / -1; max-width: 520px; margin: 0 auto;">
                     <div class="service-option-icon">📞</div>
-                    <h3>20-Min Voice Call</h3>
+                    <h3>One-to-One Session</h3>
                     <p class="service-option-desc">Personalized 1-on-1 Counselling<br>Deep Guidance • Instant Clarity</p>
                     <div class="service-option-price">Rs.399</div>
                     <button class="btn" style="background:var(--gold); color:var(--bg-deep); width:100%; justify-content:center;">
-                        Book Your Call →
+                        Book Your Session →
                     </button>
                 </a>
             </div>
@@ -763,7 +752,6 @@
                 <h4>Services</h4>
                 <ul>
                     <li><a href="call.html">Book a Call</a></li>
-                    <li><a href="masterclass.html">Masterclass</a></li>
                     <li><a href="https://wa.me/918591201967?text=Hi%20Nikhil%2C%20I%20need%20someone%20to%20talk%20to." target="_blank">Free Chat</a></li>
                 </ul>
             </div>
@@ -849,13 +837,13 @@
     // ════════════════════════════════════════
     const bookingNames = [
         { name: 'Priya K.', action: 'booked a 20-min call' },
-        { name: 'Rahul M.', action: 'joined the masterclass' },
+        { name: 'Rahul M.', action: 'booked a 20-min call' },
         { name: 'Anjali S.', action: 'started free chat' },
         { name: 'Vikram P.', action: 'booked a 20-min call' },
-        { name: 'Neha R.', action: 'joined the masterclass' },
+        { name: 'Neha R.', action: 'booked a 20-min call' },
         { name: 'Arjun K.', action: 'started free chat' },
         { name: 'Divya N.', action: 'booked a 20-min call' },
-        { name: 'Rohan S.', action: 'joined the masterclass' },
+        { name: 'Rohan S.', action: 'booked a 20-min call' },
     ];
 
     function getRandomBooking() {
